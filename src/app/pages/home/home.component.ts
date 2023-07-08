@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Product } from 'src/app/Models/product.model';
+import { Subject, Subscription, takeUntil } from 'rxjs';
+import { Product, ProductFakeApi } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
+import { ActivatedRoute } from '@angular/router';
 
 const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 3: 335, 4: 350 };
 
@@ -13,30 +14,41 @@ const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 3: 335, 4: 350 };
 })
 export class HomeComponent  implements OnInit, OnDestroy {
   cols = 3;
-  catagory : string | undefined
   rowHeight: number = ROWS_HEIGHT[this.cols];
-  products: Array<Product> | undefined;
+  products :Product[] | undefined;
   count = '12';
   sort = 'desc';
   category: string | undefined;
   productsSubscription: Subscription | undefined;
+  private unsubscribe$ = new Subject<void>();
+  
 
   constructor(
     private cartService: CartService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private route: ActivatedRoute
     
   ) {}
-
+ 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      if(params['name']) {
+        this.category = params['name'];
+      }
+    });
     this.getProducts();
   }
 
   getProducts(): void {
-  this.storeService
-      .getAllProducts(this.count, this.sort)
-      .subscribe((_products) => {
-        this.products = _products;
+     if(this.category != null){
+      console.log("category", this.category)
+      this.storeService.getProductBYCategory(this.category).pipe(takeUntil(this.unsubscribe$))
+      .subscribe((data: Product[]) => {
+       
+        this.products  = data;
       });
+     }
+  
   }
 
   onColumnsCountChange(colsNum: number): void {
@@ -45,24 +57,39 @@ export class HomeComponent  implements OnInit, OnDestroy {
     console.log(ROWS_HEIGHT[colsNum]);
 
   }
+
+  onItemsCountChange(count: number): void {
+    this.count = count.toString();
+    this.getProducts();
+  }
+
+  onSortChange(newSort: string): void {
+    this.sort = newSort;
+    this.getProducts();
+  }
+
   OnshowCategoty(newCatagory : string): void{
-    console.log(newCatagory);
-    this.catagory = newCatagory;
+    console.log("test",newCatagory);
+    this.category = newCatagory;
+    this.getProducts();
   }
 
   onAddToCart(product: Product): void {
-    console.log(product);
+     console.log("proooo", product)
     this.cartService.addToCart({
-      product: product.image,
+      product: product.categoryName,
       name: product.title,
       price: product.price,
       quantity: 1,
-      id: product.id,
+      id:2,
+      imageUrl: product.imageUrl,
+      productId : product.productId
+      
     });
   }
   ngOnDestroy(): void {
-    if (this.productsSubscription) {
-      this.productsSubscription.unsubscribe();
+    if (this.unsubscribe$) {
+      this.unsubscribe$.unsubscribe();
     }
   }
 }

@@ -1,0 +1,53 @@
+<div class="w-full p-0 m-0">
+    <div class="flex flex-wrap">
+        <div class="w-full p-0">
+            <div class="bg-cover bg-center h-[70vh]" 
+            style="background-image: url('../../../assets/image/background.jpg')">
+               <p>home</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center items-center bg-white py-6">
+        <h1 class="text-3xl font-bold text-center">Category</h1>
+    </div>
+    <mat-grid-list cols="4" gutterSize="10px" rowHeight="1:1" class="mx-auto my-10 w-11/12">
+        <mat-grid-tile *ngFor="let item of items">
+            <mat-card class="flex flex-col items-center justify-center">
+                <a [routerLink]="['/home', item.category]">
+                    <img mat-card-image class="w-60 h-60 object-cover" 
+                        [src]="'../../../assets/image/' + item.image" 
+                        [alt]="item.category">
+                </a>
+                <mat-card-content class="text-center">
+                    <h4 class="">{{ item.category }}</h4>
+                    <a class="text-blue-500 underline mt-2" 
+                        [href]="item.link" 
+                        target="_blank">Products &rarr;</a>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    
+     <!-- Most Popular Products Section -->
+     <div class="flex justify-center items-center bg-white py-6">
+        <h1 class="text-3xl font-bold text-center">Most Popular Products</h1>
+    </div>
+    <mat-grid-list cols="4" gutterSize="10px" rowHeight="1:1" class="mx-auto my-10 w-11/12">
+        <mat-grid-tile *ngFor="let item of items">
+            <mat-card class="flex flex-col items-center justify-center">
+                <a [routerLink]="['/home', item.category]">
+                    <img mat-card-image class="w-60 h-60 object-cover" 
+                        [src]="'../../../assets/image/' + item.image" 
+                        [alt]="item.category">
+                </a>
+                <mat-card-content class="text-center">
+                    <h4 class="">{{ item.category }}</h4>
+                    <a class="text-blue-500 underline mt-2" 
+                        [href]="item.link" 
+                        target="_blank">Products &rarr;</a>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    
+</div>

@@ -27,6 +27,14 @@ import { CartComponent } from './pages/cart/cart.component';
 import { CartService } from './service/cart.service';
 import { StoreService } from './service/store.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FirstPageComponent } from './FirstPage/first-page/first-page.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -36,7 +44,10 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsHeaderComponent,
     FiltersComponent,
     ProductBoxComponent,
-    CartComponent
+    CartComponent,
+    FirstPageComponent,
+ 
+   
   ],
   imports: [
     BrowserModule,
@@ -56,6 +67,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatBadgeModule,
     MatSnackBarModule,
     HttpClientModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    FormsModule
+   
+    
   ],
   providers: [CartService, StoreService],
   bootstrap: [AppComponent]

@@ -14,10 +14,8 @@ export class ProductsHeaderComponent {
 
   onSortUpdated(NewSort: string) : void{
      this.sort = NewSort;
+     this.sortChange.emit(NewSort);
   }
-
-  
-
   onColumnsUpdated(colsNum: number): void {
     this.columnsCountChange.emit(colsNum);
   }
@@ -26,6 +24,5 @@ export class ProductsHeaderComponent {
     this.itemsCountChange.emit(count);
     this.itemsShowCount = count;
   }
-
   
 }

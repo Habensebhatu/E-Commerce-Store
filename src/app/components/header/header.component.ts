@@ -9,12 +9,26 @@ import { CartService } from 'src/app/service/cart.service';
 export class HeaderComponent {
   private _cart: Cart = { items: [] };
   itemsQuantity = 0;
-
+  categories = ['food', 'kleiding', 'costomutic']
+  searchValue: string | undefined;
+  noProductsFound: boolean = false;
   @Input()
   get cart(): Cart {
     return this._cart;
   }
-
+  ngOnInit(): void {
+  
+  }
+  search(){
+    console.log("search", this.searchValue)
+    // let searchResults = this.performSearch(this.searchValue)
+    // if (searchResults.length === 0) {
+    //   this.noProductsFound = true;
+    // } else {
+    //   this.noProductsFound = false;
+    // }
+    this.noProductsFound = true;
+  }
   set cart(cart: Cart) {
     this._cart = cart;
 
