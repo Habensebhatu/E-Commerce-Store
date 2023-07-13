@@ -41,7 +41,6 @@ export class HomeComponent  implements OnInit, OnDestroy {
 
   getProducts(): void {
      if(this.category != null){
-      console.log("category", this.category)
       this.storeService.getProductBYCategory(this.category).pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: Product[]) => {
        

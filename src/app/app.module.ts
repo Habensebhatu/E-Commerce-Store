@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FirstPageComponent } from './FirstPage/first-page/first-page.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -46,6 +47,7 @@ import { FormsModule } from '@angular/forms';
     ProductBoxComponent,
     CartComponent,
     FirstPageComponent,
+    FooterComponent,
  
    
   ],

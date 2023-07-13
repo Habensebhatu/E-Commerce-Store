@@ -1,4 +1,4 @@
-<mat-toolbar class="flex justify-center items-center space-x-4 bg-blue-500 "> 
+<!-- <mat-toolbar class="flex justify-center items-center space-x-4 bg-blue-500 "> 
   <p *ngIf="noProductsFound">No products found</p>
     <div class="flex items-center border border-gray-400 rounded-md w-1/2">
       <input type="text" class="p-2 flex-grow" placeholder="Search" [(ngModel)]="searchValue" >
@@ -43,17 +43,72 @@
 </mat-toolbar>
 
 <mat-toolbar class="flex justify-around">
-  <button mat-icon-button [matMenuTriggerFor]="menuCategory">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menuCategory="matMenu">
-    <button mat-menu-item *ngFor="let category of categories">{{ category }}</button>
-  </mat-menu>
   <a routerLink="first">Home</a>
+  <div class="flex items-center cursor-pointer" [matMenuTriggerFor]="menuCategory">
+    <span>Categories</span>
+    <mat-icon class="ml-2">arrow_drop_down</mat-icon>
+  </div>
+  <mat-menu #menuCategory="matMenu">
+    <button mat-menu-item *ngFor="let category of categories">
+      <a [routerLink]="['/home', category]">{{ category }}</a>
+    </button>
+  </mat-menu>
   <a routerLink="about">Abous as </a> 
+</mat-toolbar> -->
+
+<mat-toolbar class="flex justify-center items-center md:space-x-4 space-y-4 md:space-y-0 " style="background-color:#243328"> 
+  <p *ngIf="noProductsFound">No products found</p>
+    <div class="flex items-center border rounded-md w-full md:w-1/2" >
+      <input type="text" class="p-2 flex-grow" placeholder="Search" [(ngModel)]="searchValue" >
+      <button (click)="search()">
+        <mat-icon class="mx-2 text-blue-200">search</mat-icon>
+      </button>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity" matBadgeColor="warn"> shopping_cart</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div class="p-3 divide-y divide-solid">
+        <div class="pb-3 flex justify-between">
+          <span class="mr-16">{{itemsQuantity}} items</span>
+          <a routerLink="cart">View Cart</a>
+        </div>
+        <div  *ngIf="cart.items.length" class="py-3">
+          <div  *ngFor="let item of cart.items" class="flex justify-between font-light mb-2">
+            {{ item.name }} x {{ item.quantity }}
+            <span class="font-bold ">{{ item.price | currency }}</span>
+          </div>
+        </div>
+        <div class="flex justify-between py-3 font-light">
+          Total:
+          <span class="font-bold not-italic">{{getTotal(cart.items) | currency }}</span>
+        </div>
+        <div class="pt-3 flex justify-between">
+          <button  (click)="onClearCart()"
+            class="bg-rose-600 text-white rounded-full w-9 h-9"
+          >
+            <mat-icon>remove_shopping_cart</mat-icon>
+          </button>
+          <button
+            routerLink="cart"
+            class="bg-green-600 text-white rounded-full w-9 h-9"
+          >
+            <mat-icon>shopping_cart_checkout</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-menu>
 </mat-toolbar>
-
-
-<mat-toolbar color="primary" class="fixed bottom-0 w-full h-36">
-  
+<mat-toolbar class="flex flex-col md:flex-row justify-end space-x-4 md:space-x-8" style="background-color:#EBEADF">
+  <a routerLink="first">Home</a>
+  <div class="flex items-center cursor-pointer" [matMenuTriggerFor]="menuCategory">
+    <span>Categories</span>
+    <mat-icon class="ml-2">arrow_drop_down</mat-icon>
+  </div>
+  <mat-menu #menuCategory="matMenu">
+    <button mat-menu-item *ngFor="let category of categories">
+      <a [routerLink]="['/home', category]">{{ category }}</a>
+    </button>
+  </mat-menu>
+  <a routerLink="about">Abous as </a> 
 </mat-toolbar>

@@ -9,7 +9,7 @@ import { CartService } from 'src/app/service/cart.service';
 export class HeaderComponent {
   private _cart: Cart = { items: [] };
   itemsQuantity = 0;
-  categories = ['food', 'kleiding', 'costomutic']
+  categories = ['Food', 'Kleding', 'Cosmetica']
   searchValue: string | undefined;
   noProductsFound: boolean = false;
   @Input()
@@ -29,6 +29,12 @@ export class HeaderComponent {
     // }
     this.noProductsFound = true;
   }
+
+  onCategorySelect(category: string): void {
+    console.log('You selected: ', category);
+    // Do something with category
+  }
+  
   set cart(cart: Cart) {
     this._cart = cart;
 

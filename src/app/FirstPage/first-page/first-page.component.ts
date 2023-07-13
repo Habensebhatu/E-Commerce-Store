@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable, map, of } from 'rxjs';
+
 
 @Component({
   selector: 'app-first-page',
@@ -8,6 +11,37 @@ import { Component } from '@angular/core';
 })
 export class FirstPageComponent {
 
+  constructor(private breakpointObserver: BreakpointObserver){
+
+  }
+  cols: Observable<number> = of(4);
+
+
+  ngOnInit() {
+    this.cols = this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge
+    ]).pipe(
+      map(({ matches }) => {
+        if (matches) {
+          if (this.breakpointObserver.isMatched(Breakpoints.XSmall)) {
+            return 2;
+          }
+          if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
+            return 2;
+          }
+          return 4;
+        } else {
+          return 4; // Ensure cols always have a number.
+        }
+      })
+    );
+  }
+  
+  
   items = [
     {
         category: 'Food',
@@ -16,7 +50,7 @@ export class FirstPageComponent {
     },
     {
         category: 'costomatic',
-        image: 'Agor_Feet_Mask_1_1024x1024@2x.jpeg',
+        image: 'Sieraden.jpeg',
         link: 'http://164134.ao-alkmaar.nl/gezondeten/'
     },
     {
@@ -26,9 +60,10 @@ export class FirstPageComponent {
     },
     {
       category: 'Food',
-      image: 'Berbere-2-247x296.jpeg',
+      image: 'Sieraden.jpeg',
       link: 'http://164134.ao-alkmaar.nl/gezondeten/'
     },
+   
     // ... add more items as needed
 ];
 
