@@ -15,19 +15,20 @@ export class StoreService {
   private readonly apiUrl = 'https://localhost:7087/api/Product';
   private readonly apiUrlCategory = 'https://localhost:7087/api/Category';
   private products: ProductFakeApi[] = [];
+  getproductToggel = false;
   constructor(private httpClient: HttpClient) { }
 
-  getAllProducts(
-    limit = "12",
-    sort = "desc",
-    category?: string
-  ): Observable<Array<ProductFakeApi>> {
-    console.log("categoty", category)
-    return this.httpClient.get<Array<ProductFakeApi>>(
-      `${STORE_BASE_URL}/products${category ? "/category/" + category : ""
-      }?sort=${sort}&limit=${limit}`
-    );
-  }
+  // getAllProducts(
+  //   limit = "12",
+  //   sort = "desc",
+  //   category?: string
+  // ): Observable<Array<ProductFakeApi>> {
+  //   console.log("categoty", category)
+  //   return this.httpClient.get<Array<ProductFakeApi>>(
+  //     `${STORE_BASE_URL}/products${category ? "/category/" + category : ""
+  //     }?sort=${sort}&limit=${limit}`
+  //   );
+  // }
 
   // getProducts(): Observable<Product[]>{
   //   // const products = localStorage.getItem('products');
@@ -75,4 +76,8 @@ export class StoreService {
   getProductBYCategory(category: string): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`${this.apiUrl}/category/${category}`);
 }
+ 
+ getProducts(): Observable<Product[]> {
+  return this.httpClient.get<Product[]>(`${this.apiUrl}`);
+ }
 }

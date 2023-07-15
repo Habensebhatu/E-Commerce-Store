@@ -100,9 +100,9 @@
     </mat-menu>
 </mat-toolbar>
 <mat-toolbar class="flex flex-col md:flex-row justify-end space-x-4 md:space-x-8" style="background-color:#EBEADF">
-  <a routerLink="first">Home</a>
+  <a class="text-sm" routerLink="first">Home</a>
   <div class="flex items-center cursor-pointer" [matMenuTriggerFor]="menuCategory">
-    <span>Categories</span>
+    <span class="text-sm" >Categories</span>
     <mat-icon class="ml-2">arrow_drop_down</mat-icon>
   </div>
   <mat-menu #menuCategory="matMenu">
@@ -110,5 +110,5 @@
       <a [routerLink]="['/home', category]">{{ category }}</a>
     </button>
   </mat-menu>
-  <a routerLink="about">Abous as </a> 
+  <a  class="text-sm" routerLink="about">Abous as</a> 
 </mat-toolbar>

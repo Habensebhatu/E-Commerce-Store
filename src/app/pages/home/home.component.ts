@@ -37,13 +37,22 @@ export class HomeComponent  implements OnInit, OnDestroy {
       }
     });
     this.getProducts();
+    this.getProductss();
   }
 
+  getProductss(): void {
+    if(this.storeService.getproductToggel){
+      this.storeService.getProducts().pipe(takeUntil(this.unsubscribe$))
+      .subscribe((data: Product[]) => {
+        this.products  = data;
+       
+      });
+    }
+ }
   getProducts(): void {
      if(this.category != null){
       this.storeService.getProductBYCategory(this.category).pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: Product[]) => {
-       
         this.products  = data;
       });
      }
@@ -68,13 +77,11 @@ export class HomeComponent  implements OnInit, OnDestroy {
   }
 
   OnshowCategoty(newCatagory : string): void{
-    console.log("test",newCatagory);
     this.category = newCatagory;
     this.getProducts();
   }
 
   onAddToCart(product: Product): void {
-     console.log("proooo", product)
     this.cartService.addToCart({
       product: product.categoryName,
       name: product.title,

@@ -7,9 +7,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class CartService {
+ 
   cart = new BehaviorSubject<Cart>({ items: [] });
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar) {
+    this.loadCartFromLocalStorage();
+    console.log("itmes", this.cart.value.items)
+   }
+
+   private loadCartFromLocalStorage() {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      this.cart.next(JSON.parse(storedCart));
+    }
+  }
+  private saveCartToLocalStorage(cart: Cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
 
   addToCart(item: CartItem): void {
     console.log('itemm', item);
@@ -22,18 +36,21 @@ export class CartService {
       items.push(item);
     }
 
-    this.cart.next({ items });
-    this._snackBar.open('1 item added to cart.', 'Ok', { duration: 3000 });
-    console.log(this.cart.value)
-  }
+    
+    const updatedCart = { items };
+    this.cart.next(updatedCart);
+    this.saveCartToLocalStorage(updatedCart);
 
+    this._snackBar.open('1 item added to cart.', 'Ok', { duration: 3000 });
+   
+  }
+  
+  
   getTotal(items: CartItem[]): number {
     return items.map((item)=>
       item.price * item.quantity).reduce((prev,current)=> prev + current, 0)
     
   }
-
-
 
   clearCart(): void {
     this.cart.next({ items: [] });
@@ -41,9 +58,10 @@ export class CartService {
       duration: 3000,
     });
   }
+
   removeFromCart(item: CartItem, updateCart = true): CartItem[] {
     const filteredItems = this.cart.value.items.filter(
-      (_item) => _item.id !== item.id
+      (_item) => _item.productId !== item.productId
     );
 
     if (updateCart) {

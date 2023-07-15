@@ -4,6 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { CartItem } from 'src/app/Models/cart.models';
 import { Cart } from 'src/app/Models/cart.models';
 import { CartService } from 'src/app/service/cart.service';
+import { StoreService } from 'src/app/service/store.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,6 +12,7 @@ import { CartService } from 'src/app/service/cart.service';
  
 })
 export class CartComponent {
+  phoneNumber = '061790373929';
   cart: Cart = {items:[
   ]
   }
@@ -25,15 +27,13 @@ export class CartComponent {
     'action',
   ];
 
-  constructor(private cartService: CartService, private http: HttpClient){}
+  constructor(private cartService: CartService, private http: HttpClient, private storeService: StoreService){}
 ngOnInit(){
   this.cartService.cart.subscribe((_cart: Cart)=>{
     this.cart = _cart;
     this.dataSource = this.cart.items;
-    console.log("data333", this.dataSource)
-    console.log("items", this.cart.items)
   })
- 
+  
 }
 
 getTotal(items: CartItem[]): number {
@@ -41,6 +41,9 @@ getTotal(items: CartItem[]): number {
   
 }
 
+getProducts(){
+  this.storeService.getproductToggel = true;
+}
 onAddQuantity(item: CartItem): void {
   this.cartService.addToCart(item);
 }
@@ -60,6 +63,7 @@ onRemoveFromCart(item: CartItem): void {
 onCheckout(): void {
   this.http
     .post('http://localhost:4242/checkout', {
+      phoneNumber: this.phoneNumber,
       items: this.cart.items,
     
     })

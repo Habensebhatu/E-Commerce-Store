@@ -20,7 +20,7 @@ export class HeaderComponent {
   
   }
   search(){
-    console.log("search", this.searchValue)
+    
     // let searchResults = this.performSearch(this.searchValue)
     // if (searchResults.length === 0) {
     //   this.noProductsFound = true;
