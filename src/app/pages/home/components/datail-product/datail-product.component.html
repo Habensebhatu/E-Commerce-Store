@@ -1,0 +1,48 @@
+<div class="flex justify-center items-center">
+   <mat-card class="m-4">
+    <mat-card-header>
+      <mat-card-title class="text-xl">{{ product?.title }}</mat-card-title>
+      <mat-card-subtitle class="text-lg text-green-500">{{ product?.price }}</mat-card-subtitle>
+    </mat-card-header>
+  
+      <div class="flex flex-wrap">
+        <div class="w-1/2 p-4">
+          <mat-card-content>
+            <img mat-card-image [src]="'../../../assets/image/' + selectedImage" alt="Product image">
+            <div class="flex justify-between">
+              <img class="w-1/4 cursor-pointer" *ngFor="let img of productimage"  [src]="'../../../assets/image/' + img"  (click)="selectedImage = img" alt="Product image">
+            </div>
+          </mat-card-content>
+        </div>
+        <div class="w-1/2 p-4">
+          <mat-card-content>
+            <p>{{ product?.description }}</p>
+          </mat-card-content>
+        </div>
+      </div>
+  
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Buy Now</button>
+      </mat-card-actions>
+    </mat-card>
+  
+    <!-- <div class="w-full">
+      <h2 class="text-2xl">Related Products</h2>
+      <div class="flex flex-wrap justify-around">
+        <mat-card class="m-4" *ngFor="let relatedProduct of relatedProducts">
+          <img mat-card-image [src]="relatedProduct.images[0]" alt="Product image">
+          <mat-card-title>{{ relatedProduct.title }}</mat-card-title>
+          <mat-card-subtitle>{{ relatedProduct.price }}</mat-card-subtitle>
+          <mat-card-content>
+            <p>{{ relatedProduct.description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary">View More</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div> -->
+  </div>
+
+
+   

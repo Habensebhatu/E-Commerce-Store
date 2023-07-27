@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Cart, CartItem } from 'src/app/Models/cart.models';
 import { CartService } from 'src/app/service/cart.service';
+import { StoreService } from 'src/app/service/store.service';
 
 @Component({
   selector: 'app-header',
@@ -34,6 +35,8 @@ export class HeaderComponent {
     console.log('You selected: ', category);
     // Do something with category
   }
+
+  
   
   set cart(cart: Cart) {
     this._cart = cart;
@@ -42,10 +45,15 @@ export class HeaderComponent {
       .map((item) => item.quantity)
       .reduce((prev, curent) => prev + curent, 0);
   }
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,  private storeService: StoreService,) {}
 
   getTotal(items: CartItem[]): number {
     return this.cartService.getTotal(items);
+  }
+
+  categoriesChange(category : string){
+   
+    this.storeService.changeShowData(category)
   }
 
   onClearCart(): void {

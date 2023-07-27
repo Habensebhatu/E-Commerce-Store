@@ -32,6 +32,7 @@ ngOnInit(){
   this.cartService.cart.subscribe((_cart: Cart)=>{
     this.cart = _cart;
     this.dataSource = this.cart.items;
+    console.log("cardrd",this.cart.items)
   })
   
 }
@@ -42,7 +43,7 @@ getTotal(items: CartItem[]): number {
 }
 
 getProducts(){
-  this.storeService.getproductToggel = true;
+  this.storeService.setAllProducts(true);
 }
 onAddQuantity(item: CartItem): void {
   this.cartService.addToCart(item);
@@ -62,8 +63,7 @@ onRemoveFromCart(item: CartItem): void {
 }
 onCheckout(): void {
   this.http
-    .post('http://localhost:4242/checkout', {
-      phoneNumber: this.phoneNumber,
+    .post('https://localhost:7087/api/Stripe/checkout', {
       items: this.cart.items,
     
     })
@@ -76,4 +76,19 @@ onCheckout(): void {
    
 }
 
+// onCheckout(): void {
+//   this.http
+//     .post('http://localhost:your_dotnet_port/api/stripe/checkout', {
+//       phoneNumber: this.phoneNumber,
+//       items: this.cart.items,
+//     })
+//     .subscribe(async (res: any) => {
+//       let stripe = await loadStripe('pk_test_...');
+//       stripe?.redirectToCheckout({
+//         sessionId: res.id,
+//       });
+//     });
 }
+
+
+

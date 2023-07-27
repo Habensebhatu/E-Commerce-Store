@@ -106,8 +106,8 @@
     <mat-icon class="ml-2">arrow_drop_down</mat-icon>
   </div>
   <mat-menu #menuCategory="matMenu">
-    <button mat-menu-item *ngFor="let category of categories">
-      <a [routerLink]="['/home', category]">{{ category }}</a>
+    <button mat-menu-item *ngFor="let category of categories" (click)="categoriesChange(category)">
+      <a [routerLink]="['/home', category]">{{ category }} </a>
     </button>
   </mat-menu>
   <a  class="text-sm" routerLink="about">Abous as</a> 

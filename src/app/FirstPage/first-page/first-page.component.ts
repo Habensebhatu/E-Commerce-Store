@@ -49,7 +49,7 @@ export class FirstPageComponent {
         link: 'https://syncflare.ai/'
     },
     {
-        category: 'costomatic',
+        category: 'Cosmetica',
         image: 'Sieraden.jpeg',
         link: 'http://164134.ao-alkmaar.nl/gezondeten/'
     },

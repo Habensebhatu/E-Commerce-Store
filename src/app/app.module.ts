@@ -31,6 +31,9 @@ import { FirstPageComponent } from './FirstPage/first-page/first-page.component'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { DatailProductComponent } from './pages/home/components/datail-product/datail-product.component';
+import { PaymentSuccessComponent } from './stripe/payment-success/payment-success.component';
+import { PaymentCancelledComponent } from './stripe/payment-cancelled/payment-cancelled.component';
 
 
 
@@ -48,6 +51,9 @@ import { FooterComponent } from './components/footer/footer.component';
     CartComponent,
     FirstPageComponent,
     FooterComponent,
+    DatailProductComponent,
+    PaymentSuccessComponent,
+    PaymentCancelledComponent,
  
    
   ],

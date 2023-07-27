@@ -14,9 +14,22 @@
       <mat-panel-title> CATEGORIES </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-list>
-      <button mat-list-item *ngFor="let category of categories" (click)="OnShowCategory(category.name)">
-        {{ category.name }}
+    
+      <button mat-list-item *ngFor="let category of categories" 
+      (click)="OnShowCategory(category.name)"    [routerLink]="['/home', category.name]">
+      <span [ngClass]="{'text-xl': selectedCategory === category.name }">{{ category.name }}</span>
       </button>
+    
     </mat-list>
   </mat-expansion-panel>
-  
+ 
+  <mat-expansion-panel  *ngIf="prices" [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Prijs</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option  *ngFor="let price of prices"  [value]=" price">
+        <button (click)="fillterPrices(price)">{{ price }}</button>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-expansion-panel>
