@@ -45,23 +45,23 @@ export class FirstPageComponent {
   items = [
     {
         category: 'Food',
-        image: 'busicuit.jpeg',
-        link: 'https://syncflare.ai/'
+        image: 'Berbere1.jpg',
+        
     },
     {
         category: 'Cosmetica',
-        image: 'Sieraden.jpeg',
-        link: 'http://164134.ao-alkmaar.nl/gezondeten/'
+        image: 'HairStyle .avif',
+       
     },
     {
       category: 'Kleding',
-      image: 'netsela.jpeg',
-      link: 'http://164134.ao-alkmaar.nl/gezondeten/'
+      image: 'Ethiopische jurk.webp',
+      
     },
     {
       category: 'Food',
       image: 'Sieraden.jpeg',
-      link: 'http://164134.ao-alkmaar.nl/gezondeten/'
+    
     },
    
     // ... add more items as needed

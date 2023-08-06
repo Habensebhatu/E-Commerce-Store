@@ -1,19 +1,29 @@
-export interface ProductFakeApi {
-    id: number;
-    title: string;
-    price: number;
-    category: string;
-    description: string;
-    image: string;
-  }
-
-  export interface Product {
+export interface Cart {
+      items: Array<Product>;
+    }
+ export interface Product {
    productId: string;
    CategoryId: string;
     title: string;
      price: number;
     categoryName: string;
     description: string;
-     imageUrl: string
+    imageUrls: string[];
+     quantity: number;
 
   }
+
+  export interface CartI {
+    items: Array<ProductAddCart>;
+  }
+  export interface ProductAddCart {
+    productId: string;
+    CategoryId: string;
+     title: string;
+      price: number;
+     categoryName: string;
+     description: string;
+     imageUrl: string;
+      quantity: number;
+ 
+   }

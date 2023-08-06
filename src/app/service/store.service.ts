@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { BehaviorSubject, Observable, min, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
-import { Product, ProductFakeApi } from "../Models/product.model";
+import { Product} from "../Models/product.model";
 import { Category } from "../Models/category.Model";
 import { DecimalPipe } from "@angular/common";
 
@@ -15,7 +15,6 @@ const STORE_BASE_URL = "https://fakestoreapi.com";
 export class StoreService {
   private readonly apiUrl = 'https://localhost:7087/api/Product';
   private readonly apiUrlCategory = 'https://localhost:7087/api/Category';
-  private products: ProductFakeApi[] = [];
   getAllProducts = false;
   constructor(private httpClient: HttpClient) { }
   private shouldGetAllProducts = false;

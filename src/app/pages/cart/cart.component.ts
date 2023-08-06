@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
-import { CartItem } from 'src/app/Models/cart.models';
-import { Cart } from 'src/app/Models/cart.models';
+import {  Cart, CartI, Product, ProductAddCart } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
 
@@ -13,11 +12,11 @@ import { StoreService } from 'src/app/service/store.service';
 })
 export class CartComponent {
   phoneNumber = '061790373929';
-  cart: Cart = {items:[
+  cart: CartI = {items:[
   ]
   }
   
-  dataSource : Array<CartItem> = [];
+  dataSource : Array<ProductAddCart> = [];
   displayedColumns: string[] = [
     'product',
     'name',
@@ -29,7 +28,7 @@ export class CartComponent {
 
   constructor(private cartService: CartService, private http: HttpClient, private storeService: StoreService){}
 ngOnInit(){
-  this.cartService.cart.subscribe((_cart: Cart)=>{
+  this.cartService.cart.subscribe((_cart: CartI)=>{
     this.cart = _cart;
     this.dataSource = this.cart.items;
     console.log("cardrd",this.cart.items)
@@ -37,7 +36,7 @@ ngOnInit(){
   
 }
 
-getTotal(items: CartItem[]): number {
+getTotal(items: ProductAddCart[]): number {
   return this.cartService.getTotal(items);
   
 }
@@ -45,11 +44,12 @@ getTotal(items: CartItem[]): number {
 getProducts(){
   this.storeService.setAllProducts(true);
 }
-onAddQuantity(item: CartItem): void {
+onAddQuantity(item: ProductAddCart): void {
+  console.log("Quantity", item)
   this.cartService.addToCart(item);
 }
 
-onRemoveQuantity(item: CartItem): void {
+onRemoveQuantity(item: ProductAddCart): void {
   this.cartService.removeQuantity(item);
 }
 
@@ -58,7 +58,7 @@ onClearCart(): void {
   this.cartService.clearCart();
 }
 
-onRemoveFromCart(item: CartItem): void {
+onRemoveFromCart(item: Product): void {
   this.cartService.removeFromCart(item);
 }
 onCheckout(): void {

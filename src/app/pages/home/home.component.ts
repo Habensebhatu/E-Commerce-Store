@@ -151,16 +151,18 @@ export class HomeComponent  implements OnInit, OnDestroy {
   
 
   onAddToCart(product: Product): void {
+    console.log("imageURls............")
     this.cartService.addToCart({
-      product: product.categoryName,
-      name: product.title,
+      categoryName: product.categoryName,
+      title: product.title,
       price: product.price,
       quantity: 1,
-      id:2,
-      imageUrl: product.imageUrl,
-      productId : product.productId
-      
+      imageUrl: product.imageUrls[0],
+      productId: product.productId,
+      CategoryId: product.CategoryId,
+      description: product.description
     });
+    console.log("imageURls")
   }
   ngOnDestroy(): void {
     if (this.unsubscribe$) {

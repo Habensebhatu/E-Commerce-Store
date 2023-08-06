@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product, ProductFakeApi } from 'src/app/Models/product.model';
+import { Product } from 'src/app/Models/product.model';
 
 
 @Component({

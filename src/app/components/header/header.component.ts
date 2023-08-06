@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Cart, CartItem } from 'src/app/Models/cart.models';
+import { Component, Input, ViewChild } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { Cart, CartI, Product, ProductAddCart } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
 
@@ -8,17 +9,25 @@ import { StoreService } from 'src/app/service/store.service';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-  private _cart: Cart = { items: [] };
+  private _cart: CartI = { items: [] };
   itemsQuantity = 0;
   categories = ['Food', 'Kleding', 'Cosmetica']
   searchValue: string | undefined;
   noProductsFound: boolean = false;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger | undefined;
   @Input()
-  get cart(): Cart {
+  get cart(): CartI {
     return this._cart;
   }
+
+  constructor(private cartService: CartService,  private storeService: StoreService,) {}
   ngOnInit(): void {
-  
+    this.cartService.showMenu$.subscribe(() => {
+      this.openCartMenu();
+    });
+  }
+  openCartMenu(): void {
+    this.trigger?.openMenu();
   }
   search(){
     
@@ -38,16 +47,17 @@ export class HeaderComponent {
 
   
   
-  set cart(cart: Cart) {
+  set cart(cart: CartI) {
     this._cart = cart;
 
     this.itemsQuantity = cart.items
       .map((item) => item.quantity)
       .reduce((prev, curent) => prev + curent, 0);
   }
-  constructor(private cartService: CartService,  private storeService: StoreService,) {}
 
-  getTotal(items: CartItem[]): number {
+  
+
+  getTotal(items: ProductAddCart[]): number {
     return this.cartService.getTotal(items);
   }
 
