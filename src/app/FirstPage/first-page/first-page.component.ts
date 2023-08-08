@@ -14,8 +14,21 @@ export class FirstPageComponent {
   constructor(private breakpointObserver: BreakpointObserver){
 
   }
+  imageulr =  '../assets/image/slide-1.jpg';
   cols: Observable<number> = of(4);
-
+  slides = [
+    {
+      image: '../assets/image/slide-1.jpg',
+      animationClass: 'layer-animation-3',
+      promoTitle: 'limited edition',
+      promoText: 'Sale Offer 20% Off This Week',
+      mainTitle: 'Top Popular',
+      mainSubtitle: 'Accessories 2022',
+      subtitle: 'Light knit upper adapts to the shape of your foot for flexible and natural movement.',
+      buttonUrl: 'shop-grid.html'
+    },
+    // other slides go here...
+  ];
 
   ngOnInit() {
     this.cols = this.breakpointObserver.observe([

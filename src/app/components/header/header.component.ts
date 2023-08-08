@@ -19,7 +19,7 @@ export class HeaderComponent {
   get cart(): CartI {
     return this._cart;
   }
-
+ log = 'logo.png';
   constructor(private cartService: CartService,  private storeService: StoreService,) {}
   ngOnInit(): void {
     this.cartService.showMenu$.subscribe(() => {

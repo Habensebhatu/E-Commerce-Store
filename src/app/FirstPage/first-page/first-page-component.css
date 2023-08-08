@@ -1,0 +1,68 @@
+#primary_slider .slide-content {
+    top: 30%;
+    max-width: 80%;
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+    text-align: left;
+}
+
+#primary_slider .slide-content .main-title {
+    text-transform: capitalize;
+    font-size: 60px;
+    z-index: 0;
+    width: 100%;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -.025em;
+}
+
+#primary_slider .slide-content .main-title span {
+    display: block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+#primary_slider .swiper-slide-active .layer-animation-3 .promo-title {
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+#primary_slider .swiper-slide-active .layer-animation-3 h1 span {
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+#primary_slider .swiper-slide-active .layer-animation-3 h1 span:last-child {
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+#primary_slider .swiper-slide-active .layer-animation-3 .subtitle {
+    -webkit-animation-delay: 1.1s;
+    animation-delay: 1.1s;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+#primary_slider .swiper-slide-active .layer-animation-3 .slide-button {
+    -webkit-animation-delay: 1.3s;
+    animation-delay: 1.3s;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}

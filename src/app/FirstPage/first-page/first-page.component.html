@@ -1,9 +1,28 @@
-<div class="w-full p-0 m-0 pb-60 space-y-4">
-    <div class="flex flex-wrap">
-        <div class="w-full p-0">
-            <div class="bg-cover bg-center h-[70vh]" 
-            style="background-color:#EBEADF">
-               <p>home</p>
+ <!-- <div class="w-full p-0 m-0 pb-60 space-y-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col p-0">
+                <div class="bg-image vh-100" style="background-image: url('../assets/image/slide-1.jpg')">
+                    <div *ngFor="let slide of slides" class="swiper-slide bg-img-wrapper">
+                        <div class="slide-inner image-placeholder">
+                            <img [src]="slide.image" class="visually-hidden" alt="Slider Image">
+                            <div class="slide-progress"></div>
+                            <div class="container ml-20">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="slide-content {{slide.animationClass}}">
+                                            <p class="promo-title"><span>{{slide.promoTitle}}</span> {{slide.promoText}}</p>
+                                            <h1 class="main-title"><span>{{slide.mainTitle}}</span> <span>{{slide.mainSubtitle}}</span></h1>
+                                            <p class="subtitle">{{slide.subtitle}}</p>
+                                            <div class="slide-button">
+                                                <a class="default-btn" [href]="slide.buttonUrl" title="Shop Now">Shop Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -13,7 +32,7 @@
     <mat-grid-list [cols]="cols | async" gutterSize="10px" rowHeight="1:1" class="mx-auto my-10 w-11/12">
         <mat-grid-tile *ngFor="let item of items">
             <div class="flex flex-col items-center justify-center" >  
-                <!-- style="background-color:#EBEADF" -->
+              
                 <a [routerLink]="['/home', item.category]" class="p-3">
                     <img mat-card-image class="w-80 h-60 object-cover" 
                         [src]="'../../../assets/image/' + item.image" 
@@ -25,7 +44,7 @@
             </div>
         </mat-grid-tile>
     </mat-grid-list>
-     <!-- Most Popular Products Section -->
+    
      <div class="flex justify-center items-center bg-white py-6">
         <h1 class="text-3xl font-bold text-center">Most Popular Products</h1>
     </div>
@@ -44,5 +63,73 @@
         </mat-grid-tile>
     </mat-grid-list> 
    
-</div>
+</div> -->
+ 
 
+
+<section class="primary-slider-section mb0 pos-r">
+    <div id="primary_slider" class="swiper-container slider-type-1">
+        <div class="swiper-wrapper">
+            <div *ngFor="let slide of slides" class="swiper-slide bg-img-wrapper h-[600px]" [style.background-image]="'url(' + slide.image + ')'" [ngStyle]="{'background-size': 'cover', 'background-position': 'center center'}">
+                <div class="slide-inner image-placeholder">
+                    <div class="slide-progress"></div>
+                    <div class="container ml-20" *ngIf="slide">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="slide-content layer-animation-3">
+                                    <p class="promo-title"><span>{{slide.promoTitle}}</span> {{slide.promoText}}</p>
+                                    <h1 class="main-title"><span>{{slide.mainTitle}}</span> <span>{{slide.mainSubtitle}}</span></h1>
+                                    <p class="subtitle">{{slide.subtitle}}</p>
+                                    <div class="slide-button">
+                                        <a class="default-btn" [href]="slide.buttonUrl" title="Shop Now">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-arrow next slide"><i class="fa fa-angle-right"></i></div>
+        <div class="swiper-arrow prev slide"><i class="fa fa-angle-left"></i></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+
+<div class="flex justify-center items-center bg-white py-6">
+    <h1 class="text-3xl font-bold text-center">Category</h1>
+</div>
+<mat-grid-list [cols]="cols | async" gutterSize="10px" rowHeight="1:1" class="mx-auto my-10 w-11/12">
+    <mat-grid-tile *ngFor="let item of items">
+        <div class="flex flex-col items-center justify-center" >  
+          
+            <a [routerLink]="['/home', item.category]" class="p-3">
+                <img mat-card-image class="w-80 h-60 object-cover" 
+                    [src]="'../../../assets/image/' + item.image" 
+                    [alt]="item.category">
+            </a>
+         
+                <h1 class="text-lg sm:text-xl">{{ item.category }}</h1>
+              
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
+ <div class="flex justify-center items-center bg-white py-6">
+    <h1 class="text-3xl font-bold text-center">Most Popular Products</h1>
+</div>
+<mat-grid-list [cols]="cols | async" gutterSize="10px" rowHeight="1:1" class="mx-auto my-10 w-11/12">
+    <mat-grid-tile *ngFor="let item of items">
+        <mat-card class="flex flex-col items-center justify-center" >
+            <a [routerLink]="['/home', item.category]">
+                <img mat-card-image class="w-80 h-60 object-cover" 
+                    [src]="'../../../assets/image/' + item.image" 
+                    [alt]="item.category">
+            </a>
+            <mat-card-content class="text-center">
+                <h1 class="">{{ item.category }}</h1>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list> 

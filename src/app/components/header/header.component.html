@@ -1,4 +1,4 @@
-<mat-toolbar class="flex justify-center items-center md:space-x-4 space-y-4 md:space-y-0 " style="background-color:#243328"> 
+<!-- <mat-toolbar class="flex justify-center items-center md:space-x-4 space-y-4 md:space-y-0 " style="background-color:#243328"> 
   <p *ngIf="noProductsFound">No products found</p>
     <div class="flex items-center border rounded-md w-full md:w-1/2" >
       <input type="text" class="p-2 flex-grow" placeholder="Search" [(ngModel)]="searchValue" >
@@ -53,4 +53,151 @@
     </button>
   </mat-menu>
   <a  class="text-sm" routerLink="about">Abous as</a> 
-</mat-toolbar>
+</mat-toolbar> -->
+
+
+<!-- Top Bar -->
+<div class="container pt-4">
+  <div class="row">
+    <div class=" mx-auto flex justify-between items-center">
+      <!-- Sale information -->
+      <div class="inline-block ml-40 text-xs ">
+        <p>welcom</p>
+      </div>
+      <!-- Currency and language selectors -->
+      <div>
+        <ul class="list-inline flex items-center">
+          <!-- Currency selection -->
+          <li class="list-inline-item">
+            <div class="inline-block ml-4">
+              <button mat-button [matMenuTriggerFor]="currencyMenu" class="text-xs">USD
+                $<mat-icon>arrow_drop_down</mat-icon></button>
+              <mat-menu #currencyMenu="matMenu">
+                <button mat-menu-item>Euro €</button>
+                <button mat-menu-item>USD $</button>
+              </mat-menu>
+            </div>
+          </li>
+
+          <!-- Language selection -->
+          <li class="list-inline-item">
+            <div class="inline-block ml-4">
+              <button mat-button [matMenuTriggerFor]="languageMenu"
+                class="text-xs">English<mat-icon>arrow_drop_down</mat-icon></button>
+              <mat-menu #languageMenu="matMenu">
+                <button mat-menu-item>
+                  <img src="assets/images/icons/en-gb.png" alt="Icons" /> English
+                </button>
+                <button mat-menu-item>
+                  <img src="assets/images/icons/fr-fr.png" alt="Icons" /> Français
+                </button>
+              </mat-menu>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Full width line -->
+<hr>
+<!-- Header Area -->
+<div class="container mx-auto flex justify-between items-center mt-4">
+  <!-- Logo -->
+  <div class="ml-20">
+    <a href="index.html">
+      <img [src]="'../../../assets/image/' + log" alt="Logo" class="w-30 h-4" />
+    </a>
+  </div>
+
+  <!-- Contact Number, Shopping Cart, and Registration/Login -->
+  <div class="flex items-center mr-10">
+    <!-- Contact Number -->
+    <div class="flex items-center space-x-4 mr-8 mt-2">
+      <p class="text-sm"><a href="#">+(012) 800 456 789-987</a></p>
+      <div class="border-l h-5 mx-2 mb-2"></div>
+      <p class="text-xs">Customer Service</p>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div class="flex items-center space-x-1">
+      <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity" matBadgeColor="warn">
+            shopping_cart</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <div class="p-3 divide-y divide-solid">
+            <div class="pb-3 flex justify-between">
+              <span class="mr-16">{{itemsQuantity}} items</span>
+              <a routerLink="cart">View Cart</a>
+            </div>
+            <div *ngIf="cart.items.length" class="py-3">
+              <div *ngFor="let item of cart.items" class="flex justify-between font-light mb-2">
+                {{ item.title }} x {{ item.quantity }}
+                <span class="font-bold">{{ item.price | currency }}</span>
+              </div>
+            </div>
+            <div class="flex justify-between py-3 font-light">
+              Total:
+              <span class="font-bold not-italic">{{ getTotal(cart.items) | currency }}</span>
+            </div>
+            <div class="pt-3 flex justify-between">
+              <button (click)="onClearCart()" class="bg-rose-600 text-white rounded-full w-9 h-9">
+                <mat-icon>remove_shopping_cart</mat-icon>
+              </button>
+              <button routerLink="cart" class="bg-green-600 text-white rounded-full w-9 h-9">
+                <mat-icon>shopping_cart_checkout</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-menu>
+      </div>
+
+      <!-- Registration/Login -->
+      <div>
+        <button mat-button  class="mr-4" [matMenuTriggerFor] ="accountMenu">
+          <mat-icon>settings</mat-icon>
+        </button>
+        <mat-menu #accountMenu="matMenu">
+          <button mat-menu-item routerLink="register">Register</button>
+          <button mat-menu-item routerLink="login">Login</button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Navigation Area -->
+<div class="bg-[#242424] text-white mt-4 h-12 ">
+  <div class="container mx-auto flex justify-between items-center py-1">
+    <!-- Navigation menu -->
+    <div class="text-sm align-items-center ml-10">
+      <a mat-button style="color: white; font-size: 12px;" class="ml-6" routerLink="/">Home</a>
+
+      <!-- Categories dropdown menu -->
+      <div class="inline-block">
+        <button mat-button style="color: white; font-size: 12px;"
+          [matMenuTriggerFor]="categoriesMenu">Categories<mat-icon>arrow_drop_down</mat-icon></button>
+        <mat-menu #categoriesMenu="matMenu">
+          <button mat-menu-item routerLink="/shop-grid">Food</button>
+          <button mat-menu-item routerLink="/shop-list">Clothing</button>
+          <button mat-menu-item routerLink="/shop-right-sidebar">Cosmetica</button>
+        </mat-menu>
+      </div>
+
+      <a  class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/about">About Us</a>
+      <a  class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/contact">Contact Us</a>
+    </div>
+
+    <!-- Search bar -->
+    <div class="flex items-center mr-20 ">
+      <input type="text" class="p-2 flex-grow text-sm h-6 bg-[#242424]" placeholder="Search entire store here ..." 
+        [(ngModel)]="searchValue" style="font-size: 15px;">
+      <button (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
