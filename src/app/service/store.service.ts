@@ -1,9 +1,10 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+
 import { BehaviorSubject, Observable, min, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Product} from "../Models/product.model";
 import { Category } from "../Models/category.Model";
 import { DecimalPipe } from "@angular/common";
+import { HttpClient } from "@angular/common/http";
 
 
 const STORE_BASE_URL = "https://fakestoreapi.com";

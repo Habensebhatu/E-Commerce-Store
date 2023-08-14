@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HeaderComponent } from './components/header/header.component';
+import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
+import { FiltersComponent } from './pages/home/components/filters/filters.component';
+import { ProductBoxComponent } from './pages/home/components/product-box/product-box.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PaymentSuccessComponent } from './stripe/payment-success/payment-success.component';
+import { PaymentCancelledComponent } from './stripe/payment-cancelled/payment-cancelled.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
@@ -18,23 +23,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
-import { FiltersComponent } from './pages/home/components/filters/filters.component';
-import { ProductBoxComponent } from './pages/home/components/product-box/product-box.component';
-import { CartComponent } from './pages/cart/cart.component';
-import { CartService } from './service/cart.service';
-import { StoreService } from './service/store.service';
-import { HttpClientModule } from '@angular/common/http';
-import { FirstPageComponent } from './FirstPage/first-page/first-page.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
-import { FooterComponent } from './components/footer/footer.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './pages/home/home.component';
+import { CartComponent } from './pages/cart/cart.component';
 import { DatailProductComponent } from './pages/home/components/datail-product/datail-product.component';
-import { PaymentSuccessComponent } from './stripe/payment-success/payment-success.component';
-import { PaymentCancelledComponent } from './stripe/payment-cancelled/payment-cancelled.component';
-
+import { StoreService } from './service/store.service';
+import { CartService } from './service/cart.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
 
 
 
@@ -49,18 +49,19 @@ import { PaymentCancelledComponent } from './stripe/payment-cancelled/payment-ca
     FiltersComponent,
     ProductBoxComponent,
     CartComponent,
-    FirstPageComponent,
     FooterComponent,
     DatailProductComponent,
     PaymentSuccessComponent,
     PaymentCancelledComponent,
+    HomepageComponent,
  
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
     MatSidenavModule,
     MatGridListModule,
     MatMenuModule,
@@ -74,14 +75,22 @@ import { PaymentCancelledComponent } from './stripe/payment-cancelled/payment-ca
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-    HttpClientModule,
-    MatMenuModule,
     MatFormFieldModule,
-    FormsModule
-   
+    BrowserAnimationsModule,
     
+    
+   
+   
+   
+   
   ],
   providers: [CartService, StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+
+
+
