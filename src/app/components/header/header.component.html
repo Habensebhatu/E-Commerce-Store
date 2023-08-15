@@ -67,7 +67,6 @@
       <!-- Currency and language selectors -->
       <div>
         <ul class="list-inline flex items-center">
-          <!-- Currency selection -->
           <li class="list-inline-item">
             <div class="inline-block ml-4">
               <button mat-button [matMenuTriggerFor]="currencyMenu" class="text-xs">USD
@@ -78,8 +77,6 @@
               </mat-menu>
             </div>
           </li>
-
-          <!-- Language selection -->
           <li class="list-inline-item">
             <div class="inline-block ml-4">
               <button mat-button [matMenuTriggerFor]="languageMenu"
@@ -115,7 +112,7 @@
   <div class="flex items-center mr-10">
     <!-- Contact Number -->
     <div class="flex items-center space-x-4 mr-8 mt-2">
-      <p class="text-sm"><a href="#">+(012) 800 456 789-987</a></p>
+      <p class="text-sm"><a href="#">0648408438</a></p>
       <div class="border-l h-5 mx-2 mb-2"></div>
       <p class="text-xs">Customer Service</p>
     </div>
@@ -181,12 +178,11 @@
         <button mat-button style="color: white; font-size: 12px;"
           [matMenuTriggerFor]="categoriesMenu">Categories<mat-icon>arrow_drop_down</mat-icon></button>
         <mat-menu #categoriesMenu="matMenu">
-          <button mat-menu-item routerLink="/shop-grid">Food</button>
-          <button mat-menu-item routerLink="/shop-list">Clothing</button>
-          <button mat-menu-item routerLink="/shop-right-sidebar">Cosmetica</button>
+          <button mat-menu-item *ngFor="let category of categories" (click)="categoriesChange(category)">
+            <a [routerLink]="['/home', category]">{{ category }} </a>
+          </button>
         </mat-menu>
       </div>
-
       <a  class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/about">About Us</a>
       <a  class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/contact">Contact Us</a>
     </div>

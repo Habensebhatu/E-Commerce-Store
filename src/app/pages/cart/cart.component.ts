@@ -63,6 +63,7 @@ onRemoveFromCart(item: Product): void {
   this.cartService.removeFromCart(item);
 }
 onCheckout(): void {
+  console.log('testes', this.cart.items)
   this.http
     .post('https://localhost:7087/api/Stripe/checkout', {
       items: this.cart.items,

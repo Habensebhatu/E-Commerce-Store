@@ -1,8 +1,5 @@
-
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import Swiper from 'swiper';
 
 
@@ -14,7 +11,7 @@ import Swiper from 'swiper';
 })
 export class  HomepageComponent{
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor() {}
   cols: Observable<number> = of(4);
   slides = [
     {
@@ -74,74 +71,46 @@ export class  HomepageComponent{
 
 products = [
   {
-      id: 1,
-      title: "Strive Shoulder Pack",
       imageUrl: '../assets/image/Berbere1.jpg',
-      sale: true,
       new: 'berbere',
-      manufacturer: "Graphic Corner",
-      manufacturerId: 1,
-      rating: 5,
       newPrice: "€71.05",
       category: 'Food'
   },
   {
-    id: 1,
-    title: "Strive Shoulder Pack",
+   
     imageUrl: '../assets/image/HairStyle .avif',
-    sale: true,
     new: 'hairStyle',
-    manufacturer: "Graphic Corner",
-    manufacturerId: 1,
-    rating: 5,
     newPrice: "€21.05",
     category: 'Cosmetica'
 },
 {
-  id: 1,
-  title: "Strive Shoulder Pack",
   imageUrl: '../assets/image/facuxTas1.jpeg',
-  sale: true,
   new: 'facuxTas',
-  manufacturer: "Graphic Corner",
-  manufacturerId: 1,
-  rating: 5,
-  newPrice: "€41.25"
+  newPrice: "€41.25",
+  category: 'Cosmetica'
 },
 {
-  id: 1,
-  title: "Strive Shoulder Pack",
+  
   imageUrl: '../assets/image/jurk.avif',
-  sale: true,
   new: 'jurk',
-  manufacturer: "Graphic Corner",
-  manufacturerId: 1,
-  rating: 5,
-  newPrice: "€61.20"
+  newPrice: "€61.20",
+  category: 'Kleding'
 },
 {
-  id: 1,
-  title: "Strive Shoulder Pack",
+  
   imageUrl: '../assets/image/shoes.webp',
-  sale: true,
-  new: true,
-  manufacturer: "Graphic Corner",
-  manufacturerId: 1,
-  rating: 5,
-  newPrice: "€31.20"
+  new : 'shoes',
+  newPrice: "€31.20",
+  category: 'Cosmetica'
 },
 {
-  id: 1,
-  title: "Strive Shoulder Pack",
+ 
   imageUrl: '../assets/image/sokken.webp',
-  sale: true,
-  new: true,
-  manufacturer: "Graphic Corner",
-  manufacturerId: 1,
-  rating: 5,
-  newPrice: "$31.05"
+  new : 'sokken',
+  newPrice: "$31.05",
+  category: 'Cosmetica'
 },
-  // ... Add more products here
+ 
 ];
 
 trendingProducts = [

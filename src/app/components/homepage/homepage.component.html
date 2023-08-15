@@ -64,21 +64,19 @@
                     <article class="swiper-slide product-layout" *ngFor="let product of products">
                         <div class="product-image">
                             <a [routerLink]="['/home', product.category]">
-                                <img [src]="product.imageUrl" [alt]="product.title" [title]="product.title"
+                                <img [src]="product.imageUrl" 
                                     />
                             </a>
                         </div>
                         <div class="product-caption">
                             <div class="product-meta d-flex justify-content-between align-items-center">
                                 <div class="product-manufacturer">
-                                    <a [routerLink]="['/manufacturer', product.manufacturerId]">{{
-                                        product.manufacturer }}</a>
+                                    <p > {{product.category}}</p>
+                                       
                                 </div>
                             </div>
                             <h4 class="product-name">
-                                <a [routerLink]="['/product', product.id]">{{
-                                    product.new
-                                    }}</a>
+                                <p > {{product.new}}</p>
                             </h4>
                             <p class="product-price">
                                 <span>{{ product.newPrice }}</span>
@@ -94,12 +92,12 @@
 </section>
 
 
-<section>
+ <section>
     <div class="container mx-auto">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12">
                 <div class="section-title mt-10">
-                    <h2>New Trending Products</h2>
+                    <h2>BEST VERKOCHTE PRODUCTEN</h2>
                     <p class="subtitle">
                         Consequat magna, massa vel suspendisse morbi aliquam faucibus ligula
                         ante ipsum ac nulla.
@@ -139,7 +137,7 @@
             
         </div>
    
-</section>
+</section> 
 
 
     
