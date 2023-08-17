@@ -59,43 +59,51 @@
 <!-- Top Bar -->
 <div class="container pt-4">
   <div class="row">
-    <div class=" mx-auto flex justify-between items-center">
-      <!-- Sale information -->
-      <div class="inline-block ml-40 text-xs ">
-        <p>welcom</p>
+      <div class="mx-auto flex justify-between items-center">
+          <!-- Sale information -->
+          <div class="inline-block ml-40 text-xs ">
+              <p>welcom</p>
+          </div>
+          <!-- Currency and language selectors -->
+          <div>
+              <ul class="list-inline flex items-center">
+                  <li class="list-inline-item">
+                  </li>
+                  <li>
+                      <div>
+                          <button mat-button [matMenuTriggerFor]="languageMenu" class="text-xs">
+                              Nederlands<mat-icon>arrow_drop_down</mat-icon>
+                          </button>
+                          <mat-menu   #languageMenu="matMenu" >
+                              <button mat-menu-item>
+                                  <div class="flex items-center" style="width: 100%;">
+                                      <div class="flex-none">
+                                          <img [src]="'../../../assets/image/' + Nederland" alt="Icons" class="w-50 h-4" style="vertical-align: middle;" />
+                                      </div>
+                                      <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
+                                          Nederlands
+                                      </div>
+                                  </div>
+                              </button>
+                              <button mat-menu-item>
+                                  <div class="flex items-center" style="width: 100%;">
+                                      <div class="flex-none">
+                                          <img [src]="'../../../assets/image/' + Eritrea" alt="Icons" class="w-50 h-4" style="vertical-align: middle;" />
+                                      </div>
+                                      <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
+                                        ትግርኛ
+                                      </div>
+                                  </div>
+                              </button>
+                          </mat-menu>
+                      </div>                   
+                  </li>
+              </ul>
+          </div>
       </div>
-      <!-- Currency and language selectors -->
-      <div>
-        <ul class="list-inline flex items-center">
-          <li class="list-inline-item">
-            <div class="inline-block ml-4">
-              <button mat-button [matMenuTriggerFor]="currencyMenu" class="text-xs">USD
-                $<mat-icon>arrow_drop_down</mat-icon></button>
-              <mat-menu #currencyMenu="matMenu">
-                <button mat-menu-item>Euro €</button>
-                <button mat-menu-item>USD $</button>
-              </mat-menu>
-            </div>
-          </li>
-          <li class="list-inline-item">
-            <div class="inline-block ml-4">
-              <button mat-button [matMenuTriggerFor]="languageMenu"
-                class="text-xs">English<mat-icon>arrow_drop_down</mat-icon></button>
-              <mat-menu #languageMenu="matMenu">
-                <button mat-menu-item>
-                  <img src="assets/images/icons/en-gb.png" alt="Icons" /> English
-                </button>
-                <button mat-menu-item>
-                  <img src="assets/images/icons/fr-fr.png" alt="Icons" /> Français
-                </button>
-              </mat-menu>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
 </div>
+
 
 <!-- Full width line -->
 <hr>
@@ -120,10 +128,9 @@
     <!-- Shopping Cart -->
     <div class="flex items-center space-x-1">
       <div>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity" matBadgeColor="warn">
-            shopping_cart</mat-icon>
-        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" #cartTrigger="matMenuTrigger">
+          <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity" matBadgeColor="warn">shopping_cart</mat-icon>
+      </button>
         <mat-menu #menu="matMenu">
           <div class="p-3 divide-y divide-solid">
             <div class="pb-3 flex justify-between">

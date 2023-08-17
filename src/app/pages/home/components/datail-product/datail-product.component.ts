@@ -22,11 +22,11 @@ export class DatailProductComponent {
     private cartService: CartService,
   ) {}
   RelatedProducts = [
-   'facuxTas1.jpeg',
-   'fauxTas2.jpeg',
-   'fauxTas3.jpeg',
+   'Lichaamsdelen.jpg',
+   'ADEYABEBA.avif',
+   'Beddengoedset.webp',
   'fauxTas4.jpeg',
-  'busicuit.jpeg',
+  'Mesob.webp',
   'netsela.jpeg',
   'HairStyle .avif',
   'Ethiopische jurk.webp'

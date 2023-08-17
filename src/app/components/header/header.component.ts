@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { Subject, takeUntil } from 'rxjs';
 import { Cart, CartI, Product, ProductAddCart } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
@@ -11,15 +12,19 @@ import { StoreService } from 'src/app/service/store.service';
 export class HeaderComponent {
   private _cart: CartI = { items: [] };
   itemsQuantity = 0;
-  categories = ['Food', 'Kleding', 'Cosmetica']
+  categories = ['Food', 'Kleding', 'Cosmetica', 'Koffieserveertafel']
   searchValue: string | undefined;
   noProductsFound: boolean = false;
-  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger | undefined;
+  @ViewChild('cartTrigger') cartMenuTrigger!: MatMenuTrigger;
+  languageMenu = false;
   @Input()
   get cart(): CartI {
     return this._cart;
   }
  log = 'logo.png';
+ Nederland = 'Nederlands-flag.png'
+ Eritrea = 'Eritrea-flag.png'
+ private unsubscribe$ = new Subject<void>();
   constructor(private cartService: CartService,  private storeService: StoreService,) {}
   ngOnInit(): void {
     this.cartService.showMenu$.subscribe(() => {
@@ -27,7 +32,19 @@ export class HeaderComponent {
     });
   }
   openCartMenu(): void {
-    this.trigger?.openMenu();
+    this.cartMenuTrigger?.openMenu();
+  }
+
+  // getCatogories() {
+  //   this.storeService.getCatogories()
+  //     .pipe(takeUntil(this.unsubscribe$))
+  //     .subscribe((data:  Category[]) => {
+  //       this.categories = data;
+  //       console.log("category",this.categories)
+  //     });
+  // }
+  language(){
+    this.languageMenu = true
   }
   search(){
     
