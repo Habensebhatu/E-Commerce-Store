@@ -8,7 +8,7 @@ export interface Cart {
      price: number;
     categoryName: string;
     description: string;
-    imageUrls: string[];
+    imageUrls: ImageUpdateModel[];
      quantity: number;
 
   }
@@ -27,3 +27,9 @@ export interface Cart {
       quantity: number;
  
    }
+
+   export interface ImageUpdateModel {
+    index: number;
+    file: string;
+  }
+  

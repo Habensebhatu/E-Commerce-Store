@@ -9,7 +9,7 @@
     <div class="flex justify-start mt-5">
       <div class="border rounded p-1 m-1" *ngFor="let img of product?.imageUrls">
         <img class="cursor-pointer" style="width: 80px; height: 80px;" [src]="img"
-          (click)="selectedImage = img" alt="Product image">
+          (click)="selectedImage = img.file" alt="Product image">
       </div>
     </div>
   </div>

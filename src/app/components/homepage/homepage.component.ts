@@ -82,13 +82,13 @@ products = [
     imageUrl: '../assets/image/HairStyle .avif',
     new: 'hairStyle',
     newPrice: "€21.05",
-    category: 'Cosmetica'
+    category: 'cosmetica'
 },
 {
   imageUrl: '../assets/image/Koffieserveertafel.avif',
   new: 'Koffieserveertafel',
   newPrice: "€200,76",
-  category: 'Cosmetica'
+  category: 'cosmetica'
 },
 {
   

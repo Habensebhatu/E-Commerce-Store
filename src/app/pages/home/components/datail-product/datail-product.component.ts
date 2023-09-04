@@ -48,7 +48,7 @@ export class DatailProductComponent {
     this.storeService.getProductsById(this.productId!).pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: Product) => {
       this.product = data
-      this.selectedImage = data.imageUrls[0];
+      this.selectedImage = data.imageUrls[0].file;
 
       });
   }
@@ -97,7 +97,7 @@ updateDisplayedProducts() {
         title: this.product.title,
         price: this.product.price,
         quantity: this.Quetity,
-        imageUrl: this.product.imageUrls[0],
+        imageUrl: this.product.imageUrls[0].file,
         productId: this.product.productId,
         CategoryId: this.product.CategoryId,
         description: this.product.description

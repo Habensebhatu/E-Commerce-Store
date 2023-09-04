@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, Subscription,  takeUntil } from 'rxjs';
+import { Category } from 'src/app/Models/category.Model';
 import { Product} from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
@@ -20,7 +21,7 @@ export class HomeComponent  implements OnInit, OnDestroy {
   commingProducts : Product [] | undefined;
   count = '12';
   sort = 'desc';
-  category: string | undefined;
+  category:  string | undefined;
   minNumber: number | undefined;
   maxNumber: number | undefined;
   productsSubscription: Subscription | undefined;
@@ -39,6 +40,7 @@ export class HomeComponent  implements OnInit, OnDestroy {
     this.subs.add(
       this.storeService.showData$.subscribe(show => {
         this.category = show;
+        console.log("this.category", this.category)
         // Now you can call any methods or perform any actions that should happen when category changes.
         this.getProducts();
       })
@@ -60,8 +62,10 @@ export class HomeComponent  implements OnInit, OnDestroy {
       this.storeService.getProducts().pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: Product[]) => {
         this.commingProducts = data
+        console.log("thisproducts",data)
          if (this.storeService.isAllProducts()){
           this.products = data
+          
          }  
         else if(this.category != null){
          this.filterByCategory(this.commingProducts)
@@ -158,7 +162,7 @@ export class HomeComponent  implements OnInit, OnDestroy {
       title: product.title,
       price: product.price,
       quantity: 1,
-      imageUrl: product.imageUrls[0],
+      imageUrl: product.imageUrls[0].file,
       productId: product.productId,
       CategoryId: product.CategoryId,
       description: product.description
