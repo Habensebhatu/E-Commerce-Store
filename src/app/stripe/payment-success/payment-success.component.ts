@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-payment-success',
@@ -6,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class PaymentSuccessComponent {
 
+constructor(private cartService: CartService,){
+
+}
+
+ngOnInit(){
+  this.cartService.clearCart();
+}
 }

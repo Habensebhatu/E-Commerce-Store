@@ -10,6 +10,9 @@ export interface Cart {
     description: string;
     imageUrls: ImageUpdateModel[];
      quantity: number;
+     sessionId : string;
+     isPopular: boolean;
+     
 
   }
 
@@ -25,6 +28,7 @@ export interface Cart {
      description: string;
      imageUrl: string;
       quantity: number;
+      sessionId : string;
  
    }
 

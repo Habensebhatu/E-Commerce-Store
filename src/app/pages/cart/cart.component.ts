@@ -78,18 +78,7 @@ onCheckout(): void {
    
 }
 
-// onCheckout(): void {
-//   this.http
-//     .post('http://localhost:your_dotnet_port/api/stripe/checkout', {
-//       phoneNumber: this.phoneNumber,
-//       items: this.cart.items,
-//     })
-//     .subscribe(async (res: any) => {
-//       let stripe = await loadStripe('pk_test_...');
-//       stripe?.redirectToCheckout({
-//         sessionId: res.id,
-//       });
-//     });
+
 }
 
 

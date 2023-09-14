@@ -135,12 +135,32 @@
     </div>
 
     <!-- Search bar -->
-    <div class="flex items-center mr-20 ">
-      <input type="text" class="p-2 flex-grow text-sm h-6 bg-[#242424]" placeholder="Search entire store here ..." 
-        [(ngModel)]="searchValue" style="font-size: 15px;">
-      <button (click)="search()">
-        <mat-icon>search</mat-icon>
-      </button>
+    <div class="flex items-center mr-10">
+      <input type="text" class="p-2 flex-grow text-sm h-6 bg-[#242424] search-input" 
+       placeholder="Search entire store here ..." style="font-size: 15px;"
+       (input)="searchProducts($event)">
+             <button mat-icon-button #searchMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="searchMenu">
+              <mat-icon>search</mat-icon>
+          </button>
     </div>
+    <mat-menu #searchMenu="matMenu" class="w-80">
+      <!-- Search results displayed here -->
+      <div *ngFor="let product of searchResults" class="result-item mb-4">
+          <a [routerLink]="['/product', product.productId]">
+              <div class="flex items-center hover:bg-gray-200 hover:shadow-md transition duration-300 ease-in-out border-b border-gray-300">
+                  <img [src]="product.imageUrls[0].file" alt="{{ product.title }}" class="w-20 h-20 object-cover mr-3 pl-6">
+                  <p class="flex-grow pl-8">{{ product.title }}</p>
+                  <p class="ml-10 pr-6">€{{ product.price }}</p>
+              </div>
+          </a>
+      </div>
+  </mat-menu>
+  
+  
+  
+   
+    
+    
+    
   </div>
 </div>

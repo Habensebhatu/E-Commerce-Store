@@ -48,6 +48,7 @@ export class DatailProductComponent {
     this.storeService.getProductsById(this.productId!).pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: Product) => {
       this.product = data
+      console.log(' data.imageUrls', data.imageUrls)
       this.selectedImage = data.imageUrls[0].file;
 
       });
@@ -100,7 +101,9 @@ updateDisplayedProducts() {
         imageUrl: this.product.imageUrls[0].file,
         productId: this.product.productId,
         CategoryId: this.product.CategoryId,
-        description: this.product.description
+        description: this.product.description,
+        sessionId: this.product.sessionId
+
       });
     }
     this.cartService.show();

@@ -57,6 +57,15 @@ export class StoreService {
     return this.httpClient.get<Product[]>(`${this.apiUrl}`);
   }
 
+  GetPopularProducts(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/popular`);
+  }
+
+  searchProducts(productName: string): Observable<Product[]> {
+    console.log("serviceQuery", productName)
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/search/${productName}`);
+  }
+
   getProductsById(productId: string): Observable<Product> {
     return this.httpClient.get<Product>(`${this.apiUrl}/${productId}`);
   }

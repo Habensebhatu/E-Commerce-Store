@@ -165,7 +165,8 @@ export class HomeComponent  implements OnInit, OnDestroy {
       imageUrl: product.imageUrls[0].file,
       productId: product.productId,
       CategoryId: product.CategoryId,
-      description: product.description
+      description: product.description,
+      sessionId : product.sessionId
     });
     console.log("imageURls")
   }

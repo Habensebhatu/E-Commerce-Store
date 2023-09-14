@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject, of, takeUntil } from 'rxjs';
+import { Product } from 'src/app/Models/product.model';
+import { StoreService } from 'src/app/service/store.service';
 import Swiper from 'swiper';
 
 
@@ -11,8 +13,10 @@ import Swiper from 'swiper';
 })
 export class  HomepageComponent{
 
-  constructor() {}
+  constructor( private storeService: StoreService) {}
   cols: Observable<number> = of(4);
+  private unsubscribe$ = new Subject<void>();
+  trendingProducts : Product[] | undefined
   slides = [
     {
       image: '../assets/image/bgwebshop.png',
@@ -32,9 +36,17 @@ export class  HomepageComponent{
   ];
 
   ngOnInit() {
-    
+    this.getProducts();
   }
-
+  getProducts(): void {
+    this.storeService.GetPopularProducts().pipe(takeUntil(this.unsubscribe$))
+    .subscribe((data: Product[]) => {
+      this.trendingProducts = data;
+      console.log("thisproducts",data)
+      
+    });
+  
+}
   ngAfterViewInit() {
     setTimeout(() => {
         const primarySwiper = new Swiper('#primary_slider', {
@@ -114,84 +126,84 @@ products = [
  
 ];
 
-trendingProducts = [
-  {
-      id: 1,
-      title: "Strive Shoulder Pack",
-      imageUrl: '../assets/image/Beddengoedset.webp',
-      sale: true,
-      new: 'berbere',
-      manufacturer: "Graphic Corner",
-      manufacturerId: 1,
-      rating: 5,
-      newPrice: "€71.05",
-      category: 'Food'
-  },
-  {
-    id: 1,
-    title: "Strive Shoulder Pack",
-    imageUrl: '../assets/image/Mesob.webp',
-    sale: true,
-    new: 'hairStyle',
-    manufacturer: "Graphic Corner",
-    manufacturerId: 1,
-    rating: 5,
-    newPrice: "€21.05",
-    category: 'Cosmetica'
-},
-{
-  id: 1,
-  title: "Strive Shoulder Pack",
-  imageUrl: '../assets/image/koffieceremobie.webp',
-  sale: true,
-  new: 'facuxTas',
-  manufacturer: "Graphic Corner",
-  manufacturerId: 1,
-  rating: 5,
-  newPrice: "€41.25",
-  category: 'Koffieserveertafel'
-},
-{
-  id: 1,
-  title: "Strive Shoulder Pack",
-  imageUrl: '../assets/image/Lichaamsdelen.jpg',
-  sale: true,
-  new: 'jurk',
-  manufacturer: "Graphic Corner",
-  manufacturerId: 1,
-  rating: 5,
-  newPrice: "€61.20",
-  category: 'Cosmetica'
-},
+// trendingProducts = [
+//   {
+//       id: 1,
+//       title: "Strive Shoulder Pack",
+//       imageUrl: '../assets/image/Beddengoedset.webp',
+//       sale: true,
+//       new: 'berbere',
+//       manufacturer: "Graphic Corner",
+//       manufacturerId: 1,
+//       rating: 5,
+//       newPrice: "€71.05",
+//       category: 'Food'
+//   },
+//   {
+//     id: 1,
+//     title: "Strive Shoulder Pack",
+//     imageUrl: '../assets/image/Mesob.webp',
+//     sale: true,
+//     new: 'hairStyle',
+//     manufacturer: "Graphic Corner",
+//     manufacturerId: 1,
+//     rating: 5,
+//     newPrice: "€21.05",
+//     category: 'Cosmetica'
+// },
+// {
+//   id: 1,
+//   title: "Strive Shoulder Pack",
+//   imageUrl: '../assets/image/koffieceremobie.webp',
+//   sale: true,
+//   new: 'facuxTas',
+//   manufacturer: "Graphic Corner",
+//   manufacturerId: 1,
+//   rating: 5,
+//   newPrice: "€41.25",
+//   category: 'Koffieserveertafel'
+// },
+// {
+//   id: 1,
+//   title: "Strive Shoulder Pack",
+//   imageUrl: '../assets/image/Lichaamsdelen.jpg',
+//   sale: true,
+//   new: 'jurk',
+//   manufacturer: "Graphic Corner",
+//   manufacturerId: 1,
+//   rating: 5,
+//   newPrice: "€61.20",
+//   category: 'Cosmetica'
+// },
 
-{
-  id: 1,
-  title: "Strive Shoulder Pack",
-  imageUrl: '../assets/image/koffiemat.webp',
-  sale: true,
-  new: 'jurk',
-  manufacturer: "Graphic Corner",
-  manufacturerId: 1,
-  rating: 5,
-  newPrice: "€61.20",
-  category: 'Cosmetica'
-},
+// {
+//   id: 1,
+//   title: "Strive Shoulder Pack",
+//   imageUrl: '../assets/image/koffiemat.webp',
+//   sale: true,
+//   new: 'jurk',
+//   manufacturer: "Graphic Corner",
+//   manufacturerId: 1,
+//   rating: 5,
+//   newPrice: "€61.20",
+//   category: 'Cosmetica'
+// },
 
-{
-  id: 1,
-  title: "Strive Shoulder Pack",
-  imageUrl: '../assets/image/TabaKitfo.webp',
-  sale: true,
-  new: 'jurk',
-  manufacturer: "Graphic Corner",
-  manufacturerId: 1,
-  rating: 5,
-  newPrice: "€61.20",
-  category: 'Koffieserveertafel'
-},
+// {
+//   id: 1,
+//   title: "Strive Shoulder Pack",
+//   imageUrl: '../assets/image/TabaKitfo.webp',
+//   sale: true,
+//   new: 'jurk',
+//   manufacturer: "Graphic Corner",
+//   manufacturerId: 1,
+//   rating: 5,
+//   newPrice: "€61.20",
+//   category: 'Koffieserveertafel'
+// },
 
-  // ... Add more products here
-];
+//   // ... Add more products here
+// ];
 }
 
 
