@@ -12,71 +12,57 @@ import { StoreService } from 'src/app/service/store.service';
 export class DatailProductComponent {
   productId: string | undefined;
   product: Product | undefined; // Assume Product is a model with properties: title, price, description, images etc.
-  relatedProducts: Product[] | undefined; // A list of related products.
+  relatedProducts: Product[] = []; // A list of related products.
   selectedImage: string | undefined; // The currently selected image.
   private unsubscribe$ = new Subject<void>();
-  Quetity = 1
+  Quetity = 1;
+  categoryName: string| undefined;
   constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
     private cartService: CartService,
   ) {}
-  RelatedProducts = [
-   'Lichaamsdelen.jpg',
-   'ADEYABEBA.avif',
-   'Beddengoedset.webp',
-  'fauxTas4.jpeg',
-  'Mesob.webp',
-  'netsela.jpeg',
-  'HairStyle .avif',
-  'Ethiopische jurk.webp'
   
-  ]
   ngOnInit() {
-
     this.route.params.subscribe(params => {
       if(params['productId']) {
-         this.productId =  params['productId']
-         
+        this.productId =  params['productId']
       }
     });
     this.getProduct();
-    this.updateDisplayedProducts();
   }
-
+  
   getProduct() {
     this.storeService.getProductsById(this.productId!).pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: Product) => {
-      this.product = data
-      console.log(' data.imageUrls', data.imageUrls)
-      this.selectedImage = data.imageUrls[0].file;
-
+        this.product = data
+        console.log('data.imageUrls', data.categoryName)
+        this.selectedImage = data.imageUrls[0].file;
+        this.getProductBYCategory();
       });
   }
+  
+  getProductBYCategory() {
+    console.log('this.product?.categoryName!',this.product?.categoryName!)
+    if (this.product?.categoryName) {
+      this.storeService.getProductBYCategory(this.product.categoryName).pipe(takeUntil(this.unsubscribe$))
+        .subscribe((data: Product[]) => {
+          this.relatedProducts = data;
+          console.log('this.relatedProducts', this.relatedProducts);
+        });
+    }
+  }
+  changeProductDetails(product: Product) {
+    // Update your product details with the clicked product
+    this.product = product;
+    this.selectedImage = product.imageUrls[0].file;
+    // Fetch related products for the newly selected product
+    this.getProductBYCategory();
+  }
+  
 
   displayedRelatedProducts: string[] = [];
 currentIndex = 0;
-
-// ... Other properties and methods ...
-
-showPrevious() {
-    if (this.currentIndex >= 4) {
-        this.currentIndex -= 4;
-        this.updateDisplayedProducts();
-    }
-}
-
-showNext() {
-    if (this.currentIndex + 4 < this.RelatedProducts.length) {
-        this.currentIndex += 4;
-        this.updateDisplayedProducts();
-    }
-}
-
-updateDisplayedProducts() {
-    this.displayedRelatedProducts = this.RelatedProducts.slice(this.currentIndex, this.currentIndex + 4);
-}
-
 
     onRemoveQuantity(){
     if(this.Quetity > 1){

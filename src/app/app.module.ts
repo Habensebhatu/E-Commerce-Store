@@ -33,6 +33,7 @@ import { CartService } from './service/cart.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { register } from 'swiper/element/bundle';
+import { ProductsSliderComponent } from './pages/home/components/products-slider/products-slider.component';
 // register Swiper custom elements
 register();
 
@@ -54,6 +55,7 @@ register();
     PaymentSuccessComponent,
     PaymentCancelledComponent,
     HomepageComponent,
+    ProductsSliderComponent,
  
    
   ],

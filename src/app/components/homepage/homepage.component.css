@@ -80,39 +80,9 @@ body #primary_slider .swiper-slide {
     background: url("/assets/image/title.png");
 }
 
-.categories-slider-wrapper {
-    position: relative;
-    padding: 0 50px;
-}
-
-#categories_slider .swiper-slide {
-    flex: 0 0 23%;  
-    max-width: 23%;
-    margin-left: 10px;
-}
-
-.categories-slider-wrapper:hover .swiper-arrow {
-    opacity: 1;
-    visibility: visible;
-}
-
-.product-layout:hover {
-    -webkit-box-shadow: 0 0 20px 0 rgba(41, 44, 58, 0.15);
-    box-shadow: 0 0 20px 0 rgba(41, 44, 58, 0.15);
-}
 
 
-.product-layout {
-    padding: 15px;
-    margin: 9px; 
-}
 
-.product-image img {
-    width: 280px; 
-    height: 280px;
-    object-fit: cover;
-   
-}
 
 #trendingProducts_slider {
     position: relative;

@@ -84,126 +84,83 @@ export class  HomepageComponent{
 
 products = [
   {
-      imageUrl: '../assets/image/Berbere1.jpg',
-      new: 'berbere',
-      newPrice: "€71.05",
-      category: 'Food'
+    imageUrls: [{
+      index: 0,
+      file: '../assets/image/Berbere1.jpg'
+    }],
+    title: 'berbere',
+    price: 71.05,
+      categoryName: 'food',
+      productId: "jhjjjk",
+  CategoryId: "vvvvvvv",
+   description: "hhjdfhjfjhd",
+    quantity: 3,
+    sessionId : 'ddd445556',
+    isPopular: true
   },
   {
    
-    imageUrl: '../assets/image/HairStyle .avif',
-    new: 'hairStyle',
-    newPrice: "€21.05",
-    category: 'cosmetica'
+    imageUrls: [{
+      index: 0,
+      file: '../assets/image/Tafelloper.avif'
+    }],
+    title: 'hairStyle',
+    price: 21.05,
+    categoryName: 'cosmetica',
+    productId: "jhjjjk",
+  CategoryId: "vvvvvvv",
+   description: "hhjdfhjfjhd",
+    quantity: 3,
+    sessionId : 'ddd445556',
+    isPopular: true
 },
 {
-  imageUrl: '../assets/image/Koffieserveertafel.avif',
-  new: 'Koffieserveertafel',
-  newPrice: "€200,76",
-  category: 'cosmetica'
+  imageUrls: [{
+    index: 0,
+    file: '../assets/image/Koffieserveertafel.avif'
+  }],
+  title: 'Koffieserveertafel',
+  price: 200.76,
+  categoryName: 'cosmetica',
+  productId: "jhjjjk",
+  CategoryId: "vvvvvvv",
+   description: "hhjdfhjfjhd",
+    quantity: 3,
+    sessionId : 'ddd445556',
+    isPopular: true
 },
 {
-  
-  imageUrl: '../assets/image/jurk.avif',
-  new: 'jurk',
-  newPrice: "€61.20",
-  category: 'Kleding'
+  imageUrls: [{
+    index: 0,
+    file: '../assets/image/jurk.avif'
+  }],
+  title: 'jurk',
+  price: 61.20,
+  categoryName: 'Kleding',
+  productId: "jhjjjk",
+  CategoryId: "vvvvvvv",
+   description: "hhjdfhjfjhd",
+    quantity: 3,
+    sessionId : 'ddd445556',
+    isPopular: true
 },
 {
-  
-  imageUrl: '../assets/image/Tafelloper.avif',
-  new : 'shoes',
-  newPrice: "€55,86",
-  category: 'Cosmetica'
-},
-{
- 
-  imageUrl: '../assets/image/sokken.webp',
-  new : 'sokken',
-  newPrice: "$31.05",
-  category: 'Cosmetica'
-},
- 
+  imageUrls: [{
+    index: 0,
+    file: '../assets/image/Tafelloper.avif'
+  }],
+  title : 'Tafle',
+  price: 55.86,
+  categoryName: 'Cosmetica',
+  productId: "jhjjjk",
+  CategoryId: "vvvvvvv",
+   description: "hhjdfhjfjhd",
+    quantity: 3,
+    sessionId : 'ddd445556',
+    isPopular: true
+} 
 ];
 
-// trendingProducts = [
-//   {
-//       id: 1,
-//       title: "Strive Shoulder Pack",
-//       imageUrl: '../assets/image/Beddengoedset.webp',
-//       sale: true,
-//       new: 'berbere',
-//       manufacturer: "Graphic Corner",
-//       manufacturerId: 1,
-//       rating: 5,
-//       newPrice: "€71.05",
-//       category: 'Food'
-//   },
-//   {
-//     id: 1,
-//     title: "Strive Shoulder Pack",
-//     imageUrl: '../assets/image/Mesob.webp',
-//     sale: true,
-//     new: 'hairStyle',
-//     manufacturer: "Graphic Corner",
-//     manufacturerId: 1,
-//     rating: 5,
-//     newPrice: "€21.05",
-//     category: 'Cosmetica'
-// },
-// {
-//   id: 1,
-//   title: "Strive Shoulder Pack",
-//   imageUrl: '../assets/image/koffieceremobie.webp',
-//   sale: true,
-//   new: 'facuxTas',
-//   manufacturer: "Graphic Corner",
-//   manufacturerId: 1,
-//   rating: 5,
-//   newPrice: "€41.25",
-//   category: 'Koffieserveertafel'
-// },
-// {
-//   id: 1,
-//   title: "Strive Shoulder Pack",
-//   imageUrl: '../assets/image/Lichaamsdelen.jpg',
-//   sale: true,
-//   new: 'jurk',
-//   manufacturer: "Graphic Corner",
-//   manufacturerId: 1,
-//   rating: 5,
-//   newPrice: "€61.20",
-//   category: 'Cosmetica'
-// },
-
-// {
-//   id: 1,
-//   title: "Strive Shoulder Pack",
-//   imageUrl: '../assets/image/koffiemat.webp',
-//   sale: true,
-//   new: 'jurk',
-//   manufacturer: "Graphic Corner",
-//   manufacturerId: 1,
-//   rating: 5,
-//   newPrice: "€61.20",
-//   category: 'Cosmetica'
-// },
-
-// {
-//   id: 1,
-//   title: "Strive Shoulder Pack",
-//   imageUrl: '../assets/image/TabaKitfo.webp',
-//   sale: true,
-//   new: 'jurk',
-//   manufacturer: "Graphic Corner",
-//   manufacturerId: 1,
-//   rating: 5,
-//   newPrice: "€61.20",
-//   category: 'Koffieserveertafel'
-// },
-
-//   // ... Add more products here
-// ];
 }
 
 
