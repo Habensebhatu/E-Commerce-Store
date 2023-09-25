@@ -1,48 +1,50 @@
 <!-- Top Bar -->
 <div class="container pt-4">
   <div class="row">
-      <div class="mx-auto flex justify-between items-center">
-          <!-- Sale information -->
-          <div class="inline-block ml-40 text-xs ">
-              <p>welcom</p>
-          </div>
-          <!-- Currency and language selectors -->
-          <div>
-              <ul class="list-inline flex items-center">
-                  <li class="list-inline-item">
-                  </li>
-                  <li>
-                      <div>
-                          <button mat-button [matMenuTriggerFor]="languageMenu" class="text-xs">
-                              Nederlands<mat-icon>arrow_drop_down</mat-icon>
-                          </button>
-                          <mat-menu   #languageMenu="matMenu" >
-                              <button mat-menu-item>
-                                  <div class="flex items-center" style="width: 100%;">
-                                      <div class="flex-none">
-                                          <img [src]="'../../../assets/image/' + Nederland" alt="Icons" class="w-50 h-4" style="vertical-align: middle;" />
-                                      </div>
-                                      <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
-                                          Nederlands
-                                      </div>
-                                  </div>
-                              </button>
-                              <button mat-menu-item>
-                                  <div class="flex items-center" style="width: 100%;">
-                                      <div class="flex-none">
-                                          <img [src]="'../../../assets/image/' + Eritrea" alt="Icons" class="w-50 h-4" style="vertical-align: middle;" />
-                                      </div>
-                                      <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
-                                        ትግርኛ
-                                      </div>
-                                  </div>
-                              </button>
-                          </mat-menu>
-                      </div>                   
-                  </li>
-              </ul>
-          </div>
+    <div class="mx-auto flex justify-between items-center">
+      <!-- Sale information -->
+      <div class="inline-block ml-40 text-xs ">
+        <p>welcom</p>
       </div>
+      <!-- Currency and language selectors -->
+      <div>
+        <ul class="list-inline flex items-center">
+          <li class="list-inline-item">
+          </li>
+          <li>
+            <div>
+              <button mat-button [matMenuTriggerFor]="languageMenu" class="text-xs">
+                Nederlands<mat-icon>arrow_drop_down</mat-icon>
+              </button>
+              <mat-menu #languageMenu="matMenu">
+                <button mat-menu-item>
+                  <div class="flex items-center" style="width: 100%;">
+                    <div class="flex-none">
+                      <img [src]="'../../../assets/image/' + Nederland" alt="Icons" class="w-50 h-4"
+                        style="vertical-align: middle;" />
+                    </div>
+                    <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
+                      Nederlands
+                    </div>
+                  </div>
+                </button>
+                <button mat-menu-item>
+                  <div class="flex items-center" style="width: 100%;">
+                    <div class="flex-none">
+                      <img [src]="'../../../assets/image/' + Eritrea" alt="Icons" class="w-50 h-4"
+                        style="vertical-align: middle;" />
+                    </div>
+                    <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
+                      ትግርኛ
+                    </div>
+                  </div>
+                </button>
+              </mat-menu>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 <!-- Full width line -->
@@ -69,8 +71,9 @@
     <div class="flex items-center space-x-1">
       <div>
         <button mat-icon-button [matMenuTriggerFor]="menu" #cartTrigger="matMenuTrigger">
-          <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity" matBadgeColor="warn">shopping_cart</mat-icon>
-      </button>
+          <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity"
+            matBadgeColor="warn">shopping_cart</mat-icon>
+        </button>
         <mat-menu #menu="matMenu">
           <div class="p-3 divide-y divide-solid">
             <div class="pb-3 flex justify-between">
@@ -98,17 +101,25 @@
           </div>
         </mat-menu>
       </div>
-
-      <!-- Registration/Login -->
-      <div>
-        <button mat-button  class="mr-4" [matMenuTriggerFor] ="accountMenu">
-          <mat-icon>settings</mat-icon>
+      <div *ngIf="currentUser; else guestMenu" class="flex items-center space-x-4">
+        <div class="flex flex-col">
+          <span>Welcome</span>
+          <span class="font-bold">{{ currentUser.firstName }}</span>
+        </div>
+        <button mat-icon-button (click)="userService.logout()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
+      <ng-template #guestMenu>
+        <button mat-button class="mr-4" [matMenuTriggerFor]="accountMenu">
+          Inloggen
         </button>
         <mat-menu #accountMenu="matMenu">
-          <button mat-menu-item routerLink="register">Register</button>
-          <button mat-menu-item routerLink="login">Login</button>
+          <button mat-menu-item routerLink="/Register">Register</button>
+          <button mat-menu-item routerLink="/login">Login</button>
         </mat-menu>
-      </div>
+      </ng-template>
+
     </div>
   </div>
 </div>
@@ -130,37 +141,37 @@
           </button>
         </mat-menu>
       </div>
-      <a  class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/about">About Us</a>
-      <a  class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/contact">Contact Us</a>
+      <a class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/about">About Us</a>
+      <a class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/contact">Contact Us</a>
     </div>
 
     <!-- Search bar -->
     <div class="flex items-center mr-10">
-      <input type="text" class="p-2 flex-grow text-sm h-6 bg-[#242424] search-input" 
-       placeholder="Search entire store here ..." style="font-size: 15px;"
-       (input)="searchProducts($event)">
-             <button mat-icon-button #searchMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="searchMenu">
-              <mat-icon>search</mat-icon>
-          </button>
+      <input type="text" class="p-2 flex-grow text-sm h-6 bg-[#242424] search-input"
+        placeholder="Search entire store here ..." style="font-size: 15px;" (input)="searchProducts($event)">
+      <button mat-icon-button #searchMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="searchMenu">
+        <mat-icon>search</mat-icon>
+      </button>
     </div>
     <mat-menu #searchMenu="matMenu" class="w-80">
       <!-- Search results displayed here -->
       <div *ngFor="let product of searchResults" class="result-item mb-4">
-          <a [routerLink]="['/product', product.productId]">
-              <div class="flex items-center hover:bg-gray-200 hover:shadow-md transition duration-300 ease-in-out border-b border-gray-300">
-                  <img [src]="product.imageUrls[0].file" alt="{{ product.title }}" class="w-20 h-20 object-cover mr-3 pl-6">
-                  <p class="flex-grow pl-8">{{ product.title }}</p>
-                  <p class="ml-10 pr-6">€{{ product.price }}</p>
-              </div>
-          </a>
+        <a [routerLink]="['/product', product.productId]">
+          <div
+            class="flex items-center hover:bg-gray-200 hover:shadow-md transition duration-300 ease-in-out border-b border-gray-300">
+            <img [src]="product.imageUrls[0].file" alt="{{ product.title }}" class="w-20 h-20 object-cover mr-3 pl-6">
+            <p class="flex-grow pl-8">{{ product.title }}</p>
+            <p class="ml-10 pr-6">€{{ product.price }}</p>
+          </div>
+        </a>
       </div>
-  </mat-menu>
-  
-  
-  
-   
-    
-    
-    
+    </mat-menu>
+
+
+
+
+
+
+
   </div>
 </div>

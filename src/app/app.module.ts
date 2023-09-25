@@ -34,6 +34,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { register } from 'swiper/element/bundle';
 import { ProductsSliderComponent } from './pages/home/components/products-slider/products-slider.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { LoginComponent } from './components/login/login.component';
 // register Swiper custom elements
 register();
 
@@ -56,6 +61,8 @@ register();
     PaymentCancelledComponent,
     HomepageComponent,
     ProductsSliderComponent,
+    RegisterComponent,
+    LoginComponent,
  
    
   ],
@@ -63,6 +70,7 @@ register();
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatSidenavModule,
     MatGridListModule,
@@ -79,11 +87,8 @@ register();
     MatSnackBarModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
-    
-    
-   
-   
-   
+    MatSelectModule,
+    MatInputModule,
    
   ],
   providers: [CartService, StoreService],

@@ -34,7 +34,8 @@ handleProductClick(product: Product) {
     this.router.navigate(['/home', product.categoryName]);
   } else if (this.context === 'productDetails') {
     // Emit an event to change the product details or do whatever you want
-    this.productClicked.emit(product);
+    // this.productClicked.emit(product);
+    this.router.navigate(['/product', product.productId]);
   }
 }
 

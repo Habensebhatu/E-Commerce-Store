@@ -6,6 +6,8 @@ import { Cart, CartI, Product, ProductAddCart } from 'src/app/Models/product.mod
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { UserRegistrationService } from 'src/app/service/user-registration.service';
+import { UserRegistration } from 'src/app/Models/ UserRegistration';
 
 
 @Component({
@@ -29,8 +31,10 @@ export class HeaderComponent {
  Nederland = 'Nederlands-flag.png'
  Eritrea = 'Eritrea-flag.png'
  private unsubscribe$ = new Subject<void>();
-  constructor(private cartService: CartService,  private storeService: StoreService, private router: Router) {}
+ currentUser: UserRegistration | null = null;
+  constructor(private cartService: CartService,  private storeService: StoreService, private router: Router, public userService: UserRegistrationService ) {}
   ngOnInit(): void {
+    this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.cartService.showMenu$.subscribe(() => {
       this.openCartMenu();
     });

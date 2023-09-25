@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Cart, CartI, Product, ProductAddCart } from '../Models/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -41,23 +41,33 @@ export class CartService {
     }
 
     loadCartFromServer() {
-        console.log("getsessionID", this.sessionId)
-        this.httpClient.get<ProductAddCart[]>(`${this.apiUrl}?sessionId=${this.sessionId}`).subscribe(items => {
+        console.log("getsessionID", this.sessionId);
+        const token = localStorage.getItem('token');
+        console.log("token", token);
+        let headers = new HttpHeaders();
+        if (token) {
+            headers = headers.set('Authorization', `Bearer ${token}`);
+            console.log("headers", headers);
+        }
+        console.log("headers", headers);
+        this.httpClient.get<ProductAddCart[]>(`${this.apiUrl}?sessionId=${this.sessionId}`, { headers }).subscribe(items => {
             const updatedcart = { items: items };
             this.cart.next(updatedcart);
         });
     }
-
-    private saveCartToLocalStorage(cart: Cart) {
-        console.log("cart", cart);
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }
-
+    
 
     addToCart(item: ProductAddCart): void {
         item.sessionId = this.sessionId;
-        console.log(" AddsessionId ",  item.sessionId )
-        this.httpClient.post<ProductAddCart>(`${this.apiUrl}`, item).subscribe(
+        console.log(" AddsessionId ", item.sessionId);
+        const token = localStorage.getItem('token');
+        console.log("token", token);
+        let headers = new HttpHeaders();
+        if (token) {
+            headers = headers.set('Authorization', `Bearer ${token}`);
+            console.log("headers", headers);
+        }
+        this.httpClient.post<ProductAddCart>(`${this.apiUrl}`,item,{ headers }).subscribe(
             response => {
                 const items = [...this.cart.value.items];
                 const itemInCart = items.find((_item) => _item.productId === item.productId);
@@ -75,10 +85,17 @@ export class CartService {
             }
         );
     }
+    
 
     addToCartFromProductDetail(item: ProductAddCart): void {
         item.sessionId = this.sessionId;
-        this.httpClient.post<Product>(`${this.apiUrl}`, item).subscribe(
+        const token = localStorage.getItem('token');
+        let headers = new HttpHeaders();
+        if (token) {
+            headers = headers.set('Authorization', `Bearer ${token}`);
+            console.log("headers", headers);
+        }
+        this.httpClient.post<ProductAddCart>(`${this.apiUrl}`, item,{ headers }).subscribe(
             response => {
                 const items = [...this.cart.value.items];
                 const itemInCart = items.find((_item) => _item.productId === item.productId);
@@ -103,10 +120,16 @@ export class CartService {
 
     }
 
-
-
     clearCart(): void {
-        this.httpClient.delete<any>(`${this.apiUrl}?sessionId=${this.sessionId}`).subscribe(
+        console.log("testestese");
+        const token = localStorage.getItem('token');
+        let headers = new HttpHeaders();
+        if (token) {
+            headers = headers.set('Authorization', `Bearer ${token}`);
+            console.log("headers", headers);
+        }
+        console.log("this.sessionId", this.sessionId);
+        this.httpClient.delete<any>(`${this.apiUrl}?sessionId=${this.sessionId}`,{ headers }).subscribe(
             response => {
                 this.cart.next({ items: [] });
                 this._snackBar.open(response.message, 'Ok', {
@@ -119,15 +142,18 @@ export class CartService {
         );
     }
 
-
-
     removeFromCart(item: Product, updateCart = true): void {
-        this.httpClient.delete(`${this.apiUrl}/${item.productId}?sessionId=${this.sessionId}`).subscribe(
+        const token = localStorage.getItem('token');
+        let headers = new HttpHeaders();
+        if (token) {
+            headers = headers.set('Authorization', `Bearer ${token}`);
+            console.log("headers", headers);
+        }
+        this.httpClient.delete(`${this.apiUrl}/${item.productId}?sessionId=${this.sessionId}`,{ headers }).subscribe(
             response => {
                 const filteredItems = this.cart.value.items.filter(
                     (_item) => _item.productId !== item.productId
                 );
-
                 if (updateCart) {
                     this.cart.next({ items: filteredItems });
                     this._snackBar.open('1 item removed from cart.', 'Ok', {
@@ -141,14 +167,16 @@ export class CartService {
         );
     }
 
-
-
-
     removeQuantity(item: ProductAddCart): void {
-        console.log("habenbebbebebebebebebebeb")
+        const token = localStorage.getItem('token');
+        let headers = new HttpHeaders();
+        if (token) {
+            headers = headers.set('Authorization', `Bearer ${token}`);
+            console.log("headers", headers);
+        }
         this.httpClient.put<ProductAddCart>(
             `${this.apiUrl}/${item.productId}?sessionId=${this.sessionId}`,
-            {}
+            { headers}
         ).subscribe(
             updatedCart => {
                 const filteredItems = this.cart.value.items.map((_item) => {
@@ -168,5 +196,11 @@ export class CartService {
             }
         );
     }
+
+     // private saveCartToLocalStorage(cart: Cart) {
+    //     console.log("cart", cart);
+    //     localStorage.setItem('cart', JSON.stringify(cart));
+    // }
+
 
 }

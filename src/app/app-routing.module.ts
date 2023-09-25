@@ -6,6 +6,8 @@ import { PaymentSuccessComponent } from "./stripe/payment-success/payment-succes
 import { PaymentCancelledComponent } from "./stripe/payment-cancelled/payment-cancelled.component";
 import { Routes, RouterModule } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
@@ -33,6 +35,9 @@ const routes: Routes = [
   
   { path: 'payment-success', component: PaymentSuccessComponent },
   { path: 'payment-cancelled', component: PaymentCancelledComponent },
+  { path: 'Register', component:  RegisterComponent},
+  { path: 'login', component:   LoginComponent},
+ 
 ];
 
 @NgModule({

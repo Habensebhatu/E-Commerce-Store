@@ -27,9 +27,10 @@ export class DatailProductComponent {
     this.route.params.subscribe(params => {
       if(params['productId']) {
         this.productId =  params['productId']
+        this.getProduct();
       }
     });
-    this.getProduct();
+  
   }
   
   getProduct() {
@@ -39,6 +40,7 @@ export class DatailProductComponent {
         console.log('data.imageUrls', data.categoryName)
         this.selectedImage = data.imageUrls[0].file;
         this.getProductBYCategory();
+        window.scrollTo(0, 0); 
       });
   }
   
@@ -52,13 +54,13 @@ export class DatailProductComponent {
         });
     }
   }
-  changeProductDetails(product: Product) {
-    // Update your product details with the clicked product
-    this.product = product;
-    this.selectedImage = product.imageUrls[0].file;
-    // Fetch related products for the newly selected product
-    this.getProductBYCategory();
-  }
+  // changeProductDetails(product: Product) {
+  //   // Update your product details with the clicked product
+  //   this.product = product;
+  //   this.selectedImage = product.imageUrls[0].file;
+  //   // Fetch related products for the newly selected product
+  //   this.getProductBYCategory();
+  // }
   
 
   displayedRelatedProducts: string[] = [];
