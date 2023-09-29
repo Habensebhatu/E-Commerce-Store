@@ -69,6 +69,28 @@
 
     <!-- Shopping Cart -->
     <div class="flex items-center space-x-1">
+      <div *ngIf="currentUser; else guestMenu" class="flex items-center space-x-4">
+        <div class="flex flex-col">
+          <span>Welcome</span>
+          <span class="font-bold">{{ currentUser.firstName }}</span>
+        </div>
+        <button mat-icon-button (click)="userService.logout()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
+      <ng-template #guestMenu>
+        <button mat-button class="mr-4" [matMenuTriggerFor]="accountMenu">
+          Inloggen
+        </button>
+        <mat-menu #accountMenu="matMenu">
+          <button mat-menu-item routerLink="/Register">Register</button>
+          <button mat-menu-item routerLink="/login">Login</button>
+        </mat-menu>
+      </ng-template>
+      <!-- Heart Icon for Wishlist -->
+      <button mat-icon-button routerLink="/wishlist">
+        <mat-icon>favorite_border</mat-icon>
+      </button>
       <div>
         <button mat-icon-button [matMenuTriggerFor]="menu" #cartTrigger="matMenuTrigger">
           <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity"
@@ -101,25 +123,6 @@
           </div>
         </mat-menu>
       </div>
-      <div *ngIf="currentUser; else guestMenu" class="flex items-center space-x-4">
-        <div class="flex flex-col">
-          <span>Welcome</span>
-          <span class="font-bold">{{ currentUser.firstName }}</span>
-        </div>
-        <button mat-icon-button (click)="userService.logout()">
-          <mat-icon>exit_to_app</mat-icon>
-        </button>
-      </div>
-      <ng-template #guestMenu>
-        <button mat-button class="mr-4" [matMenuTriggerFor]="accountMenu">
-          Inloggen
-        </button>
-        <mat-menu #accountMenu="matMenu">
-          <button mat-menu-item routerLink="/Register">Register</button>
-          <button mat-menu-item routerLink="/login">Login</button>
-        </mat-menu>
-      </ng-template>
-
     </div>
   </div>
 </div>

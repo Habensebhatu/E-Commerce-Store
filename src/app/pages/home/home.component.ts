@@ -115,26 +115,7 @@ export class HomeComponent  implements OnInit, OnDestroy {
     this.filterByCategory(this.commingProducts!)
   }
 
-  // getProductsByCategory(): void {
-  //   //  if(this.category != null){
-  //   //   this.storeService.getProductBYCategory(this.category).pipe(takeUntil(this.unsubscribe$))
-  //   //   .subscribe((data: Product[]) => {
-  //   //     this.products  = data;
-  //   //   });
-  //   //  }
-   
-  // }
-
-//   getProductsByPrice(): void {
-//     if(this.minNumber != null && this.maxNumber){
-//      this.storeService.getProductBYPrice(this.minNumber, this.maxNumber).pipe(takeUntil(this.unsubscribe$))
-//      .subscribe((data: Product[]) => {
-//        this.products  = data;
-//      });
-//     }
- 
-//  }
-
+  
 
   onColumnsCountChange(colsNum: number): void {
     this.cols = colsNum;
@@ -168,7 +149,7 @@ export class HomeComponent  implements OnInit, OnDestroy {
       description: product.description,
       sessionId : product.sessionId
     });
-    console.log("imageURls")
+    console.log("imageURls",product.imageUrls[0].file)
   }
   ngOnDestroy(): void {
     if (this.unsubscribe$) {

@@ -39,6 +39,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './components/login/login.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 // register Swiper custom elements
 register();
 
@@ -63,6 +64,7 @@ register();
     ProductsSliderComponent,
     RegisterComponent,
     LoginComponent,
+    WishlistComponent,
  
    
   ],
