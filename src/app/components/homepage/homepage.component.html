@@ -62,7 +62,7 @@
     </div>
 </section>
 
- <section>
+<section>
     <div class="container mx-auto">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12">
@@ -75,48 +75,41 @@
                 </div>
             </div>
         </div>
-            <div id="trendingProducts_slider">
-                <div class="swiper-wrapper">
-                    <article class="swiper-slide productt-layout" *ngFor="let product of trendingProducts">
-                        <div class="productt-image relative group">
-                            <a [routerLink]="['/product', product.productId]">
-                                <img [src]="product.imageUrls[0].file" [alt]="product.title" [title]="product.title" />
-                            </a>
-                            <div 
-                                (click)="onAddToWishlist(product.productId)" 
-                                class="absolute top-2 right-2 bg-white rounded-full p-1 hover:bg-red-500 hover:text-white cursor-pointer invisible group-hover:visible"
-                            >
-                                <!-- Angular Material Icon -->
-                                <mat-icon *ngIf="!isInWishlist(product.productId)" aria-hidden="false" aria-label="Example heart icon">favorite_border</mat-icon>
-                                <mat-icon *ngIf="isInWishlist(product.productId)" aria-hidden="false" aria-label="Example heart icon" class="text-red-500">favorite</mat-icon>
+        <div id="trendingProducts_slider">
+            <div class="swiper-wrapper">
+                <article class="swiper-slide productt-layout" *ngFor="let product of trendingProducts">
+                    <div class="productt-image relative group">
+                        <a [routerLink]="['/product', product.productId]">
+                            <img [src]="product.imageUrls[0].file" [alt]="product.title" [title]="product.title" />
+                        </a>
+                        <div (click)="onAddToWishlist(product.productId)"
+                            class="absolute top-2 right-2 bg-white rounded-full p-1 hover:text-white cursor-pointer invisible group-hover:visible">
+                            <mat-icon *ngIf="!isInWishlist(product.productId)" aria-hidden="false"
+                                aria-label="Example heart icon" class="hover:bg-red-500 ">favorite_border</mat-icon>
+                            <mat-icon *ngIf="isInWishlist(product.productId)" aria-hidden="false"
+                                aria-label="Example heart icon" class="text-red-500">favorite</mat-icon>
+                        </div>
+                    </div>
+                    <div class="product-caption">
+                        <div class="product-meta d-flex justify-content-between align-items-center">
+                            <div class="product-manufacturer">
+                                <a [routerLink]="['/manufacturer', product.productId]">{{
+                                    product.categoryName }}</a>
                             </div>
                         </div>
-                        
-                        
-                        
-                        <div class="product-caption">
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="product-manufacturer">
-                                    <a [routerLink]="['/manufacturer', product.productId]">{{
-                                        product.categoryName }}</a>
-                                </div>
-                             </div>
-                            <h4 class="product-name">
-                                <a [routerLink]="['/product', product.productId]">{{
-                                    product.title
-                                    }}</a>
-                            </h4>
-                            <p class="product-price">
-                                <span>€{{ product.price }}</span>
+                        <h4 class="product-name">
+                            <a [routerLink]="['/product', product.productId]">{{
+                                product.title
+                                }}</a>
+                        </h4>
+                        <p class="product-price">
+                            <span>€{{ product.price }}</span>
 
-                            </p>
-                        </div>
-                    </article>
-                </div>
+                        </p>
+                    </div>
+                </article>
             </div>
-            
         </div>
-</section> 
 
-
-    
+    </div>
+</section>

@@ -8,6 +8,7 @@ import { StoreService } from 'src/app/service/store.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { UserRegistrationService } from 'src/app/service/user-registration.service';
 import { UserRegistration } from 'src/app/Models/ UserRegistration';
+import { WishlistService } from 'src/app/service/wishlist.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { UserRegistration } from 'src/app/Models/ UserRegistration';
 export class HeaderComponent {
   private _cart: CartI = { items: [] };
   itemsQuantity = 0;
+  wishlistQuantity = 0; 
   categories: Category[] | undefined
   searchResults: Product[] = [];
   @ViewChild('cartTrigger') cartMenuTrigger!: MatMenuTrigger;
@@ -32,8 +34,11 @@ export class HeaderComponent {
  Eritrea = 'Eritrea-flag.png'
  private unsubscribe$ = new Subject<void>();
  currentUser: UserRegistration | null = null;
-  constructor(private cartService: CartService,  private storeService: StoreService, private router: Router, public userService: UserRegistrationService ) {}
+  constructor(private cartService: CartService,  private storeService: StoreService, private router: Router, public userService: UserRegistrationService,  private wishlistService: WishlistService ) {}
+
   ngOnInit(): void {
+   this.wishlistCount();
+   this.fetchWishlistProductIds();
     this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.cartService.showMenu$.subscribe(() => {
       this.openCartMenu();
@@ -45,6 +50,21 @@ export class HeaderComponent {
         this.clearInput();
       }
     });
+   
+  }
+
+  wishlistCount(){
+    this.wishlistService.wishlistCount$.subscribe(
+      count => this.wishlistQuantity = count
+    );
+  }
+  
+  fetchWishlistProductIds(): void {
+    this.wishlistService.getWishlistProducts().pipe(takeUntil(this.unsubscribe$))
+        .subscribe(products => {
+          this.wishlistService.setWishlistCount(products.length)
+        });
+       
   }
   clearInput() {
     const inputElement = document.querySelector('.search-input') as HTMLInputElement;
@@ -69,9 +89,9 @@ export class HeaderComponent {
       .subscribe((products: Product[]) => {
         this.searchResults = products;
         if (products.length > 0) {
-          this.searchMenuTrigger.openMenu(); // Open the menu when there are results
+          this.searchMenuTrigger.openMenu(); 
         } else {
-          this.searchMenuTrigger.closeMenu(); // Close the menu if there are no results
+          this.searchMenuTrigger.closeMenu(); 
         }
       });
   }
@@ -92,7 +112,6 @@ export class HeaderComponent {
 
   onCategorySelect(category: string): void {
     console.log('You selected: ', category);
-    // Do something with category
   }
 
   

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Product, ProductAddCart } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
@@ -11,7 +13,7 @@ import { WishlistService } from 'src/app/service/wishlist.service';
 })
 export class WishlistComponent {
 
-  constructor(private cartService: CartService, private wishlistService: WishlistService ){}
+  constructor(private cartService: CartService, private wishlistService: WishlistService, private _snackBar: MatSnackBar, private router: Router ){}
   private unsubscribe$ = new Subject<void>();
   wishlistProducts : Product[] | undefined
 
@@ -30,7 +32,6 @@ export class WishlistComponent {
   }
 
   onAddToCart(product: Product): void {
-    console.log("product:product:", product)
     this.cartService.addToCart({
       categoryName: product.categoryName,
       title: product.title,
@@ -42,8 +43,24 @@ export class WishlistComponent {
       description: product.description,
       sessionId : product.sessionId
     });
-    console.log("imageURls", product.imageUrls[0].file,)
   }
+
+  // In wishlist.component.ts
+onDeleteFromWishlist(productId: string): void {
+  this.wishlistService.deleteFromWishlist(productId).subscribe(
+    success => {
+      this._snackBar.open('Item removed from wishList.', 'Ok', {duration: 3000,});
+      this.getWishlistProducts();
+    },
+    error => {
+      // Handle error (maybe show a snackbar or message to user)
+    }
+  );
+}
+
+navigateToProductDetails(productId: string): void {
+  this.router.navigate(['product', productId]);
+}
 
   
   products = [

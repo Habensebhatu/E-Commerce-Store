@@ -87,10 +87,9 @@
           <button mat-menu-item routerLink="/login">Login</button>
         </mat-menu>
       </ng-template>
-      <!-- Heart Icon for Wishlist -->
       <button mat-icon-button routerLink="/wishlist">
-        <mat-icon>favorite_border</mat-icon>
-      </button>
+        <mat-icon [matBadge]="wishlistQuantity" [matBadgeHidden]="!wishlistQuantity" matBadgeColor="warn">favorite_border</mat-icon>
+      </button> 
       <div>
         <button mat-icon-button [matMenuTriggerFor]="menu" #cartTrigger="matMenuTrigger">
           <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity"

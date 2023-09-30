@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Product } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
+import { WishlistService } from 'src/app/service/wishlist.service';
 
 @Component({
   selector: 'app-datail-product',
@@ -17,10 +19,13 @@ export class DatailProductComponent {
   private unsubscribe$ = new Subject<void>();
   Quetity = 1;
   categoryName: string| undefined;
+  wishlistProductIds: string[] = [];
+  hovered = false;
   constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
     private cartService: CartService,
+    private wishlistService: WishlistService,  private _snackBar: MatSnackBar
   ) {}
   
   ngOnInit() {
@@ -30,7 +35,7 @@ export class DatailProductComponent {
         this.getProduct();
       }
     });
-  
+  this.fetchWishlistProductIds();
   }
   
   getProduct() {
@@ -54,15 +59,7 @@ export class DatailProductComponent {
         });
     }
   }
-  // changeProductDetails(product: Product) {
-  //   // Update your product details with the clicked product
-  //   this.product = product;
-  //   this.selectedImage = product.imageUrls[0].file;
-  //   // Fetch related products for the newly selected product
-  //   this.getProductBYCategory();
-  // }
   
-
   displayedRelatedProducts: string[] = [];
 currentIndex = 0;
 
@@ -95,6 +92,29 @@ currentIndex = 0;
       });
     }
     this.cartService.show();
+  }
+
+  fetchWishlistProductIds(): void {
+    this.wishlistService.getWishlistProducts().pipe(takeUntil(this.unsubscribe$))
+        .subscribe(products => {
+            this.wishlistProductIds = products.map(product => product.productId);
+        });
+  }
+  
+  
+  isInWishlist(): boolean {
+    return this.wishlistProductIds.includes(this.productId!);
+  }
+  
+  onAddToWishlist() : void {
+    if (!this.isInWishlist()) {
+      this.wishlistService.addToWishlist(this.productId!);
+      this.wishlistProductIds.push(this.productId!); // Optionally update local list
+    } else {
+      this._snackBar.open('Product is already in the wishlist.', 'Ok', {duration: 3000,});
+      console.log('Product is already in the wishlist.');
+      // You can also provide user feedback like a toast message here if required
+    }
   }
 
   ngOnDestroy(): void {
