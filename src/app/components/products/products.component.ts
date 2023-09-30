@@ -11,10 +11,10 @@ const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 3: 335, 4: 350 };
 
 @Component({
   selector: 'app-home',
-  templateUrl:'./home.component.html',
+  templateUrl:'./products.component.html',
   
 })
-export class HomeComponent  implements OnInit, OnDestroy {
+export class ProductsComponent  implements OnInit, OnDestroy {
   cols = 3;
   rowHeight: number = ROWS_HEIGHT[this.cols];
   products :Product[] | undefined;

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { HomeComponent } from "./pages/home/home.component";
-import { CartComponent } from "./pages/cart/cart.component";
-import { DatailProductComponent } from "./pages/home/components/datail-product/datail-product.component";
+
+import { CartComponent } from "./components/cart/cart.component";
+import { DatailProductComponent } from "./components/datail-product/datail-product.component";
 import { PaymentSuccessComponent } from "./stripe/payment-success/payment-success.component";
 import { PaymentCancelledComponent } from "./stripe/payment-cancelled/payment-cancelled.component";
 import { Routes, RouterModule } from '@angular/router';
@@ -9,16 +9,17 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { ProductsComponent } from './components/products/products.component';
 
 
 const routes: Routes = [
   {
-    path: "home/:name",
-    component: HomeComponent,
+    path: "products/:name",
+    component: ProductsComponent ,
   },
   {
-    path: "home",
-    component: HomeComponent,
+    path: "products",
+    component: ProductsComponent ,
   },
   {
     path: "cart",
@@ -29,10 +30,10 @@ const routes: Routes = [
     component:  DatailProductComponent,
   },
   {
-    path: "first",
+    path: "home",
     component: HomepageComponent,
   },
-  { path: "", redirectTo: "first", pathMatch: "full" },
+  { path: "", redirectTo: "home", pathMatch: "full" },
   
   { path: 'payment-success', component: PaymentSuccessComponent },
   { path: 'payment-cancelled', component: PaymentCancelledComponent },

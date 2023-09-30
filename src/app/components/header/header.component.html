@@ -139,7 +139,7 @@
           [matMenuTriggerFor]="categoriesMenu">Categories<mat-icon>arrow_drop_down</mat-icon></button>
         <mat-menu #categoriesMenu="matMenu">
           <button mat-menu-item *ngFor="let category of categories" (click)="categoriesChange(category.name)">
-            <a [routerLink]="['/home', category]">{{ category.name }} </a>
+            <a [routerLink]="['/products', category]">{{ category.name }} </a>
           </button>
         </mat-menu>
       </div>
