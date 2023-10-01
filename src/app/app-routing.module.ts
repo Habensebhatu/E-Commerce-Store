@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 const routes: Routes = [
@@ -40,8 +41,10 @@ const routes: Routes = [
   { path: 'Register', component:  RegisterComponent},
   { path: 'login', component:   LoginComponent},
   { path: 'wishlist', component:    WishlistComponent},
+  { path: 'contactUs', component:   ContactUsComponent},
  
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

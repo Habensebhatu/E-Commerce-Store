@@ -1,0 +1,122 @@
+/* .contact-form-wrapper{
+    border-radius: 3px;
+    color: white;
+    background-color: #f6f6f6;
+    padding: 30px;
+} 
+
+
+.contact-form-wrapper input:not([type="submit"]),
+.contact-form-wrapper textarea {
+    border-color: transparent;
+    margin-bottom: 10px;
+}
+
+.contact-form-wrapper textarea {
+    min-height: 140px;
+    padding-top: 12px;
+}
+
+.contact-form-wrapper .form-row {
+    margin-bottom: 0.5rem;
+}
+
+.contact-form-wrapper ::-webkit-input-placeholder {
+    color: #292929;
+}
+
+.contact-form-wrapper ::-moz-placeholder {
+    color: #292929;
+}
+
+.contact-form-wrapper :-ms-input-placeholder {
+    color: #292929;
+}
+
+.contact-form-wrapper :-moz-placeholder {
+    color: #292929;
+}
+
+
+
+.section-title h2 {
+    font-size: 30px;
+    line-height: 30px;
+    display: inline-block;
+    letter-spacing: -.05em;
+    text-transform: capitalize;
+    color: black;
+}
+
+.section-title h2::after {
+    content: "";
+    display: block;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+    text-align: center;
+    width: 50px;
+    height: 7px;
+    background: url("/assets/image/title.png");
+   
+}
+
+
+.form-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+} */
+
+.contact-form-wrapper {
+    border-radius: 3px;
+    background-color: #f6f6f6;
+    padding: 30px;
+}
+
+.contact-form-wrapper input:not([type="submit"]),
+.contact-form-wrapper textarea {
+    border-color: transparent;
+    margin-bottom: 10px;
+}
+
+.contact-form-wrapper textarea {
+    min-height: 140px;
+    padding-top: 12px;
+}
+
+.section-title h2 {
+    font-size: 30px;
+    line-height: 30px;
+    display: inline-block;
+    letter-spacing: -.05em;
+    text-transform: capitalize;
+    color: black;
+}
+
+.section-title h2::after {
+    content: "";
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    width: 50px;
+    height: 7px;
+    background: url("/assets/image/title.png");
+}
+
+.form-row {
+    display: flex;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.contact-form-wrapper ::-webkit-input-placeholder {
+    color: #292929;
+}
+
+
+
+

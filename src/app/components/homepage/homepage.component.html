@@ -83,7 +83,7 @@
                             <img [src]="product.imageUrls[0].file" [alt]="product.title" [title]="product.title" />
                         </a>
                         <div (click)="onAddToWishlist(product.productId)"
-                            class="absolute top-2 right-2 bg-white rounded-full p-1 hover:text-white cursor-pointer invisible group-hover:visible">
+                            class="absolute top-2 right-2 p-1 hover:text-white cursor-pointer invisible group-hover:visible">
                             <mat-icon *ngIf="!isInWishlist(product.productId)" aria-hidden="false"
                                 aria-label="Example heart icon" class="hover:bg-red-500 ">favorite_border</mat-icon>
                             <mat-icon *ngIf="isInWishlist(product.productId)" aria-hidden="false"

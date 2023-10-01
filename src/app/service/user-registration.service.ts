@@ -9,6 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UserRegistrationService {
   private apiUrl = 'https://localhost:7087/api/Registration/register';
   private loginApiUrl = 'https://localhost:7087/api/Registration/login';
+  private contactUsApiUrl = 'https://localhost:7087/api/ContactUs';
   private currentUserSubject: BehaviorSubject<UserRegistration | null> = new BehaviorSubject<UserRegistration | null>(null);
   public currentUser: Observable<UserRegistration | null> = this.currentUserSubject.asObservable();
   constructor(private httpClient: HttpClient) { 
@@ -46,6 +47,10 @@ export class UserRegistrationService {
     }).join(''));
 
     return JSON.parse(jsonPayload);
+}
+
+addCustomer(data: any) {
+  return this.httpClient.post(this.contactUsApiUrl, data);
 }
 
 }

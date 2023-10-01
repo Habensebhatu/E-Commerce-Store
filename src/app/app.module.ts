@@ -40,6 +40,7 @@ import { LoginComponent } from './components/login/login.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 // register Swiper custom elements
 register();
 
@@ -64,7 +65,8 @@ register();
     RegisterComponent,
     LoginComponent,
     WishlistComponent,
-    CartComponent
+    CartComponent,
+    ContactUsComponent
  
    
   ],
