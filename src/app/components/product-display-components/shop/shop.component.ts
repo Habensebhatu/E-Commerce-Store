@@ -4,9 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, Subscription,  takeUntil } from 'rxjs';
 import { Category } from 'src/app/Models/category.Model';
 import { Product} from 'src/app/Models/product.model';
-import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
-import { WishlistService } from 'src/app/service/wishlist.service';
 
 
 @Component({
@@ -25,7 +23,6 @@ export class ShopComponent {
   minNumber: number | undefined;
   maxNumber: number | undefined;
   productsSubscription: Subscription | undefined;
-  wishlistProductIds: string[] = [];
   private unsubscribe$ = new Subject<void>();
   private subs: Subscription = new Subscription();
   categories: Category[] | undefined;
@@ -33,17 +30,13 @@ export class ShopComponent {
   selectedPrice: string | undefined;
 
   constructor(
-    private cartService: CartService,
     private storeService: StoreService,
     private route: ActivatedRoute,
-    private router: Router,
-    private wishlistService: WishlistService,
-    private _snackBar: MatSnackBar
-    
+    private router: Router, 
   ) {}
  
   async ngOnInit() {
-    await this.getProducts(); // First, get all products
+    await this.getProducts(); 
   
     this.route.queryParams.subscribe(params => {
       if (params['category']) {
@@ -76,7 +69,6 @@ export class ShopComponent {
       this.storeService.setAllProducts(true);
     }
   
-    this.fetchWishlistProductIds();
     this.getCatogories();
   }
   
@@ -95,7 +87,6 @@ export class ShopComponent {
     }
   }
   
-
   getCatogories() {
     this.storeService.getCatogories()
       .pipe(takeUntil(this.unsubscribe$))
@@ -117,7 +108,7 @@ export class ShopComponent {
           } else if (this.minNumber != null && this.maxNumber){
             this.filterByPrice(this.commingProducts);
           }
-          resolve();  // Resolve the promis
+          resolve();  
         });
     });
   }
@@ -217,21 +208,6 @@ filterByCategoryAndPrice(products: Product[]) {
     this.getProducts();
   }
    
-  
-
-  onAddToCart(product: Product): void {
-    this.cartService.addToCart({
-      categoryName: product.categoryName,
-      title: product.title,
-      price: product.price,
-      quantity: 1,
-      imageUrl: product.imageUrls[0].file,
-      productId: product.productId,
-      CategoryId: product.CategoryId,
-      description: product.description,
-      sessionId : product.sessionId
-    });
-  }
   ngOnDestroy(): void {
     if (this.unsubscribe$) {
       this.unsubscribe$.unsubscribe();
@@ -239,29 +215,8 @@ filterByCategoryAndPrice(products: Product[]) {
     this.subs.unsubscribe();
   }
   
-  fetchWishlistProductIds(): void {
-    this.wishlistService.getWishlistProducts().pipe(takeUntil(this.unsubscribe$))
-        .subscribe(products => {
-            this.wishlistProductIds = products.map(product => product.productId);
-        });
-  }
-  
-  
-  isInWishlist(productId: string): boolean {
-    return this.wishlistProductIds.includes(productId);
-  }
-  
-  onAddToWishlist(productId: string) : void {
-    if (!this.isInWishlist(productId)) {
-      this.wishlistService.addToWishlist(productId);
-      this.wishlistProductIds.push(productId); 
-    } else {
-      this._snackBar.open('Product is already in the wishlist.', 'Ok', {duration: 3000,});    
-    }
-  }
-
-
-  toggleView(view: 'grid' | 'list') {
+  onViewChanged(view: 'grid' | 'list') {
     this.activeView = view;
-}
+  }
+  
 }

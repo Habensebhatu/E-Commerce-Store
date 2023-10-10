@@ -1,0 +1,50 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="mx-auto px-4 max-w-screen-xl mt-24">
+    <div class="flex flex-wrap -mx-4">
+        <div class="w-full sm:w-full md:w-full lg:w-3/4 lg:order-2 px-4">
+            <div class="shop-wrapper">
+                <app-app-view-toggle (viewChanged)="onViewChanged($event)"></app-app-view-toggle>
+                <div class="flex flex-wrap -mx-4 mt-4">
+                    <div class="w-full sm:w-full md:w-full px-4">
+                        <div class="shop-products-wrapper">
+                            <div class="tab-content">
+                                <app-app-product-grid *ngIf="activeView === 'grid'"
+                                    [products]="products"></app-app-product-grid>
+                                <app-app-product-list *ngIf="activeView === 'list'"
+                                    [products]="products"></app-app-product-list>
+                            </div>
+                        </div>
+                        <app-pagination></app-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full sm:w-full md:w-full lg:w-1/4 lg:order-1 px-4">
+            <div class="mb-8 pb-8 border-b border-gray-300 ">
+                <h2 class="text-lg leading-6 font-medium tracking-tight capitalize mb-5">Categories</h2>
+                <div class="space-y-2">
+                    <a *ngFor="let category of categories" (click)="OnshowCategoty(category.name)"
+                        class="flex items-center transition-colors duration-700"
+                        [ngClass]="{'hover:text-red-600': category.name !== selectedCategory, 'text-red-600': category.name === selectedCategory }">
+                        <span
+                            class="mr-2.5 w-4 h-4 p-0.5 inline-block border border-gray-300 text-transparent flex items-center justify-center"
+                            [ngClass]="{'hover:border-red-600 hover:bg-red-600 hover:text-white': category.name !== selectedCategory, 'border-red-600 bg-red-600 text-white': category.name === selectedCategory }">✓</span>
+                        {{ category.name }}
+                    </a>
+                </div>
+            </div>
+            <div class="mb-8 pb-8 border-b border-gray-300">
+                <h2 class="text-lg leading-6 font-medium tracking-tight capitalize mb-5">Price</h2>
+                <div class="space-y-2">
+                    <a *ngFor="let price of prices" (click)="OnfillterProductsBYPrice(price)"
+                        class="flex items-center transition-colors duration-700"
+                        [ngClass]="{'hover:text-red-600': price !== selectedPrice, 'text-red-600': price === selectedPrice }">
+                        <span
+                            class="mr-2.5 w-4 h-4 p-0.5 inline-block border border-gray-300 text-transparent flex items-center justify-center"
+                            [ngClass]="{'hover:border-red-600 hover:bg-red-600 hover:text-white': price !== selectedPrice, 'border-red-600 bg-red-600 text-white': price === selectedPrice }">✓</span>
+                        {{ price }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>

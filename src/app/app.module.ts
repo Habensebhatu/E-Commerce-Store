@@ -42,13 +42,14 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ProductBoxComponent } from './components/products/product-box/product-box.component';
 import { ProductsSliderComponent } from './components/products/products-slider/products-slider.component';
-import { ShopComponent } from './components/shop/shop.component';
+import { ShopComponent } from './components/product-display-components/shop/shop.component';
+import { BreadcrumbComponent } from './components/product-display-components/breadcrumb/breadcrumb.component';
+import { AppViewToggleComponent } from './components/product-display-components/app-view-toggle/app-view-toggle.component';
+import { AppProductGridComponent } from './components/product-display-components/app-product-grid/app-product-grid.component';
+import { AppProductListComponent } from './components/product-display-components/app-product-list/app-product-list.component';
+import { PaginationComponent } from './components/product-display-components/pagination/pagination.component';
 // register Swiper custom elements
 register();
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -70,7 +71,14 @@ register();
     CartComponent,
     ContactUsComponent,
     AboutUsComponent,
-    ShopComponent
+    ShopComponent,
+    BreadcrumbComponent,
+    AppViewToggleComponent,
+    AppProductGridComponent,
+    AppProductListComponent,
+    PaginationComponent,
+   
+   
  
    
   ],
