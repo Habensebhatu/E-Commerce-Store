@@ -12,7 +12,6 @@ import { StoreService } from 'src/app/service/store.service';
 export class FiltersComponent implements OnInit, OnDestroy {
   @Output() ShowCategory = new EventEmitter<string>();
   @Output() FilltedProductByPrice = new EventEmitter<string>();
-  // categories: string[] | undefined;
   categories: Category[] | undefined;
   categoriesSubscription: Subscription | undefined;
   private unsubscribe$ = new Subject<void>();
@@ -22,11 +21,6 @@ export class FiltersComponent implements OnInit, OnDestroy {
  
   prices = ['0 -  5 Eur ', '5 - 10 Eur', '10 - 15 Eur','15 - 20 Eur', '20 -  25Eur', '25 Eur & meer']
   ngOnInit(): void {
-    // this.categoriesSubscription = this.storeService
-    //   .getAllCategories()
-    //   .subscribe((response: Array<string>) => {
-    //     this.categories = response;
-    //   });
       this.getCatogories();
   }
   getCatogories() {
@@ -34,7 +28,6 @@ export class FiltersComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data:  Category[]) => {
         this.categories = data;
-        console.log("category",this.categories)
       });
   }
   ngOnDestroy(): void {

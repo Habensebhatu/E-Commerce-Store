@@ -2,7 +2,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Subject, takeUntil } from 'rxjs';
 import { Category } from 'src/app/Models/category.Model';
-import { Cart, CartI, Product, ProductAddCart } from 'src/app/Models/product.model';
+import { CartI, Product, ProductAddCart } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
 import { Router, NavigationEnd } from '@angular/router';
@@ -102,7 +102,6 @@ export class HeaderComponent {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data:  Category[]) => {
         this.categories = data;
-        console.log("category",this.categories)
       });
   }
   language(){

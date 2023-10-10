@@ -49,17 +49,17 @@
                             </div>
                         </div>
                         <div class="mb-4">
-                            <input formControlName="telephoneNumber" type="tel"
+                            <input formControlName="phone" type="tel"
                                 class="form-input w-full h-10 pl-4 mb-2 bg-white" id="telephoneNumber"
                                 placeholder="Your Telephone Number" required>
-                            <div *ngIf="contactForm.get('telephoneNumber')?.invalid && (contactForm.get('telephoneNumber')?.dirty || contactForm.get('telephoneNumber')?.touched)"
+                            <div *ngIf="contactForm.get('phone')?.invalid && (contactForm.get('phone')?.dirty || contactForm.get('Telephone')?.touched)"
                                 class="text-red-500">
                                 Verplicht geldig telefoonnummer.
                             </div>
                         </div>
 
                         <div class="mb-4 flex-grow">
-                            <textarea formControlName="message" class="form-input w-full pl-4 bg-white" rows="5"
+                            <textarea formControlName="body" class="form-input w-full pl-4 bg-white" rows="5"
                                 placeholder="Type Your Message....." required></textarea>
                         </div>
                         <div class="flex-none">

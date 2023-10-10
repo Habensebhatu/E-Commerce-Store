@@ -66,11 +66,9 @@ isInWishlist(productId: string): boolean {
 onAddToWishlist(productId: string) : void {
   if (!this.isInWishlist(productId)) {
     this.wishlistService.addToWishlist(productId);
-    this.wishlistProductIds.push(productId); // Optionally update local list
+    this.wishlistProductIds.push(productId); 
   } else {
-    this._snackBar.open('Product is already in the wishlist.', 'Ok', {duration: 3000,});
-    console.log('Product is already in the wishlist.');
-    // You can also provide user feedback like a toast message here if required
+    this._snackBar.open('Product is already in the wishlist.', 'Ok', {duration: 3000,});    
   }
 }
 

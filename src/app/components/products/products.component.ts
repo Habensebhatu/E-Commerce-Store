@@ -40,8 +40,6 @@ export class ProductsComponent  implements OnInit, OnDestroy {
     this.subs.add(
       this.storeService.showData$.subscribe(show => {
         this.category = show;
-        console.log("this.category", this.category)
-        // Now you can call any methods or perform any actions that should happen when category changes.
         this.getProducts();
       })
     );
@@ -54,7 +52,6 @@ export class ProductsComponent  implements OnInit, OnDestroy {
     if(!this.category){
       this.storeService.setAllProducts(true);
     }
-   console.log("tetstetstets")
    
   }
 
@@ -137,7 +134,6 @@ export class ProductsComponent  implements OnInit, OnDestroy {
   
 
   onAddToCart(product: Product): void {
-    console.log("imageURls............")
     this.cartService.addToCart({
       categoryName: product.categoryName,
       title: product.title,
@@ -149,7 +145,6 @@ export class ProductsComponent  implements OnInit, OnDestroy {
       description: product.description,
       sessionId : product.sessionId
     });
-    console.log("imageURls",product.imageUrls[0].file)
   }
   ngOnDestroy(): void {
     if (this.unsubscribe$) {

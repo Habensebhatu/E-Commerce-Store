@@ -139,12 +139,13 @@
           [matMenuTriggerFor]="categoriesMenu">Categories<mat-icon>arrow_drop_down</mat-icon></button>
         <mat-menu #categoriesMenu="matMenu">
           <button mat-menu-item *ngFor="let category of categories" (click)="categoriesChange(category.name)">
-            <a [routerLink]="['/products', category]">{{ category.name }} </a>
+            <a [routerLink]="['/shop', category.name]">{{ category.name }} </a>
           </button>
         </mat-menu>
       </div>
-      <a class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/about">About Us</a>
+      <a class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/aboutUs">About Us</a>
       <a class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/contactUs">Contact Us</a>
+      <a class="ml-6" mat-button style="color: white; font-size: 12px;" routerLink="/shop">Shop</a>
     </div>
 
     <!-- Search bar -->

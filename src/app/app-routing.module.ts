@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ShopComponent } from './components/shop/shop.component';
 
 
 const routes: Routes = [
@@ -42,6 +44,11 @@ const routes: Routes = [
   { path: 'login', component:   LoginComponent},
   { path: 'wishlist', component:    WishlistComponent},
   { path: 'contactUs', component:   ContactUsComponent},
+  { path: 'aboutUs', component:    AboutUsComponent},
+  { path:  "shop/:name",component:   ShopComponent},
+ 
+
+  
  
 ];
 
