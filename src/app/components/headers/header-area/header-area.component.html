@@ -1,0 +1,75 @@
+<div class="container mx-auto flex justify-between items-center mt-4">
+    <!-- Logo -->
+    <div class="ml-20">
+      <a href="index.html">
+        <img [src]="'../../../assets/image/' + log" alt="Logo" class="w-30 h-4" />
+      </a>
+    </div>
+  
+    <!-- Contact Number, Shopping Cart, and Registration/Login -->
+    <div class="flex items-center mr-10">
+      <!-- Contact Number -->
+      <div class="flex items-center space-x-4 mr-8 mt-2">
+        <p class="text-sm"><a href="#">0648408438</a></p>
+        <div class="border-l h-5 mx-2 mb-2"></div>
+        <p class="text-xs">Customer Service</p>
+      </div>
+  
+      <!-- Shopping Cart -->
+      <div class="flex items-center space-x-1">
+        <div *ngIf="currentUser; else guestMenu" class="flex items-center space-x-4">
+          <div class="flex flex-col">
+            <span>Welcome</span>
+            <span class="font-bold">{{ currentUser.firstName }}</span>
+          </div>
+          <button mat-icon-button (click)="userService.logout()">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+        </div>
+        <ng-template #guestMenu>
+          <button mat-button class="mr-4" [matMenuTriggerFor]="accountMenu">
+            Inloggen
+          </button>
+          <mat-menu #accountMenu="matMenu">
+            <button mat-menu-item routerLink="/Register">Register</button>
+            <button mat-menu-item routerLink="/login">Login</button>
+          </mat-menu>
+        </ng-template>
+        <button mat-icon-button routerLink="/wishlist">
+          <mat-icon [matBadge]="wishlistQuantity" [matBadgeHidden]="!wishlistQuantity" matBadgeColor="warn">favorite_border</mat-icon>
+        </button> 
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="menu" #cartTrigger="matMenuTrigger">
+            <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity"
+              matBadgeColor="warn">shopping_cart</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <div class="p-3 divide-y divide-solid">
+              <div class="pb-3 flex justify-between">
+                <span class="mr-16">{{itemsQuantity}} items</span>
+                <a routerLink="cart">View Cart</a>
+              </div>
+              <div *ngIf="cart.items.length" class="py-3">
+                <div *ngFor="let item of cart.items" class="flex justify-between font-light mb-2">
+                  {{ item.title }} x {{ item.quantity }}
+                  <span class="font-bold">{{ item.price | currency }}</span>
+                </div>
+              </div>
+              <div class="flex justify-between py-3 font-light">
+                Total:
+                <span class="font-bold not-italic">{{ getTotal(cart.items) | currency }}</span>
+              </div>
+              <div class="pt-3 flex justify-between">
+                <button (click)="onClearCart()" class="bg-rose-600 text-white rounded-full w-9 h-9">
+                  <mat-icon>remove_shopping_cart</mat-icon>
+                </button>
+                <button routerLink="cart" class="bg-green-600 text-white rounded-full w-9 h-9">
+                  <mat-icon>shopping_cart_checkout</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>

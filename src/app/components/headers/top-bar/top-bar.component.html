@@ -1,0 +1,48 @@
+<div class="container pt-4">
+  <div class="row">
+    <div class="mx-auto flex justify-between items-center">
+      <!-- Sale information -->
+      <div class="inline-block ml-40 text-xs ">
+        <p>welcom</p>
+      </div>
+      <!-- Currency and language selectors -->
+      <div>
+        <ul class="list-inline flex items-center">
+          <li class="list-inline-item">
+          </li>
+          <li>
+            <div>
+              <button mat-button [matMenuTriggerFor]="languageMenu" class="text-xs">
+                Nederlands<mat-icon>arrow_drop_down</mat-icon>
+              </button>
+              <mat-menu #languageMenu="matMenu">
+                <button mat-menu-item>
+                  <div class="flex items-center" style="width: 100%;">
+                    <div class="flex-none">
+                      <img [src]="'../../../assets/image/' + Nederland" alt="Icons" class="w-50 h-4"
+                        style="vertical-align: middle;" />
+                    </div>
+                    <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
+                      Nederlands
+                    </div>
+                  </div>
+                </button>
+                <button mat-menu-item>
+                  <div class="flex items-center" style="width: 100%;">
+                    <div class="flex-none">
+                      <img [src]="'../../../assets/image/' + Eritrea" alt="Icons" class="w-50 h-4"
+                        style="vertical-align: middle;" />
+                    </div>
+                    <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
+                      ትግርኛ
+                    </div>
+                  </div>
+                </button>
+              </mat-menu>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

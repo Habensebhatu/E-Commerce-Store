@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, Subscription,  takeUntil } from 'rxjs';
 import { Category } from 'src/app/Models/category.Model';
@@ -42,11 +41,21 @@ export class ShopComponent {
       if (params['category']) {
         this.selectedCategory = params['category'];
         this.category = this.selectedCategory;
+        console.log("this.selectedCategory", this.selectedCategory)
         this.filterByCategory(this.commingProducts!);
       }
       if (params['price']) {
         this.selectedPrice = params['price'];
         this.OnfillterProductsBYPrice(this.selectedPrice!);
+      }
+    });
+
+    this.route.params.subscribe(params => {
+      if(params['name']) {
+        this.category = params['name'];
+        console.log("this.category", this.category)
+        this.category = this.selectedCategory;
+        this.storeService.setAllProducts(false);
       }
     });
   
@@ -57,13 +66,7 @@ export class ShopComponent {
       })
     );
   
-    this.route.params.subscribe(params => {
-      if(params['name']) {
-        this.category = params['name'];
-        this.category = this.selectedCategory;
-        this.storeService.setAllProducts(false);
-      }
-    });
+    
   
     if(!this.category) {
       this.storeService.setAllProducts(true);
@@ -76,7 +79,7 @@ export class ShopComponent {
   
   async initializeProducts() {
     await this.getProducts();
-  
+     console.log("this.getProducts")
     if (this.commingProducts) {
       if (this.selectedCategory) {
         this.filterByCategory(this.commingProducts);
@@ -97,13 +100,15 @@ export class ShopComponent {
 
 
   async getProducts(): Promise<void> {
+    console.log("11111111")
     return new Promise((resolve) => {
       this.storeService.getProducts().pipe(takeUntil(this.unsubscribe$))
         .subscribe((data: Product[]) => {
           this.commingProducts = data;
           if (this.storeService.isAllProducts()){
-            this.products = data;
+            // this.products = data;
           } else if(this.category != null ){
+            console.log("filterByCategory")
             this.filterByCategory(this.commingProducts);
           } else if (this.minNumber != null && this.maxNumber){
             this.filterByPrice(this.commingProducts);
@@ -114,9 +119,10 @@ export class ShopComponent {
   }
 
  filterByCategory(products: Product[]){
+  console.log("this.category",this.category)
    const filterProductbyCategory = products.filter(p=> p.categoryName == this.category)
    if(!this.selectedPrice){
-    console.log("dhbjdkdjdksdskdckhj")
+    console.log("44444", products)
    this.products = filterProductbyCategory;
    }
    
@@ -125,6 +131,7 @@ export class ShopComponent {
 
  filterByPrice(products: Product[]) {
      if(this.storeService.isAllProducts()){
+      console.log("666666")
     const filterProductbyprice = products.filter(p => p.price >= this.minNumber! && p.price <= this.maxNumber!)
         this.products = filterProductbyprice
      }
@@ -139,7 +146,6 @@ export class ShopComponent {
   }
 
   OnfillterProductsBYPrice(filltedProduct : string): void { 
-    console.log("illtedProductilltedProductilltedProduct") 
     let numbers = filltedProduct.match(/(\d+[\.,\d]*)/g);
     this.selectedPrice = filltedProduct;
     if (numbers && numbers.length >= 2) {
@@ -151,7 +157,10 @@ export class ShopComponent {
     }
     console.log("this.commingProducts!",this.commingProducts!) 
     this.filterByCategoryAndPrice(this.commingProducts!);
-    this.filterByPrice(this.commingProducts!);
+    if(!this.category){
+      this.filterByPrice(this.commingProducts!);
+    }
+   
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { category: this.selectedCategory, price: filltedProduct },
@@ -162,7 +171,7 @@ export class ShopComponent {
 filterByCategoryAndPrice(products: Product[]) {
   console.log("productsen")
   if(this.category && (this.minNumber !== undefined || this.maxNumber !== undefined)) {
-    console.log("this.products", products)
+    console.log("filterByCategoryAndPrice", this.category)
       this.products = products.filter(p => 
           p.categoryName === this.category &&
           (this.minNumber ? p.price >= this.minNumber : true) &&
@@ -170,7 +179,8 @@ filterByCategoryAndPrice(products: Product[]) {
       );
   } else if(this.category) {
       this.products = products.filter(p => p.categoryName === this.category);
-  } else if(this.minNumber !== undefined || this.maxNumber !== undefined) {
+  } else if(!this.category && (this.minNumber !== undefined || this.maxNumber !== undefined)) {
+    console.log("this.minNumbe3333333333")
       this.products = products.filter(p => 
           (this.minNumber ? p.price >= this.minNumber : true) &&
           (this.maxNumber ? p.price <= this.maxNumber : true)

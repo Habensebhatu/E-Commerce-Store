@@ -59,13 +59,10 @@ export class CartService {
 
     addToCart(item: ProductAddCart): void {
         item.sessionId = this.sessionId;
-        console.log(" AddsessionId ", item.sessionId);
         const token = localStorage.getItem('token');
-        console.log("token", token);
         let headers = new HttpHeaders();
         if (token) {
-            headers = headers.set('Authorization', `Bearer ${token}`);
-            console.log("headers", headers);
+            headers = headers.set('Authorization', `Bearer ${token}`)
         }
         this.httpClient.post<ProductAddCart>(`${this.apiUrl}`,item,{ headers }).subscribe(
             response => {

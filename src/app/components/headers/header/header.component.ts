@@ -33,13 +33,10 @@ export class HeaderComponent {
  Nederland = 'Nederlands-flag.png'
  Eritrea = 'Eritrea-flag.png'
  private unsubscribe$ = new Subject<void>();
- currentUser: UserRegistration | null = null;
   constructor(private cartService: CartService,  private storeService: StoreService, private router: Router, public userService: UserRegistrationService,  private wishlistService: WishlistService ) {}
 
   ngOnInit(): void {
-   this.wishlistCount();
    this.fetchWishlistProductIds();
-    this.userService.currentUser.subscribe(user => this.currentUser = user);
     this.cartService.showMenu$.subscribe(() => {
       this.openCartMenu();
     });
@@ -51,12 +48,6 @@ export class HeaderComponent {
       }
     });
    
-  }
-
-  wishlistCount(){
-    this.wishlistService.wishlistCount$.subscribe(
-      count => this.wishlistQuantity = count
-    );
   }
   
   fetchWishlistProductIds(): void {
@@ -96,7 +87,6 @@ export class HeaderComponent {
       });
   }
   
-
   getCatogories() {
     this.storeService.getCatogories()
       .pipe(takeUntil(this.unsubscribe$))
@@ -113,28 +103,16 @@ export class HeaderComponent {
     console.log('You selected: ', category);
   }
 
-  
-  
   set cart(cart: CartI) {
+    console.log("cart", cart)
     this._cart = cart;
-
     this.itemsQuantity = cart.items
       .map((item) => item.quantity)
       .reduce((prev, curent) => prev + curent, 0);
   }
 
-  
-
-  getTotal(items: ProductAddCart[]): number {
-    return this.cartService.getTotal(items);
-  }
-
   categoriesChange(category : string){
-   
     this.storeService.changeShowData(category)
   }
 
-  onClearCart(): void {
-    this.cartService.clearCart();
-  }
 }

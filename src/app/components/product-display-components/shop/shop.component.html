@@ -23,13 +23,13 @@
             <div class="mb-8 pb-8 border-b border-gray-300 ">
                 <h2 class="text-lg leading-6 font-medium tracking-tight capitalize mb-5">Categories</h2>
                 <div class="space-y-2">
-                    <a *ngFor="let category of categories" (click)="OnshowCategoty(category.name)"
+                    <a *ngFor="let categoryy of categories" (click)="OnshowCategoty(categoryy.name)"
                         class="flex items-center transition-colors duration-700"
-                        [ngClass]="{'hover:text-red-600': category.name !== selectedCategory, 'text-red-600': category.name === selectedCategory }">
+                        [ngClass]="{'hover:text-red-600': categoryy.name !== selectedCategory, 'text-red-600': categoryy.name === selectedCategory }">
                         <span
                             class="mr-2.5 w-4 h-4 p-0.5 inline-block border border-gray-300 text-transparent flex items-center justify-center"
-                            [ngClass]="{'hover:border-red-600 hover:bg-red-600 hover:text-white': category.name !== selectedCategory, 'border-red-600 bg-red-600 text-white': category.name === selectedCategory }">✓</span>
-                        {{ category.name }}
+                            [ngClass]="{'hover:border-red-600 hover:bg-red-600 hover:text-white': categoryy.name !== selectedCategory, 'border-red-600 bg-red-600 text-white': categoryy.name === selectedCategory || categoryy.name == category}">✓</span>
+                        {{ categoryy.name }}
                     </a>
                 </div>
             </div>
