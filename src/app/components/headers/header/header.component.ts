@@ -2,12 +2,11 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Subject, takeUntil } from 'rxjs';
 import { Category } from 'src/app/Models/category.Model';
-import { CartI, Product, ProductAddCart } from 'src/app/Models/product.model';
+import { CartI, Product} from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { UserRegistrationService } from 'src/app/service/user-registration.service';
-import { UserRegistration } from 'src/app/Models/ UserRegistration';
 import { WishlistService } from 'src/app/service/wishlist.service';
 
 
