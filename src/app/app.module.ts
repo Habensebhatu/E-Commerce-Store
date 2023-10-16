@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/headers/header/header.component';
 import { ProductsHeaderComponent } from './components/products/products-header/products-header.component';
 import { FiltersComponent } from './components/products/filters/filters.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -50,6 +49,7 @@ import { AppProductListComponent } from './components/product-display-components
 import { PaginationComponent } from './components/product-display-components/pagination/pagination.component';
 import { TopBarComponent } from './components/headers/top-bar/top-bar.component';
 import { HeaderAreaComponent } from './components/headers/header-area/header-area.component';
+import { HeaderComponent } from './components/headers/header/header.component';
 // register Swiper custom elements
 register();
 

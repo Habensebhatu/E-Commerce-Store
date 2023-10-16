@@ -21,6 +21,8 @@ export class DatailProductComponent {
   categoryName: string| undefined;
   wishlistProductIds: string[] = [];
   hovered = false;
+  currentPage: number = 1;
+  pageSize: number = 10;
   constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
@@ -52,7 +54,7 @@ export class DatailProductComponent {
   getProductBYCategory() {
     console.log('this.product?.categoryName!',this.product?.categoryName!)
     if (this.product?.categoryName) {
-      this.storeService.getProductBYCategory(this.product.categoryName).pipe(takeUntil(this.unsubscribe$))
+      this.storeService.getProductBYCategory(this.product.categoryName, this.currentPage, this.pageSize).pipe(takeUntil(this.unsubscribe$))
         .subscribe((data: Product[]) => {
           this.relatedProducts = data;
           console.log('this.relatedProducts', this.relatedProducts);

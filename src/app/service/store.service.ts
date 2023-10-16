@@ -1,8 +1,10 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { BehaviorSubject, Observable, min, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Product} from "../Models/product.model";
 import { Category } from "../Models/category.Model";
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 
 const STORE_BASE_URL = "https://fakestoreapi.com";
@@ -44,9 +46,42 @@ export class StoreService {
     return this.httpClient.get<Category[]>(this.apiUrlCategory);
   }
 
-  getProductBYCategory(category: string): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`${this.apiUrl}/category/${category}`);
+  getProductBYCategory(category: string, pageNumber: number, pageSize: number): Observable<Product[]> {
+    console.log("00000",category, pageNumber, pageSize);
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/category/${category}?pageNumber=${pageNumber}&pageSize=${pageSize}`);
   }
+
+
+  getProductsByNameAndPrice(params: {
+    category: string, 
+    minPrice: number, 
+    pageNumber: number, 
+    pageSize: number, 
+    maxPrice?: number
+}): Observable<Product[]> {
+    let httpParams = new HttpParams()
+        .set('minPrice', params.minPrice.toString())
+        .set('pageNumber', params.pageNumber.toString())
+        .set('pageSize', params.pageSize.toString());
+
+    if(params.maxPrice !== undefined) {
+        httpParams = httpParams.set('maxPrice', params.maxPrice.toString());
+    }
+
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/category/${params.category}/price`, {
+        params: httpParams
+    }).pipe(
+        catchError(error => {
+            if (error.status === 404) {
+                return of([]);  
+            }
+            throw error; 
+        })
+    );
+}
+
+
+  
   
   getProductBYPrice(minNumber: number, maxNumber: number): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`${this.apiUrl}/filterPrice/${minNumber}/${maxNumber}`);

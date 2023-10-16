@@ -91,7 +91,6 @@ export class ProductsComponent  implements OnInit, OnDestroy {
         this.products = filterProductbyprice
    }
    else if (!this.storeService.getAllProducts && isNaN(this.maxNumber!)){
-    // if selected filter is 25€ to more 
     const filterProductbyprice = products.filter(p => p.price >= this.minNumber!  && p.categoryName == this.category)
         this.products = filterProductbyprice
    }

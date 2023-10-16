@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-app-view-toggle',
@@ -8,8 +8,11 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class AppViewToggleComponent {
 
   @Output() viewChanged = new EventEmitter<'grid' | 'list'>();
-
+  @Input() currentPage: number = 1;
+  @Input() pageSize: number = 1;
+  @Input()  totalProductsOfCategory: number | undefined;
   activeView: 'grid' | 'list' = 'grid'; 
+  Math = Math;
 
   toggleView(view: 'grid' | 'list') {
     this.activeView = view;
