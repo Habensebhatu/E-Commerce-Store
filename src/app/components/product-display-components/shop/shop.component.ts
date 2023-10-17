@@ -34,10 +34,10 @@ export class ShopComponent {
   selectedCategory: string | undefined;
   selectedPrice: string | undefined;
   currentPage: number = 1;
-  pageSize: number = 3;
+  pageSize: number = 12;
   totalProductsOfCategory: number | undefined;
   Math = Math;
-  
+
   constructor(
     private storeService: StoreService,
     private route: ActivatedRoute,
@@ -138,6 +138,9 @@ export class ShopComponent {
 }
 
   OnfillterProductsBYPrice(filltedProduct: string): void {
+    if(this.minNumber == undefined ||  this.maxNumber == undefined){
+      this.currentPage = 1;
+    }
     let numbers = filltedProduct.match(/(\d+[\.,\d]*)/g);
     this.selectedPrice = filltedProduct;
     if (numbers && numbers.length >= 2) {
@@ -149,20 +152,39 @@ export class ShopComponent {
     }
     this.getProductsByNameAndPrice();
   }
-     
+
+  togglePriceSelection(price: string): void {
+    if (this.selectedPrice == price) {
+      console.log("this.selectedPrice")
+        this.selectedPrice = undefined; 
+        this.minNumber = undefined 
+          this.maxNumber = undefined 
+        console.log("this3333333",  this.selectedPrice)
+        this.filterByCategory(this.category!);
+        this.getProducts();
+        
+    } else {
+        this.OnfillterProductsBYPrice(price);
+    }
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { category: this.category, price: this.selectedPrice },
+      queryParamsHandling: "merge",
+  });
+}
+  
   getProductsByNameAndPrice(){
-    console.log("this.maxNumber", this.maxNumber)
     if (this.minNumber !== undefined || this.maxNumber !== undefined) {
       this.storeService.getProductsByNameAndPrice({
         category: this.category!,
         minPrice: this.minNumber!,
         pageNumber: this.currentPage,
         pageSize: this.pageSize,
-        maxPrice: this.maxNumber // This is optional, so it's okay if it's undefined
+        maxPrice: this.maxNumber 
     }).subscribe((data) => {
-        console.log("datararat", data)
         this.products = data;
         this.totalProductsOfCategory = data.length;
+        
     });
     }
     this.router.navigate([], {
@@ -235,78 +257,3 @@ export class ShopComponent {
   }
 }
 
-// filterByCategoryAndPrice(products: Product[]) {
-  //   if (this.minNumber !== undefined || this.maxNumber !== undefined) {
-  //     this.products! = products.filter(
-  //       (p) =>
-  //         (this.minNumber ? p.price >= this.minNumber : true) &&
-  //         (this.maxNumber ? p.price <= this.maxNumber : true)
-  //     );
-  //   }
-  //   this.hidePaganition = this.products!.length;
-  // }
-
-
-// filterByPrice(products: Product[]) {
-//   if (this.storeService.isAllProducts()) {
-//     const filterProductbyprice = products.filter(
-//       (p) => p.price >= this.minNumber! && p.price <= this.maxNumber!
-//     );
-//     this.products = filterProductbyprice;
-//   } else if (!this.storeService.isAllProducts() && !isNaN(this.maxNumber!)) {
-//     const filterProductbyprice = products.filter(
-//       (p) =>
-//         p.price >= this.minNumber! &&
-//         p.price <= this.maxNumber! &&
-//         p.categoryName == this.category
-//     );
-//     this.products = filterProductbyprice;
-//   } else if (!this.storeService.getAllProducts && isNaN(this.maxNumber!)) {
-//     const filterProductbyprice = products.filter(
-//       (p) => p.price >= this.minNumber! && p.categoryName == this.category
-//     );
-//     this.products = filterProductbyprice;
-//   }
-// }
-// async getProducts(): Promise<void> {
-//   return new Promise((resolve) => {
-//     this.storeService
-//       .getProducts()
-//       .pipe(takeUntil(this.unsubscribe$))
-//       .subscribe((data: Product[]) => {
-//         this.commingProducts = data;
-//         if (this.storeService.isAllProducts()) {
-//           //  this.products = data
-//         } else if (this.category != null) {
-//           this.filterByCategory();
-//         } else if (this.minNumber != null && this.maxNumber) {
-//           this.filterByPrice(this.commingProducts);
-//         }
-//         resolve();
-//       });
-//   });
-// }
-
-// async initializeProducts() {
-//   await this.getProducts();
-//   console.log("this.getProducts");
-//   if (this.commingProducts) {
-//     if (this.selectedCategory) {
-//       this.filterByCategory();
-//     }
-//     if (this.selectedPrice) {
-//       this.OnfillterProductsBYPrice(this.selectedPrice);
-//     }
-//   }
-// }
-
-// this.subs.add(
-//   this.storeService.showData$.subscribe((show) => {
-//     this.category = show;
-//     // this.getProducts();
-//   })
-// );
-
-// if (!this.category) {
-//   this.storeService.setAllProducts(true);
-// }
