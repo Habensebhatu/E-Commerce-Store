@@ -19,7 +19,7 @@
         <button mat-button style="color: white; font-size: 12px;"
           [matMenuTriggerFor]="categoriesMenu">Categories<mat-icon>arrow_drop_down</mat-icon></button>
         <mat-menu #categoriesMenu="matMenu">
-          <button mat-menu-item *ngFor="let category of categories" (click)="categoriesChange(category.name)">
+          <button mat-menu-item *ngFor="let category of categorie" (click)="categoriesChange(category.name)">
             <a [routerLink]="['/shop', category.name]">{{ category.name }} </a>
           </button>
         </mat-menu>

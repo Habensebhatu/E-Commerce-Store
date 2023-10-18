@@ -16,9 +16,14 @@ export class HeaderAreaComponent {
   currentUser: UserRegistration | null = null;
   wishlistQuantity = 0; 
   private _cart: CartI = { items: [] };
+  showAccountMenu = false;
   
   constructor(public userService: UserRegistrationService, private cartService: CartService, private wishlistService: WishlistService) {}
+ 
 
+  toggleAccountMenu() {
+     this.showAccountMenu = !this.showAccountMenu;
+  }
   ngOnInit(): void{
     this.wishlistCount();
     this.userService.currentUser.subscribe(user => this.currentUser = user);

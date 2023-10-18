@@ -77,7 +77,7 @@
         </div>
         <div id="trendingProducts_slider">
             <div class="swiper-wrapper">
-                <article class="swiper-slide productt-layout" *ngFor="let product of trendingProducts">
+                <article class="swiper-slide productt-layout" *ngFor="let product of trendingProduct">
                     <div class="productt-image relative group">
                         <a [routerLink]="['/product', product.productId]">
                             <img [src]="product.imageUrls[0].file" [alt]="product.title" [title]="product.title" />

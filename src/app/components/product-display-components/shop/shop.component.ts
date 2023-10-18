@@ -21,6 +21,7 @@ export class ShopComponent {
   ];
   activeView: "grid" | "list" = "grid";
   products: Product[] | undefined;
+  product: Product[] | undefined;
   commingProducts: Product[] | undefined;
   count = "12";
   sort = "desc";
@@ -36,6 +37,7 @@ export class ShopComponent {
   currentPage: number = 1;
   pageSize: number = 12;
   totalProductsOfCategory: number | undefined;
+  
   Math = Math;
 
   constructor(
@@ -43,8 +45,13 @@ export class ShopComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+  categorie = [
+    {name: 'food'},
+    {name: 'cosmetica'}
+];
+   ngOnInit() {
 
-  async ngOnInit() {
+    this.mockData();
     this.getProducts();
     this.route.queryParams.subscribe((params) => {
       if (params["category"]) {
@@ -94,6 +101,8 @@ export class ShopComponent {
           this.selectedPrice == null
         ) {
           this.products = data;
+          console.log("this.products",this.products)
+         
         } 
       });
   }
@@ -131,10 +140,11 @@ export class ShopComponent {
   }
 
   get totalPages(): number {
-    if (this.totalProductsOfCategory === undefined || this.totalProductsOfCategory === 0) {
-        return 0;
-    }
-    return Math.ceil(this.totalProductsOfCategory / this.pageSize);
+    // if (this.totalProductsOfCategory === undefined || this.totalProductsOfCategory === 0) {
+    //     return 0;
+    // }
+    // return Math.ceil(this.totalProductsOfCategory / this.pageSize);
+    return Math.ceil(40 / 12);
 }
 
   OnfillterProductsBYPrice(filltedProduct: string): void {
@@ -255,5 +265,186 @@ export class ShopComponent {
   onViewChanged(view: "grid" | "list") {
     this.activeView = view;
   }
+
+  mockData(){
+    this.product =
+    [
+      {
+        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
+        title: "Sieraden Etui |",
+        price: 4,
+        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
+        imageUrls: [
+          {
+            index: 0,
+             file: '../assets/image/Berbere1.jpg'
+          },
+         
+        ],
+        categoryName: "food",
+        isPopular: false,
+        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        quantity: 2,
+    
+      },
+      {
+        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
+        title: "Sieraden Etui |",
+        price: 4,
+        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
+        imageUrls: [
+          {
+            index: 0,
+             file: '../assets/image/Berbere1.jpg'
+          },
+         
+        ],
+        categoryName: "food",
+        isPopular: false,
+        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        quantity: 2,
+    
+      },
+      {
+        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
+        title: "Sieraden Etui |",
+        price: 4,
+        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
+        imageUrls: [
+          {
+            index: 0,
+             file: '../assets/image/Berbere1.jpg'
+          },
+         
+        ],
+        categoryName: "food",
+        isPopular: false,
+        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        quantity: 2,
+    
+      },
+      {
+        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
+        title: "Sieraden Etui |",
+        price: 4,
+        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
+        imageUrls: [
+          {
+            index: 0,
+             file: '../assets/image/Berbere1.jpg'
+          },
+         
+        ],
+        categoryName: "food",
+        isPopular: false,
+        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        quantity: 2,
+    
+      },
+      {
+        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
+        title: "Sieraden Etui |",
+        price: 4,
+        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
+        imageUrls: [
+          {
+            index: 0,
+             file: '../assets/image/Berbere1.jpg'
+          },
+         
+        ],
+        categoryName: "food",
+        isPopular: false,
+        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        quantity: 2,
+    
+      },
+      {
+        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
+        title: "Sieraden Etui |",
+        price: 4,
+        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
+        imageUrls: [
+          {
+            index: 0,
+             file: '../assets/image/Berbere1.jpg'
+          },
+         
+        ],
+        categoryName: "food",
+        isPopular: false,
+        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        quantity: 2,
+    
+      },
+      {
+        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
+        title: "Sieraden Etui |",
+        price: 4,
+        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
+        imageUrls: [
+          {
+            index: 0,
+             file: '../assets/image/Berbere1.jpg'
+          },
+         
+        ],
+        categoryName: "food",
+        isPopular: false,
+        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        quantity: 2,
+    
+      },
+      {
+        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
+        title: "Sieraden Etui |",
+        price: 4,
+        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
+        imageUrls: [
+          {
+            index: 0,
+             file: '../assets/image/Berbere1.jpg'
+          },
+         
+        ],
+        categoryName: "food",
+        isPopular: false,
+        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        quantity: 2,
+    
+      },
+      {
+        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
+        title: "Sieraden Etui |",
+        price: 4,
+        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
+        imageUrls: [
+          {
+            index: 0,
+             file: '../assets/image/Berbere1.jpg'
+          },
+         
+        ],
+        categoryName: "food",
+        isPopular: false,
+        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
+        quantity: 2,
+    
+      },
+      
+      
+    ]
+  }
+  	
+ 
 }
 

@@ -11,9 +11,9 @@
                         <div class="shop-products-wrapper">
                             <div class="tab-content">
                                 <app-app-product-grid *ngIf="activeView === 'grid'"
-                                    [products]="products"></app-app-product-grid>
+                                    [products]="product"></app-app-product-grid>
                                 <app-app-product-list *ngIf="activeView === 'list'"
-                                    [products]="products"></app-app-product-list>
+                                    [products]="product"></app-app-product-list>
                             </div>
                         </div>
                         <!-- paganition -->
@@ -25,8 +25,7 @@
                                             pageSize, totalProductsOfCategory!)}} of {{totalProductsOfCategory}}</p>
                                     </div>
                                     <ul class="flex items-center space-x-2">
-                                        <li class="flex-1 text-left" *ngIf="products && 
-                                        (totalProductsOfCategory! > pageSize || currentPage > 1)">
+                                        <li class="flex-1 text-left">
                                             <div class="text-sm flex items-center" (click)="previousPage()">
                                                 <mat-icon>chevron_left</mat-icon>
                                                 <span>Previous</span>
@@ -39,8 +38,7 @@
                                             <div class="text-sm cursor-pointer px-2 py-1 hover:bg-blue-400"
                                                 (click)="goToPage(i + 1)">{{ i + 1 }}</div>
                                         </li>
-                                        <li class="flex-1 text-right" *ngIf="currentPage < totalPages && products && 
-                                        (totalProductsOfCategory! > pageSize || currentPage > 1)">
+                                        <li class="flex-1 text-right">
                                             <div class="text-sm flex items-center justify-end" (click)="nextPage()">
                                                 <span>Next</span>
                                                 <mat-icon>chevron_right</mat-icon>
@@ -59,7 +57,7 @@
             <div class="mb-8 pb-8 border-b border-gray-300 ">
                 <h2 class="text-lg leading-6 font-medium tracking-tight capitalize mb-5">Categories</h2>
                 <div class="space-y-2">
-                    <a *ngFor="let categoryy of categories" (click)="OnshowCategoty(categoryy.name)"
+                    <a *ngFor="let categoryy of categorie" (click)="OnshowCategoty(categoryy.name)"
                         class="flex items-center transition-colors duration-700"
                         [ngClass]="{'hover:text-red-600': categoryy.name !== selectedCategory, 'text-red-600': categoryy.name === selectedCategory }">
                         <span
@@ -84,3 +82,21 @@
             </div>
         </div>
     </div>
+
+
+    <!-- <li class="flex-1 text-right" *ngIf="currentPage < totalPages && products && 
+    (totalProductsOfCategory! > pageSize || currentPage > 1)">
+        <div class="text-sm flex items-center justify-end" (click)="nextPage()">
+            <span>Next</span>
+            <mat-icon>chevron_right</mat-icon>
+        </div>
+    </li> -->
+
+    <!-- <ul class="flex items-center space-x-2">
+        <li class="flex-1 text-left" *ngIf="products && 
+        (totalProductsOfCategory! > pageSize || currentPage > 1)">
+            <div class="text-sm flex items-center" (click)="previousPage()">
+                <mat-icon>chevron_left</mat-icon>
+                <span>Previous</span>
+            </div>
+        </li> -->
