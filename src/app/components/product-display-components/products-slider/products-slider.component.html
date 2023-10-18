@@ -1,0 +1,31 @@
+<div class="categories-slider-wrapper">
+    <div id="categories_slider">
+        <div class="swiper-wrapper">
+            <article class="swiper-slide product-layout" *ngFor="let product of products">
+                <div class="product-image">
+                    <a (click)="handleProductClick(product)">
+                        <img [src]="product.imageUrls[0].file" />
+                    </a>
+
+                </div>
+                <div class="product-caption">
+                    <div class="product-meta d-flex justify-content-between align-items-center">
+                        <div class="product-manufacturer">
+                            <p > {{product.categoryName}}</p>
+
+                        </div>
+                    </div>
+                    <h4 class="product-name">
+                        <p > {{product.title}}</p>
+                    </h4>
+                    <p class="product-price">
+                        <span>€{{ product.price }}</span>
+
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="swiper-arrow next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-arrow prev"><i class="fa fa-angle-left"></i></div>
+</div>

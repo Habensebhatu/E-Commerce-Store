@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { ProductsHeaderComponent } from './components/products/products-header/products-header.component';
-import { FiltersComponent } from './components/products/filters/filters.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PaymentSuccessComponent } from './stripe/payment-success/payment-success.component';
 import { PaymentCancelledComponent } from './stripe/payment-cancelled/payment-cancelled.component';
@@ -36,11 +34,8 @@ import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './components/login/login.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CartComponent } from './components/cart/cart.component';
-import { ProductsComponent } from './components/products/products.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-import { ProductBoxComponent } from './components/products/product-box/product-box.component';
-import { ProductsSliderComponent } from './components/products/products-slider/products-slider.component';
 import { ShopComponent } from './components/product-display-components/shop/shop.component';
 import { BreadcrumbComponent } from './components/product-display-components/breadcrumb/breadcrumb.component';
 import { AppViewToggleComponent } from './components/product-display-components/app-view-toggle/app-view-toggle.component';
@@ -50,6 +45,7 @@ import { PaginationComponent } from './components/product-display-components/pag
 import { TopBarComponent } from './components/headers/top-bar/top-bar.component';
 import { HeaderAreaComponent } from './components/headers/header-area/header-area.component';
 import { HeaderComponent } from './components/headers/header/header.component';
+import { ProductsSliderComponent } from './components/product-display-components/products-slider/products-slider.component';
 // register Swiper custom elements
 register();
 
@@ -57,16 +53,11 @@ register();
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProductsComponent,
-    ProductsHeaderComponent,
-    FiltersComponent,
-    ProductBoxComponent,
     FooterComponent,
     DatailProductComponent,
     PaymentSuccessComponent,
     PaymentCancelledComponent,
     HomepageComponent,
-    ProductsSliderComponent,
     RegisterComponent,
     LoginComponent,
     WishlistComponent,
@@ -81,6 +72,7 @@ register();
     PaginationComponent,
     TopBarComponent,
     HeaderAreaComponent,
+    ProductsSliderComponent,
    
    
  

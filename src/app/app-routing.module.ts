@@ -9,21 +9,12 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
-import { ProductsComponent } from './components/products/products.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ShopComponent } from './components/product-display-components/shop/shop.component';
 
 
 const routes: Routes = [
-  {
-    path: "products/:name",
-    component: ProductsComponent ,
-  },
-  {
-    path: "products",
-    component: ProductsComponent ,
-  },
   {
     path: "cart",
     component: CartComponent,
