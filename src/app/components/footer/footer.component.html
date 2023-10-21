@@ -32,110 +32,119 @@
     </div>
 </footer> -->
 
-
 <!-- footer.component.html -->
 
-<footer class="bg-[#242424] pt-12 mt-20">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-wrap">
-        <div class="w-full md:w-1/2 lg:w-1/4 mr-20 ml-4">
-          <!-- ... your code for the first column ... -->
-          <aside class="widget-container">
-            <div class="widget-content">
-                <div class="footer-logo mb-half">
-                    <img [src]="'../../../assets/image/' + log" alt="Logo" />
-                </div>
-                <p>We are a team of designers and developers that create high quality Magento, Prestashop, Opencart.</p>
-                <div class="footer-contact">
-                    <p><span>Address:</span>6688Princess Road, London, Greater London BAS 23JK, UK</p>
-                    <p><span>Phone:</span><a href="#">(012) 800 456 789-987</a></p>
-                    <p><span>Email:</span><a href="#">support@example.com</a></p>
-                </div>
-            </div> <!-- end of widget-content -->
+<footer class="bg-[#242424] py-12 lg:py-16">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap">
+      <div class="w-full md:w-1/2 lg:w-1/4 lg:mr-20">
+        <!-- ... your code for the first column ... -->
+        <aside class="widget-container">
+          <div class="widget-content">
+            <div class="footer-logo mb-half">
+              <img [src]="'../../../assets/image/' + log" alt="Logo" />
+            </div>
+            <p>
+              We are a team of designers and developers that create high quality
+              Magento, Prestashop, Opencart.
+            </p>
+            <div class="footer-contact">
+              <p>
+                <span>Address:</span>6688Princess Road, London, Greater London
+                BAS 23JK, UK
+              </p>
+              <p><span>Phone:</span><a href="#">(012) 800 456 789-987</a></p>
+              <p><span>Email:</span><a href="#">support@example.com</a></p>
+            </div>
+          </div>
+          <!-- end of widget-content -->
         </aside>
-        </div>
-  
-        <div class="w-full md:w-1/2 lg:w-1/6">
-          <!-- ... your code for the second column ... -->
-          <aside class="widget-content">
-            <h4 class="widgettitle">Products</h4>
-            <div >
-                <div class="widgetized-menu mt-12">
-                    <ul class="list-unstyled">
-                        <li><a href="#">Prices drop</a></li>
-                        <li><a href="#">New Products</a></li>
-                        <li><a href="#">Best Sales</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
-                </div>
-            </div> <!-- end of widget-content -->
-        </aside> <!-- end of widget-container -->
-        </div>
-  
-        <div class="w-full md:w-1/2 lg:w-1/6">
-          <!-- ... your code for the third column ... -->
-          <aside class="widget-container">
-            <h4 class="widgettitle">Our Company</h4>
-            <div class="widget-content">
-                <div class="widgetized-menu mt-12">
-                    <ul class="list-unstyled">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Site Map</a></li>
-                        <li><a href="#">Stores</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
-                        <li><a href="#">My Account</a></li>
-                    </ul>
-                </div>
-            </div> <!-- end of widget-content -->
-        </aside> <!-- end of widget-container -->
-        </div>
-  
-        <div class="w-full md:w-1/2 lg:w-2/6">
-          <!-- ... your code for the fourth column ... -->
-            <h4 class="widgettitle">Sign up for our newsletter</h4>
-            <div>
-                <div class="mt-10">
-                <p class="mb-3 text-sm text-[#c0c0c0]">You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.</p>
-                </div>
-                <form>
-                    <div class="flex items-center space-x-3">
-                     
-                        <!-- <mat-form-field appearance="fill" class="flex-grow">
+      </div>
+
+      <div class="w-full md:w-1/2 lg:w-1/6 mt-12 lg:mt-0">
+        <!-- ... your code for the second column ... -->
+        <aside class="widget-content">
+          <h4 class="widgettitle">Products</h4>
+          <div>
+            <div class="widgetized-menu mt-6 lg:mt-10">
+              <ul class="list-unstyled">
+                <li><a href="#">Prices drop</a></li>
+                <li><a href="#">New Products</a></li>
+                <li><a href="#">Best Sales</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Login</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- end of widget-content -->
+        </aside>
+        <!-- end of widget-container -->
+      </div>
+
+      <div class="w-full md:w-1/2 lg:w-1/6 mt-12 lg:mt-0">
+        <!-- ... your code for the third column ... -->
+        <aside class="widget-container">
+          <h4 class="widgettitle">Our Company</h4>
+          <div class="widget-content">
+            <div class="widgetized-menu mt-6 lg:mt-10">
+              <ul class="list-unstyled">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Site Map</a></li>
+                <li><a href="#">Stores</a></li>
+                <li><a href="#">Terms &amp; Conditions</a></li>
+                <li><a href="#">My Account</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- end of widget-content -->
+        </aside>
+        <!-- end of widget-container -->
+      </div>
+
+      <div class="w-full md:w-1/2 lg:w-2/6 mt-12 lg:mt-0">
+        <!-- ... your code for the fourth column ... -->
+        <h4 class="widgettitle">Sign up for our newsletter</h4>
+        <div>
+          <div class="mt-6 lg:mt-10">
+            <p class="mb-3 text-sm text-[#c0c0c0]">
+              You may unsubscribe at any moment. For that purpose, please find
+              our contact info in the legal notice.
+            </p>
+          </div>
+          <form>
+            <div class="flex items-center space-x-3 mt-4">
+              <!-- <mat-form-field appearance="fill" class="flex-grow">
                             <mat-label>Your Email Address</mat-label>
                             <input matInput type="email" autocomplete="off" required>
                         </mat-form-field> -->
-        
-                      
-                        <button mat-raised-button color="primary" type="submit">Sign Up</button>
-                    </div>
-                </form>
-        
-               
-                <div class="mailchimp-alerts mt-3">
-                    <div class="mailchimp-submitting"></div>
-                    <div class="mailchimp-success"></div>
-                    <div class="mailchimp-error"></div>
-                </div>
+
+              <button mat-raised-button color="primary" type="submit">
+                Sign Up
+              </button>
             </div>
-      
-        
-        </div>
-      </div>
-    </div>
-  
-    <!-- Footer Copyright -->
-    <div class="bg-secondary">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-wrap items-center">
-          <div class="w-full md:w-1/2 lg:w-1/2">
-            <!-- ... your code for the copyright section ... -->
-          </div>
-          <div class="w-full md:w-1/2 lg:w-1/2">
-            <!-- ... your code for the payment icons ... -->
+          </form>
+
+          <div class="mailchimp-alerts mt-3">
+            <div class="mailchimp-submitting"></div>
+            <div class="mailchimp-success"></div>
+            <div class="mailchimp-error"></div>
           </div>
         </div>
       </div>
     </div>
-  </footer>
-  
+  </div>
+
+  <!-- Footer Copyright -->
+  <div class="bg-secondary">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap items-center">
+        <div class="w-full md:w-1/2 lg:w-1/2">
+          <!-- ... your code for the copyright section ... -->
+        </div>
+        <div class="w-full md:w-1/2 lg:w-1/2">
+          <!-- ... your code for the payment icons ... -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
