@@ -1,24 +1,40 @@
-<div class="py-12 border-t border-b border-f1f1f2 bg-[#F4F5F7] ">
-  <div class="mx-auto px-4">
+<div class="container mx-auto px-4 mt-8">
+  <div class="py-6 border-0 rounded-md border-f1f1f2 bg-[#F4F5F7]">
+    <div class="mx-auto px-4">
       <div class="flex justify-center items-center">
-          <nav class="breadcrumb flex space-x-2">
-              <a class="breadcrumb-item text-gray-600 text-sm" href="index.html">Home</a>
-              <span class="material-icons text-gray-600 my-0 mx-1 -mt-1">chevron_right</span>
-              <span class="breadcrumb-item text-red-500 font-medium text-sm">Cart</span>
-          </nav>
+        <nav class="breadcrumb flex space-x-2">
+          <a
+            class="breadcrumb-item text-gray-600 hover:text-red-500 text-sm"
+            href="index.html"
+            >Home</a
+          >
+          <span class="material-icons text-md text-gray-400 my-0 mx-1 -mt-1"
+            >chevron_right</span
+          >
+          <span class="breadcrumb-item text-red-500 font-medium text-sm"
+            >Cart</span
+          >
+        </nav>
       </div>
+    </div>
   </div>
 </div>
 <div class="w-full p-0 m-0 pb-80 space-y-4 mt-5">
-  <mat-card class="max-w-7xl mx-auto " *ngIf="cart.items.length"> 
+  <mat-card class="max-w-7xl mx-auto" *ngIf="cart.items.length">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="product">
         <th mat-header-cell *matHeaderCellDef>Product</th>
         <td mat-cell *matCellDef="let element">
-          <img src="{{ element.imageUrl }}" alt="product" class="w-[100px] my-5" />
+          <img
+            src="{{ element.imageUrl }}"
+            alt="product"
+            class="w-[100px] my-5"
+          />
         </td>
         <td mat-footer-cell *matFooterCellDef>
-          <button (click)="getProducts()" mat-raised-button routerLink="/home">Ga verder met winkelen</button>
+          <button (click)="getProducts()" mat-raised-button routerLink="/home">
+            Ga verder met winkelen
+          </button>
         </td>
       </ng-container>
       <ng-container matColumnDef="name">
@@ -30,26 +46,28 @@
       </ng-container>
       <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef>Prijs</th>
-        <td mat-cell *matCellDef="let element">{{ element.price | currency }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.price | currency }}
+        </td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
       <ng-container matColumnDef="quantity">
         <th mat-header-cell *matHeaderCellDef>Aantal</th>
         <td mat-cell *matCellDef="let element">
-            <div class="flex justify-start">
-                <div class="flex items-center">
-                    <button mat-icon-button (click)="onRemoveQuantity(element)">
-                        <mat-icon>remove</mat-icon>
-                    </button>
-                    <span class="-mx-2">{{ element.quantity }}</span>
-                    <button mat-icon-button (click)="onAddQuantity(element)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
+          <div class="flex justify-start">
+            <div class="flex items-center">
+              <button mat-icon-button (click)="onRemoveQuantity(element)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span class="-mx-2">{{ element.quantity }}</span>
+              <button mat-icon-button (click)="onAddQuantity(element)">
+                <mat-icon>add</mat-icon>
+              </button>
             </div>
+          </div>
         </td>
         <td mat-footer-cell *matFooterCellDef></td>
-    </ng-container>  
+      </ng-container>
       <ng-container matColumnDef="total">
         <th mat-header-cell *matHeaderCellDef>Totaal</th>
         <td mat-cell *matCellDef="let element">
@@ -63,30 +81,34 @@
       </ng-container>
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>
-          <button mat-raised-button color="warn" class="float-right"  (click)="onClearCart()">
+          <button
+            mat-raised-button
+            color="warn"
+            class="float-right"
+            (click)="onClearCart()"
+          >
             Alles verwijderen
           </button>
-         
         </th>
         <td mat-cell *matCellDef="let element">
           <button
             mat-mini-fab
             color="warn"
-            class="float-right"  (click)="onRemoveFromCart(element)"
+            class="float-right"
+            (click)="onRemoveFromCart(element)"
           >
             <mat-icon>close</mat-icon>
           </button>
-          
         </td>
         <td mat-footer-cell *matFooterCellDef>
           <button
-          (click)="onCheckout()"
-          mat-raised-button
-          color="primary"
-          class="float-right"
-        >
-          Ga naar afrekenen
-        </button>
+            (click)="onCheckout()"
+            mat-raised-button
+            color="primary"
+            class="float-right"
+          >
+            Ga naar afrekenen
+          </button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -102,16 +124,20 @@
     </mat-card-header>
     <mat-card-content class="text-center py-8">
       <p class="text-lg">
-        Het lijkt erop dat u nog geen artikelen aan uw winkelwagen heeft toegevoegd. 
-        Begin met winkelen om uw favoriete items te vinden!
+        Het lijkt erop dat u nog geen artikelen aan uw winkelwagen heeft
+        toegevoegd. Begin met winkelen om uw favoriete items te vinden!
       </p>
     </mat-card-content>
     <mat-divider></mat-divider>
     <mat-card-actions class="justify-center pt-8">
-      <button mat-raised-button color="primary" routerLink="/home" (click)="getProducts()">
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/home"
+        (click)="getProducts()"
+      >
         Begin met winkelen
       </button>
     </mat-card-actions>
   </mat-card>
-  </div>
-  
+</div>

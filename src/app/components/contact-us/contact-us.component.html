@@ -1,130 +1,213 @@
-<div class="py-12 border-t border-b border-f1f1f2 bg-[#F4F5F7]">
+<div class="container mx-auto px-4 mt-8">
+  <div class="py-6 border-0 rounded-md border-f1f1f2 bg-[#F4F5F7]">
     <div class="mx-auto px-4">
-        <div class="flex justify-center items-center">
-            <nav class="breadcrumb flex space-x-2">
-                <a class="breadcrumb-item text-gray-600 text-sm" href="index.html">Home</a>
-                <span class="material-icons text-gray-600 my-0 mx-1 -mt-1">chevron_right</span>
-                <span class="breadcrumb-item text-red-500 font-medium text-sm">Contact Us</span>
-            </nav>
-        </div>
+      <div class="flex justify-center items-center">
+        <nav class="breadcrumb flex space-x-2">
+          <a
+            class="breadcrumb-item text-gray-600 hover:text-red-500 text-sm"
+            href="index.html"
+            >Home</a
+          >
+          <span class="material-icons text-md text-gray-400 my-0 mx-1 -mt-1"
+            >chevron_right</span
+          >
+          <span class="breadcrumb-item text-red-500 font-medium text-sm"
+            >Contact Us</span
+          >
+        </nav>
+      </div>
     </div>
+  </div>
 </div>
-<section class="py-12 bg-white">
-    <div class="mx-auto px-4 max-w-7xl">
-        <div class="flex flex-wrap justify-center -mx-2 items-stretch">
-            <!-- Google Maps Section -->
-            <div class="w-full md:w-5/12 px-2 mb-8 md:mb-0">
-                <div class="relative overflow-hidden rounded-lg h-full">
-                    <iframe class="absolute top-0 left-0 w-full h-full"
-                        src="https://maps.google.com/maps?q=Lijster%208,%20hoorn,%20Netherlands&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        frameborder="0"></iframe>
-                </div>
-            </div>
-            <!-- Contact Form Section -->
-            <div class="w-full md:w-5/12 px-2 flex">
-                <div class="contact-form-wrapper w-full flex flex-col h-full bg-gray-200 p-8 rounded-lg">
-                    <div class="section-title left-aligned with-border mb-8">
-                        <h2 class="text-black text-xl mb-2">Get In Touch</h2>
-                    </div>
-                    <!-- ... -->
-                    <form [formGroup]="contactForm" (submit)="onSubmit()" class="flex-grow flex flex-col">
-                        <div class="form-row flex mb-2">
-                            <div class="w-full md:w-1/2 px-2 mb-4">
-                                <input formControlName="name" type="text" id="name"
-                                    class="form-input w-full h-10 pl-4 mb-2 bg-white" placeholder="Your Name *"
-                                    required>
-                                <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty ||contactForm.get('name')?.touched)"
-                                    class="text-red-500">
-                                    Naam is verplicht.
-                                </div>
-                            </div>
-                            <div class="w-full md:w-1/2 px-2 mb-4">
-                                <input formControlName="email" type="email"
-                                    class="form-input w-full h-10 pl-4 mb-2 bg-white" placeholder="Your Email *"
-                                    required>
-                                <div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)"
-                                    class="text-red-500">
-                                    Verplicht geldig e-mailadres.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <input formControlName="phone" type="tel"
-                                class="form-input w-full h-10 pl-4 mb-2 bg-white" id="telephoneNumber"
-                                placeholder="Your Telephone Number" required>
-                            <div *ngIf="contactForm.get('phone')?.invalid && (contactForm.get('phone')?.dirty || contactForm.get('Telephone')?.touched)"
-                                class="text-red-500">
-                                Verplicht geldig telefoonnummer.
-                            </div>
-                        </div>
-
-                        <div class="mb-4 flex-grow">
-                            <textarea formControlName="body" class="form-input w-full pl-4 bg-white" rows="5"
-                                placeholder="Type Your Message....." required></textarea>
-                        </div>
-                        <div class="flex-none">
-                            <button [disabled]="!contactForm.valid" name="send_message" type="submit"
-                                class="btn btn-secondary bg-red-600 text-white py-2 px-4 rounded">Send Your
-                                Message</button>
-                        </div>
-                    </form>
-                    <!-- ... -->
-
-                    <p class="form-message mt-4"></p>
-                </div>
-            </div>
+<section class="container mx-auto px-4 pt-6 pb-16 md:py-16 bg-white">
+  <div class="mx-auto lg:max-w-7xl">
+    <div class="flex flex-wrap justify-center -mx-2 items-stretch">
+      <!-- Google Maps Section -->
+      <div class="w-full md:w-6/12 xl:w-5/12 md:px-3 mb-8 md:mb-0">
+        <div class="relative overflow-hidden rounded-lg h-full">
+          <iframe
+            class="absolute top-0 left-0 w-full h-full"
+            src="https://maps.google.com/maps?q=Lijster%208,%20hoorn,%20Netherlands&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            frameborder="0"
+          ></iframe>
         </div>
+      </div>
+      <!-- Contact Form Section -->
+      <div class="w-full md:w-6/12 xl:w-5/12 md:px-3 flex">
+        <div
+          class="contact-form-wrapper w-full flex flex-col h-full bg-gray-200 p-8 rounded-lg p-4"
+        >
+          <div class="section-title left-aligned with-border mb-8">
+            <h2 class="text-black text-xl mb-2">Get In Touch</h2>
+          </div>
+          <!-- ... -->
+          <form
+            [formGroup]="contactForm"
+            (submit)="onSubmit()"
+            class="flex-grow flex flex-col"
+          >
+            <div class="form-row flex mb-2">
+              <div class="w-full md:w-1/2 px-2 mb-4">
+                <input
+                  formControlName="name"
+                  type="text"
+                  id="name"
+                  class="form-input w-full h-10 pl-4 mb-2 bg-white"
+                  placeholder="Your Name *"
+                  required
+                />
+                <div
+                  *ngIf="
+                    contactForm.get('name')?.invalid &&
+                    (contactForm.get('name')?.dirty ||
+                      contactForm.get('name')?.touched)
+                  "
+                  class="text-red-500"
+                >
+                  Naam is verplicht.
+                </div>
+              </div>
+              <div class="w-full md:w-1/2 px-2 mb-4">
+                <input
+                  formControlName="email"
+                  type="email"
+                  class="form-input w-full h-10 pl-4 mb-2 bg-white"
+                  placeholder="Your Email *"
+                  required
+                />
+                <div
+                  *ngIf="
+                    contactForm.get('email')?.invalid &&
+                    (contactForm.get('email')?.dirty ||
+                      contactForm.get('email')?.touched)
+                  "
+                  class="text-red-500"
+                >
+                  Verplicht geldig e-mailadres.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <input
+                formControlName="phone"
+                type="tel"
+                class="form-input w-full h-10 pl-4 mb-2 bg-white"
+                id="telephoneNumber"
+                placeholder="Your Telephone Number"
+                required
+              />
+              <div
+                *ngIf="
+                  contactForm.get('phone')?.invalid &&
+                  (contactForm.get('phone')?.dirty ||
+                    contactForm.get('Telephone')?.touched)
+                "
+                class="text-red-500"
+              >
+                Verplicht geldig telefoonnummer.
+              </div>
+            </div>
+
+            <div class="mb-4 flex-grow">
+              <textarea
+                formControlName="body"
+                class="form-input w-full pl-4 bg-white"
+                rows="5"
+                placeholder="Type Your Message....."
+                required
+              ></textarea>
+            </div>
+            <div class="flex-none">
+              <button
+                [disabled]="!contactForm.valid"
+                name="send_message"
+                type="submit"
+                class="btn btn-secondary bg-red-600 text-white py-2 px-4 rounded"
+              >
+                Send Your Message
+              </button>
+            </div>
+          </form>
+          <!-- ... -->
+
+          <p class="form-message mt-4"></p>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="bg-[#F4F5F7] py-12 mt-12">
-    <div class="mx-auto px-4 max-w-7xl">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Location Box -->
-            <div
-                class="info-box border border-gray-300 p-10 text-center bg-white flex flex-col items-center justify-center space-y-4  ">
-                <div class="info-icon mb-5  w-full flex justify-center">
-                    <div
-                        class="w-16 h-16 bg-red-200 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors duration-300 hover:text-white">
-                        <mat-icon aria-hidden="false" aria-label="Location icon">location_on</mat-icon>
-                    </div>
-                </div>
-                <div class="info-content w-full flex flex-col items-center justify-center">
-                    <h4 class="text-lg mb-2">Our Location</h4>
-                    <p class="text-base mb-1">123 North Avenue, Santa Rosa</p>
-                    <p class="text-base">California</p>
-                </div>
-            </div>
-            <!-- Contact Box -->
-            <div
-                class="info-box border border-gray-300 p-10 text-center bg-white flex flex-col items-center justify-center space-y-4">
-                <div class="info-icon mb-5 text-red-500">
-                    <div
-                        class="w-16 h-16 bg-red-200 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors duration-300 hover:text-white">
-                        <mat-icon aria-hidden="false" aria-label="Phone icon">call</mat-icon>
-                    </div>
-                </div>
-                <div class="info-content">
-                    <h4 class="text-xl mb-2">Contact Us Anytime</h4>
-                    <p class="text-gray-600 text-base mb-1">Mobile: <a href="#">(+1) 800 555 888</a></p>
-                    <p class="text-gray-600 text-base">Fax: (+1) 800 666 999</p>
-                </div>
-            </div>
-            <div
-                class="info-box border border-gray-300 p-10 text-center bg-white flex flex-col  items-center justify-centerspace-y-4">
-                <div class="info-icon mb-5 text-red-500">
-                    <div
-                        class="w-16 h-16 bg-red-200 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors duration-300 hover:text-white">
-                        <mat-icon aria-hidden="false" aria-label="Mail icon">email</mat-icon>
-                    </div>
-                </div>
-                <div class="info-content">
-                    <h4 class="text-xl mb-2">Write Some Words</h4>
-                    <p class="text-gray-600 text-base mb-1"><a
-                            href="mailto:support24/7@example.com">support24/7@example.com</a></p>
-                    <p class="text-gray-600 text-base"><a href="mailto:contact@example.com">contact@example.com</a></p>
-                </div>
-            </div>
+<section class="bg-[#F4F5F7] py-16">
+  <div class="container mx-auto px-4 lg:px-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Location Box -->
+      <div
+        class="info-box border border-gray-100 p-10 rounded-md text-center bg-white flex flex-col items-center justify-center space-y-4"
+      >
+        <div class="info-icon text-red-500 mb-5 w-full flex justify-center">
+          <div
+            class="w-16 h-16 bg-red-200 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors duration-300 hover:text-white"
+          >
+            <mat-icon aria-hidden="false" aria-label="Location icon"
+              >location_on</mat-icon
+            >
+          </div>
         </div>
+        <div
+          class="info-content w-full flex flex-col items-center justify-center"
+        >
+          <h4 class="text-lg mb-2">Our Location</h4>
+          <p class="text-base mb-1">123 North Avenue, Santa Rosa</p>
+          <p class="text-base">California</p>
+        </div>
+      </div>
+      <!-- Contact Box -->
+      <div
+        class="info-box border border-gray-100 p-10 rounded-md text-center bg-white flex flex-col items-center justify-center space-y-4"
+      >
+        <div class="info-icon mb-5 text-red-500">
+          <div
+            class="w-16 h-16 bg-red-200 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors duration-300 hover:text-white"
+          >
+            <mat-icon aria-hidden="false" aria-label="Phone icon"
+              >call</mat-icon
+            >
+          </div>
+        </div>
+        <div class="info-content">
+          <h4 class="text-xl mb-2">Contact Us Anytime</h4>
+          <p class="text-gray-600 text-base mb-1">
+            Mobile: <a href="#" class="hover:text-red-500">(+1) 800 555 888</a>
+          </p>
+          <p class="text-gray-600 text-base">Fax: (+1) 800 666 999</p>
+        </div>
+      </div>
+      <div
+        class="info-box border border-gray-100 p-10 rounded-md text-center bg-white flex flex-col items-center justify-centerspace-y-4"
+      >
+        <div class="info-icon mb-5 text-red-500">
+          <div
+            class="w-16 h-16 bg-red-200 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors duration-300 hover:text-white"
+          >
+            <mat-icon aria-hidden="false" aria-label="Mail icon"
+              >email</mat-icon
+            >
+          </div>
+        </div>
+        <div class="info-content">
+          <h4 class="text-xl mb-2">Write Some Words</h4>
+          <p class="text-gray-600 text-base mb-1">
+            <a href="mailto:support24/7@example.com" class="hover:text-red-500"
+              >support24/7@example.com</a
+            >
+          </p>
+          <p class="text-gray-600 text-base">
+            <a href="mailto:contact@example.com" class="hover:text-red-500"
+              >contact@example.com</a
+            >
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
 </section>

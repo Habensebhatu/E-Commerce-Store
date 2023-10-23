@@ -1,40 +1,65 @@
-<div class="tab-pane anime-tab" role="tabpanel">
-    <div *ngFor="let product of  products">
-        <article
-            class="wish-product flex py-4 items-start hover:shadow-2xl transition-all duration-300 relative p-4 mt-4 mb-4">
-            <div class="w-1/4 pr-4 relative">
-                <img [src]="product.imageUrls[0].file" class="w-full object-cover h-60 hover:opacity-50" />
-                <div
-                    class="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                    <button (click)="onAddToCart(product)" class="mx-2 p-1 bg-white rounded-full">
-                        <mat-icon class="text-gray-500">shopping_cart</mat-icon>
-                    </button>
-                    <button class="mx-2 p-1 bg-white rounded-full"
-                        (click)="navigateToProductDetails(product.productId)">
-                        <mat-icon class="text-blue-500">visibility</mat-icon>
-                    </button>
-                    <div (click)="onAddToWishlist(product.productId)"
-                        class="mx-2 p-1 bg-white rounded-full hover:text-white cursor-pointer">
-                        <mat-icon *ngIf="!isInWishlist(product.productId)" aria-hidden="false"
-                            aria-label="Example heart icon" class="hover:bg-red-500 ">favorite_border</mat-icon>
-                        <mat-icon *ngIf="isInWishlist(product.productId)" aria-hidden="false"
-                            aria-label="Example heart icon" class="text-red-500">favorite</mat-icon>
-                    </div>
-                </div>
-            </div>
-            <div class="w-3/4 flex flex-col justify-between">
-                <div>
-                    <p>{{product.categoryName}}</p>
-                    <h4 class="product-name mt-2">{{product.title}}</h4>
-                    <p class="product-price mt-2 mb-4">€{{ product.price }}</p>
-                    <p class="mt-4 border-t pt-4 text-gray-600">{{"Nunc facilisis
+<div class="tab-pane anime-tab mt-4" role="tabpanel">
+  <div *ngFor="let product of products">
+    <article
+      class="wish-product flex items-center py-4 items-start hover:shadow-2xl transition-all duration-300 relative p-4 mt-4 mb-6"
+    >
+      <div class="w-1/4 pr-4 relative">
+        <img
+          [src]="product.imageUrls[0].file"
+          class="w-full object-cover rounded-md h-60 hover:opacity-50"
+        />
+        <div
+          class="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300"
+        >
+          <button
+            (click)="onAddToCart(product)"
+            class="w-10 h-10 flex items-center justify-center mx-1 p-1 bg-white hover:bg-gray-500 text-gay-500 hover:text-white rounded-full"
+          >
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+          <button
+            class="w-10 h-10 flex items-center justify-center mx-1 p-1 bg-white hover:bg-blue-500 text-blue-500 hover:text-white rounded-full"
+            (click)="navigateToProductDetails(product.productId)"
+          >
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <div
+            (click)="onAddToWishlist(product.productId)"
+            class="w-10 h-10 flex items-center justify-center mx-1 p-1 bg-white hover:bg-red-500 text-red-500 hover:text-white rounded-full cursor-pointer"
+          >
+            <mat-icon
+              *ngIf="!isInWishlist(product.productId)"
+              aria-hidden="false"
+              aria-label="Example heart icon"
+              class="hover:bg-red-500"
+              >favorite_border</mat-icon
+            >
+            <mat-icon
+              *ngIf="isInWishlist(product.productId)"
+              aria-hidden="false"
+              aria-label="Example heart icon"
+              class="text-red-500"
+              >favorite</mat-icon
+            >
+          </div>
+        </div>
+      </div>
+      <div class="w-3/4 flex flex-col justify-between">
+        <div>
+          <p class="text-lg">{{ product.categoryName }}</p>
+          <h4 class="product-name mt-2">{{ product.title }}</h4>
+          <p class="product-price mt-2 mb-4">€{{ product.price }}</p>
+          <p class="mt-4 border-t pt-4 text-gray-600">
+            {{
+              "Nunc facilisis
                         sagittis ullamcorper. Proin lectus ipsum, gravida et mattis
                         vulputate tristique ut lectus. Sed et lorem nunc. Vestibulum
                         ante ipsum primis in faucibus orci luctus et ultrices posuere
-                        cubilia Curae Aenean eleifend"}} </p>
-
-                </div>
-            </div>
-        </article>
-    </div>
+                        cubilia Curae Aenean eleifend"
+            }}
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
 </div>

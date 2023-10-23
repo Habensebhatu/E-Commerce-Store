@@ -4,8 +4,9 @@
 }
 
 .wish-product {
-  padding: 15px;
-  margin: 9px;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 8px;
 }
 
 .product-caption {

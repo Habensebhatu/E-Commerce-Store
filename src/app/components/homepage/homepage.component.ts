@@ -82,6 +82,11 @@ export class HomepageComponent {
           delay: 5000,
           disableOnInteraction: false,
         },
+        navigation: {
+          nextEl: ".swiper-arrow.next",
+          prevEl: ".swiper-arrow.prev",
+        },
+
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -89,11 +94,11 @@ export class HomepageComponent {
       });
 
       const categoriesSwiper = new Swiper("#categories_slider", {
-        // slidesPerView: 4,  Display 4 images at once
+        slidesPerView: 4, // Display 4 images at once
         spaceBetween: 20,
         navigation: {
-          nextEl: ".categories-slider-wrapper .swiper-arrow.next",
-          prevEl: ".categories-slider-wrapper .swiper-arrow.prev",
+          nextEl: ".swiper-arrow.next",
+          prevEl: ".swiper-arrow.prev",
         },
 
         breakpoints: {
@@ -110,12 +115,13 @@ export class HomepageComponent {
           },
 
           300: {
-            slidesPerView: 1,
+            slidesPerView: 2,
+            spaceBetween: 10,
           },
         },
       });
       const trendingProducts = new Swiper("#trendingProducts_slider", {
-        // slidesPerView: 4, // Display 4 images at once
+        slidesPerView: 4, // Display 4 images at once
         spaceBetween: 20,
         autoplay: {
           delay: 2000,
@@ -141,7 +147,8 @@ export class HomepageComponent {
           },
 
           300: {
-            slidesPerView: 1,
+            slidesPerView: 2,
+            spaceBetween: 10,
           },
         },
       });
