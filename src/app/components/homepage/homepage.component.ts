@@ -180,6 +180,36 @@ products = [
     quantity: 3,
     sessionId : 'ddd445556',
     isPopular: true
+},
+{
+  imageUrls: [{
+    index: 0,
+    file: '../assets/image/Tafelloper.avif'
+  }],
+  title : 'Tafle',
+  price: 55.86,
+  categoryName: 'Cosmetica',
+  productId: "jhjjjk",
+  CategoryId: "vvvvvvv",
+   description: "hhjdfhjfjhd",
+    quantity: 3,
+    sessionId : 'ddd445556',
+    isPopular: true
+},
+{
+  imageUrls: [{
+    index: 0,
+    file: '../assets/image/Tafelloper.avif'
+  }],
+  title : 'Tafle',
+  price: 55.86,
+  categoryName: 'Cosmetica',
+  productId: "jhjjjk",
+  CategoryId: "vvvvvvv",
+   description: "hhjdfhjfjhd",
+    quantity: 3,
+    sessionId : 'ddd445556',
+    isPopular: true
 } 
 ];
 

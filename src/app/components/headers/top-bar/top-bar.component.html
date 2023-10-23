@@ -2,8 +2,9 @@
   <div class="row">
     <div class="mx-auto flex justify-between items-center">
       <!-- Sale information -->
-      <div class="inline-block ml-40 text-xs ">
-        <p>welcom</p>
+      <div class="inline-block ml-40 text-xs mt-4">
+        <p>{{ 'WELCOME' | translate }}</p>
+
       </div>
       <!-- Currency and language selectors -->
       <div>
@@ -13,10 +14,10 @@
           <li>
             <div>
               <button mat-button [matMenuTriggerFor]="languageMenu" class="text-xs">
-                Nederlands<mat-icon>arrow_drop_down</mat-icon>
-              </button>
+                {{ currentLanguage }}<mat-icon>arrow_drop_down</mat-icon>
+              </button>              
               <mat-menu #languageMenu="matMenu">
-                <button mat-menu-item>
+                <button mat-menu-item (click)="switchLanguage('nl')">
                   <div class="flex items-center" style="width: 100%;">
                     <div class="flex-none">
                       <img [src]="'../../../assets/image/' + Nederland" alt="Icons" class="w-50 h-4"
@@ -27,14 +28,25 @@
                     </div>
                   </div>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item (click)="switchLanguage('ti')">
                   <div class="flex items-center" style="width: 100%;">
                     <div class="flex-none">
                       <img [src]="'../../../assets/image/' + Eritrea" alt="Icons" class="w-50 h-4"
                         style="vertical-align: middle;" />
                     </div>
                     <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
-                      ትግርኛ
+                      ትግሪኛ
+                    </div>
+                  </div>
+                </button>
+                <button mat-menu-item (click)="switchLanguage('en')">
+                  <div class="flex items-center" style="width: 100%;">
+                    <div class="flex-none">
+                      <img [src]="'../../../assets/image/' + English" alt="Icons" class="w-50 h-4"
+                        style="vertical-align: middle;" />
+                    </div>
+                    <div class="flex-grow" style="vertical-align: middle; padding-left: 8px;">
+                     English
                     </div>
                   </div>
                 </button>
