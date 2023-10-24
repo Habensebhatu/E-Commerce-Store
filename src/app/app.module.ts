@@ -46,7 +46,13 @@ import { TopBarComponent } from './components/headers/top-bar/top-bar.component'
 import { HeaderAreaComponent } from './components/headers/header-area/header-area.component';
 import { HeaderComponent } from './components/headers/header/header.component';
 import { ProductsSliderComponent } from './components/product-display-components/products-slider/products-slider.component';
-// register Swiper custom elements
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 register();
 
 @NgModule({
@@ -73,10 +79,6 @@ register();
     TopBarComponent,
     HeaderAreaComponent,
     ProductsSliderComponent,
-   
-   
- 
-   
   ],
   imports: [
     BrowserModule,
@@ -101,8 +103,16 @@ register();
     BrowserAnimationsModule,
     MatSelectModule,
     MatInputModule,
-   
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
+   
   providers: [CartService, StoreService],
   bootstrap: [AppComponent]
 })

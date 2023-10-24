@@ -241,6 +241,111 @@ export class HomepageComponent {
       sessionId: "ddd445556",
       isPopular: true,
     },
+    {
+      imageUrls: [
+        {
+          index: 0,
+          file: "../assets/image/Tafelloper.avif",
+        },
+      ],
+      title: "Tafle",
+      price: 55.86,
+      categoryName: "Cosmetica",
+      productId: "jhjjjk",
+      CategoryId: "vvvvvvv",
+      description: "hhjdfhjfjhd",
+      quantity: 3,
+      sessionId: "ddd445556",
+      isPopular: true,
+    },
+    {
+      imageUrls: [
+        {
+          index: 0,
+          file: "../assets/image/Tafelloper.avif",
+        },
+      ],
+      title: "Tafle",
+      price: 55.86,
+      categoryName: "Cosmetica",
+      productId: "jhjjjk",
+      CategoryId: "vvvvvvv",
+      description: "hhjdfhjfjhd",
+      quantity: 3,
+      sessionId: "ddd445556",
+      isPopular: true,
+    },
+  ];
+
+  trendingProduct = [
+    {
+      imageUrls: [
+        {
+          index: 0,
+          file: "../assets/image/Berbere1.jpg",
+        },
+      ],
+      title: "berbere",
+      price: 71.05,
+      categoryName: "food",
+      productId: "jhjjjk",
+      CategoryId: "vvvvvvv",
+      description: "hhjdfhjfjhd",
+      quantity: 3,
+      sessionId: "ddd445556",
+      isPopular: true,
+    },
+    {
+      imageUrls: [
+        {
+          index: 0,
+          file: "../assets/image/Koffieserveertafel.avif",
+        },
+      ],
+      title: "Koffieserveertafel",
+      price: 200.76,
+      categoryName: "cosmetica",
+      productId: "jhjjjk",
+      CategoryId: "vvvvvvv",
+      description: "hhjdfhjfjhd",
+      quantity: 3,
+      sessionId: "ddd445556",
+      isPopular: true,
+    },
+    {
+      imageUrls: [
+        {
+          index: 0,
+          file: "../assets/image/jurk.avif",
+        },
+      ],
+      title: "jurk",
+      price: 61.2,
+      categoryName: "Kleding",
+      productId: "jhjjjk",
+      CategoryId: "vvvvvvv",
+      description: "hhjdfhjfjhd",
+      quantity: 3,
+      sessionId: "ddd445556",
+      isPopular: true,
+    },
+    {
+      imageUrls: [
+        {
+          index: 0,
+          file: "../assets/image/Tafelloper.avif",
+        },
+      ],
+      title: "Tafle",
+      price: 55.86,
+      categoryName: "Cosmetica",
+      productId: "jhjjjk",
+      CategoryId: "vvvvvvv",
+      description: "hhjdfhjfjhd",
+      quantity: 3,
+      sessionId: "ddd445556",
+      isPopular: true,
+    },
   ];
 
   trendingProduct = [
