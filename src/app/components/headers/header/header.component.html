@@ -10,65 +10,112 @@
   <div
     class="container px-4 md:px-1 mx-auto flex flex-wrap justify-center md:justify-between items-center py-0"
   >
-    <!-- Navigation menu -->
-    <div class="text-sm align-items-center">
-      <a class="pl-0" mat-button routerLink="/">Home</a>
-
-      <!-- Categories dropdown menu -->
-      <div class="inline-block">
-        <button mat-button [matMenuTriggerFor]="categoriesMenu">
-          Categories <mat-icon>arrow_drop_down</mat-icon>
-        </button>
-        <mat-menu #categoriesMenu="matMenu">
-          <button
-            mat-menu-item
-            *ngFor="let category of categorie"
-            (click)="categoriesChange(category.name)"
-          >
-            <a [routerLink]="['/shop', category.name]">{{ category.name }} </a>
-          </button>
-        </mat-menu>
+    <div
+      class="flex flex-wrap items-center justify-between"
+      style="width: 100%"
+    >
+      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <ul
+          class="font-medium flex flex-col p-4 md:p-0 md:flex-row md:space-x-2 md:mt-0 md:border-0"
+        >
+          <li>
+            <a class="pl-0" mat-button routerLink="/">Home</a>
+          </li>
+          <li>
+            <!-- Categories dropdown menu -->
+            <div class="inline-block">
+              <button mat-button [matMenuTriggerFor]="categoriesMenu">
+                Categories <mat-icon>arrow_drop_down</mat-icon>
+              </button>
+              <mat-menu #categoriesMenu="matMenu">
+                <button
+                  mat-menu-item
+                  *ngFor="let category of categorie"
+                  (click)="categoriesChange(category.name)"
+                >
+                  <a [routerLink]="['/shop', category.name]"
+                    >{{ category.name }}
+                  </a>
+                </button>
+              </mat-menu>
+            </div>
+          </li>
+          <li>
+            <a class="text-sm ml-0 md:ml-2" mat-button routerLink="/aboutUs"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a class="ml-0 md:ml-2" mat-button routerLink="/contactUs"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
       </div>
-      <a class="text-sm ml-0 md:ml-6" mat-button routerLink="/aboutUs"
-        >About Us</a
-      >
-      <a class="ml-0 md:ml-6" mat-button routerLink="/contactUs">Contact Us</a>
-    </div>
 
-    <!-- Search bar -->
-    <div class="flex items-center">
-      <input
-        type="text"
-        class="p-2 flex-grow text-sm h-6 bg-[#242424] search-input"
-        placeholder="Search entire store here ..."
-        style="font-size: 15px"
-        (input)="searchProducts($event)"
-      />
+      <!-- Search bar -->
+      <div class="flex items-center">
+        <input
+          type="text"
+          class="p-2 flex-grow text-sm h-6 bg-[#242424] search-input"
+          placeholder="Search entire store here ..."
+          style="font-size: 15px"
+          (input)="searchProducts($event)"
+        />
+        <button
+          mat-icon-button
+          #searchMenuTrigger="matMenuTrigger"
+          [matMenuTriggerFor]="searchMenu"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+
+      <mat-menu #searchMenu="matMenu" class="w-80">
+        <!-- Search results displayed here -->
+        <div *ngFor="let product of searchResult" class="result-item mb-4">
+          <a [routerLink]="['/product', product.productId]">
+            <div
+              class="flex items-center hover:bg-gray-200 hover:shadow-md transition duration-300 ease-in-out border-b border-gray-300"
+            >
+              <img
+                [src]="product.imageUrls[0].file"
+                alt="{{ product.title }}"
+                class="w-20 h-20 object-cover mr-3 pl-6"
+              />
+              <p class="flex-grow pl-8">{{ product.title }}</p>
+              <p class="ml-10 pr-6">€{{ product.price }}</p>
+            </div>
+          </a>
+        </div>
+      </mat-menu>
+
       <button
-        mat-icon-button
-        #searchMenuTrigger="matMenuTrigger"
-        [matMenuTriggerFor]="searchMenu"
+        data-collapse-toggle="navbar-default"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-default"
+        aria-expanded="false"
       >
-        <mat-icon>search</mat-icon>
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
       </button>
     </div>
-    <mat-menu #searchMenu="matMenu" class="w-80">
-      <!-- Search results displayed here -->
-      <div *ngFor="let product of searchResult" class="result-item mb-4">
-        <a [routerLink]="['/product', product.productId]">
-          <div
-            class="flex items-center hover:bg-gray-200 hover:shadow-md transition duration-300 ease-in-out border-b border-gray-300"
-          >
-            <img
-              [src]="product.imageUrls[0].file"
-              alt="{{ product.title }}"
-              class="w-20 h-20 object-cover mr-3 pl-6"
-            />
-            <p class="flex-grow pl-8">{{ product.title }}</p>
-            <p class="ml-10 pr-6">€{{ product.price }}</p>
-          </div>
-        </a>
-      </div>
-    </mat-menu>
+
+    <!-- Navigation menu -->
   </div>
 </div>

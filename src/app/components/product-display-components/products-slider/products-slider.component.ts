@@ -18,9 +18,29 @@ export class ProductsSliderComponent {
     setTimeout(() => {
       const categoriesSwiper = new Swiper("#categories_slider", {
         slidesPerView: 4, // Display 4 images at once
+        spaceBetween: 20,
         navigation: {
-          nextEl: ".categories-slider-wrapper .swiper-arrow.next",
-          prevEl: ".categories-slider-wrapper .swiper-arrow.prev",
+          nextEl: ".swiper-arrow.next",
+          prevEl: ".swiper-arrow.prev",
+        },
+
+        breakpoints: {
+          992: {
+            slidesPerView: 4,
+          },
+
+          767: {
+            slidesPerView: 3,
+          },
+
+          450: {
+            slidesPerView: 2,
+          },
+
+          300: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
         },
       });
     }, 500);

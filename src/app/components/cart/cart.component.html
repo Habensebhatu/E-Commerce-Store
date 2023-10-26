@@ -19,8 +19,8 @@
     </div>
   </div>
 </div>
-<div class="w-full p-0 m-0 pb-80 space-y-4 mt-5">
-  <mat-card class="max-w-7xl mx-auto" *ngIf="dataSourc.length">
+<div class="container mx-auto cart-block px-4 lg:px-20 py-12">
+  <mat-card *ngIf="dataSourc.length">
     <table mat-table [dataSource]="dataSourc">
       <ng-container matColumnDef="product">
         <th mat-header-cell *matHeaderCellDef>Product</th>
@@ -28,7 +28,7 @@
           <img
             src="{{ element.imageUrl }}"
             alt="product"
-            class="w-[100px] my-5"
+            class="w-[80px] rounded-sm my-4"
           />
         </td>
         <td mat-footer-cell *matFooterCellDef>
@@ -54,12 +54,12 @@
       <ng-container matColumnDef="quantity">
         <th mat-header-cell *matHeaderCellDef>Aantal</th>
         <td mat-cell *matCellDef="let element">
-          <div class="flex justify-start">
+          <div class="flex justify-center">
             <div class="flex items-center">
               <button mat-icon-button (click)="onRemoveQuantity(element)">
                 <mat-icon>remove</mat-icon>
               </button>
-              <span class="-mx-2">{{ element.quantity }}</span>
+              <span class="mx-2 text-md">{{ element.quantity }}</span>
               <button mat-icon-button (click)="onAddQuantity(element)">
                 <mat-icon>add</mat-icon>
               </button>
@@ -69,7 +69,7 @@
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
       <ng-container matColumnDef="total">
-        <th mat-header-cell *matHeaderCellDef>Totaal</th>
+        <th mat-header-cell *matHeaderCellDef>Total</th>
         <td mat-cell *matCellDef="let element">
           {{ element.quantity * element.price | currency }}
         </td>
