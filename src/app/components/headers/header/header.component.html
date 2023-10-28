@@ -11,48 +11,9 @@
     class="container px-4 md:px-1 mx-auto flex flex-wrap justify-center md:justify-between items-center py-0"
   >
     <div
-      class="flex flex-wrap items-center justify-between"
+      class="flex flex-wrap items-center justify-between md:flex-row-reverse"
       style="width: 100%"
     >
-      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul
-          class="font-medium flex flex-col p-4 md:p-0 md:flex-row md:space-x-2 md:mt-0 md:border-0"
-        >
-          <li>
-            <a class="pl-0" mat-button routerLink="/">Home</a>
-          </li>
-          <li>
-            <!-- Categories dropdown menu -->
-            <div class="inline-block">
-              <button mat-button [matMenuTriggerFor]="categoriesMenu">
-                Categories <mat-icon>arrow_drop_down</mat-icon>
-              </button>
-              <mat-menu #categoriesMenu="matMenu">
-                <button
-                  mat-menu-item
-                  *ngFor="let category of categorie"
-                  (click)="categoriesChange(category.name)"
-                >
-                  <a [routerLink]="['/shop', category.name]"
-                    >{{ category.name }}
-                  </a>
-                </button>
-              </mat-menu>
-            </div>
-          </li>
-          <li>
-            <a class="text-sm ml-0 md:ml-2" mat-button routerLink="/aboutUs"
-              >About Us</a
-            >
-          </li>
-          <li>
-            <a class="ml-0 md:ml-2" mat-button routerLink="/contactUs"
-              >Contact Us</a
-            >
-          </li>
-        </ul>
-      </div>
-
       <!-- Search bar -->
       <div class="flex items-center">
         <input
@@ -92,6 +53,7 @@
 
       <button
         data-collapse-toggle="navbar-default"
+        (click)="toggleMenu()"
         type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         aria-controls="navbar-default"
@@ -114,6 +76,52 @@
           />
         </svg>
       </button>
+
+      <div
+        class="hidden w-full md:block md:w-auto"
+        [ngClass]="{
+          '': isMenuOpen,
+          hidden: !isMenuOpen
+        }"
+        id="navbar-default"
+      >
+        <ul
+          class="font-medium flex flex-col p-4 md:p-0 md:flex-row md:space-x-2 md:mt-0 md:border-0"
+        >
+          <li>
+            <a class="pl-0" mat-button routerLink="/">Home</a>
+          </li>
+          <li>
+            <!-- Categories dropdown menu -->
+            <div class="inline-block">
+              <button mat-button [matMenuTriggerFor]="categoriesMenu">
+                Categories <mat-icon>arrow_drop_down</mat-icon>
+              </button>
+              <mat-menu #categoriesMenu="matMenu">
+                <button
+                  mat-menu-item
+                  *ngFor="let category of categorie"
+                  (click)="categoriesChange(category.name)"
+                >
+                  <a [routerLink]="['/shop', category.name]"
+                    >{{ category.name }}
+                  </a>
+                </button>
+              </mat-menu>
+            </div>
+          </li>
+          <li>
+            <a class="text-sm ml-0 md:ml-2" mat-button routerLink="/aboutUs"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a class="ml-0 md:ml-2" mat-button routerLink="/contactUs"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!-- Navigation menu -->

@@ -1,12 +1,12 @@
 <div class="tab-pane anime-tab mt-4" role="tabpanel">
   <div *ngFor="let product of products">
     <article
-      class="wish-product flex items-center py-4 items-start hover:shadow-2xl transition-all duration-300 relative p-4 mt-4 mb-6"
+      class="wish-product flex flex-col md:flex-row items-center py-4 items-start hover:shadow-2xl transition-all duration-300 relative p-4 mt-4 mb-6"
     >
-      <div class="w-1/4 pr-4 relative">
+      <div class="md:w-1/4 md:pr-4 relative">
         <img
           [src]="product.imageUrls[0].file"
-          class="w-full object-cover rounded-md h-60 hover:opacity-50"
+          class="w-full object-cover rounded-md h-60 hover:opacity-50 mb-6 mt-4 md:mt-0 md:mb-0"
         />
         <div
           class="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300"
@@ -44,7 +44,9 @@
           </div>
         </div>
       </div>
-      <div class="w-3/4 flex flex-col justify-between">
+      <div
+        class="w-3/4 flex flex-col justify-between text-center md:text-start"
+      >
         <div>
           <p class="text-lg">{{ product.categoryName }}</p>
           <h4 class="product-name mt-2">{{ product.title }}</h4>
