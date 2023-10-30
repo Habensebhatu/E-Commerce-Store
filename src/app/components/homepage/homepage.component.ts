@@ -38,9 +38,15 @@ export class HomepageComponent {
     },
   ];
 
+  loading = true;
+
   ngOnInit() {
     this.getProducts();
     this.fetchWishlistProductIds();
+
+    setTimeout(() => {
+      this.loading = false; // Set to false when loading is complete
+    }, 1000);
   }
   getProducts(): void {
     this.storeService
@@ -94,8 +100,8 @@ export class HomepageComponent {
       });
 
       const categoriesSwiper = new Swiper("#categories_slider", {
-        slidesPerView: 4, // Display 4 images at once
         spaceBetween: 20,
+        speed: 400,
         navigation: {
           nextEl: ".swiper-arrow.next",
           prevEl: ".swiper-arrow.prev",
@@ -123,14 +129,15 @@ export class HomepageComponent {
       const trendingProducts = new Swiper("#trendingProducts_slider", {
         slidesPerView: 4, // Display 4 images at once
         spaceBetween: 20,
+        speed: 400,
         autoplay: {
           delay: 2000,
           disableOnInteraction: false,
         },
 
         navigation: {
-          nextEl: ".categories-slider-wrapper .swiper-arrow.next",
-          prevEl: ".categories-slider-wrapper .swiper-arrow.prev",
+          nextEl: ".swiper-arrow.next",
+          prevEl: ".swiper-arrow.prev",
         },
 
         breakpoints: {

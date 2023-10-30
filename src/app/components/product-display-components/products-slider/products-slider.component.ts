@@ -14,6 +14,15 @@ export class ProductsSliderComponent {
   @Output() productClicked = new EventEmitter<Product>();
 
   constructor(private router: Router) {}
+
+  loading = true;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.loading = false; // Set to false when loading is complete
+    }, 1000);
+  }
+
   ngAfterViewInit() {
     setTimeout(() => {
       const categoriesSwiper = new Swiper("#categories_slider", {

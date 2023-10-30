@@ -1,4 +1,7 @@
-<div class="categories-slider-wrapper" id="categories_slider">
+<div class="categories-slider-wrapper relative" id="categories_slider">
+  <div *ngIf="loading" class="loader-container">
+    <div class="loader"></div>
+  </div>
   <div class="swiper-wrapper">
     <article
       class="swiper-slide product-layout"
