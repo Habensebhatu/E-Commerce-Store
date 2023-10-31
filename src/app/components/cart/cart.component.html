@@ -20,6 +20,41 @@
   </div>
 </div>
 <div class="container mx-auto cart-block px-4 lg:px-20 py-12">
+  <mat-card class="mb-3">
+    <div class="flex items-center w-full px-4 lg:px-5 py-2">
+      <img
+        alt="product"
+        class="w-[80px] rounded-sm my-4"
+        src="../assets/image/Berbere1.jpg"
+      />
+      <div class="w-full ms-4 md:ms-6">
+        <h4
+          class="flex justify-between font-bold w-full"
+          style="margin-bottom: 3px !important"
+        >
+          Swiffer Duster - Trap & Lock-navullingen
+          <h3 style="margin-bottom: 0 !important"><strong>$23.00</strong></h3>
+        </h4>
+
+        <div class="flex items-center">
+          <button mat-icon-button>
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span class="mx-2 text-md">2</span>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
+
+          <button mat-mini-fab color="warn" class="float-right">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+
+        <h4>$23.00</h4>
+      </div>
+    </div>
+  </mat-card>
+
   <mat-card *ngIf="dataSourc.length">
     <table mat-table [dataSource]="dataSourc">
       <ng-container matColumnDef="product">
