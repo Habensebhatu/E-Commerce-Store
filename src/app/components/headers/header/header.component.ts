@@ -1,71 +1,81 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { Subject, takeUntil } from 'rxjs';
-import { Category } from 'src/app/Models/category.Model';
-import { CartI, Product} from 'src/app/Models/product.model';
-import { CartService } from 'src/app/service/cart.service';
-import { StoreService } from 'src/app/service/store.service';
-import { Router, NavigationEnd } from '@angular/router';
-import { UserRegistrationService } from 'src/app/service/user-registration.service';
-import { WishlistService } from 'src/app/service/wishlist.service';
-
+import { Component, Input, ViewChild } from "@angular/core";
+import { MatMenuTrigger } from "@angular/material/menu";
+import { Subject, takeUntil } from "rxjs";
+import { Category } from "src/app/Models/category.Model";
+import { CartI, Product } from "src/app/Models/product.model";
+import { CartService } from "src/app/service/cart.service";
+import { StoreService } from "src/app/service/store.service";
+import { Router, NavigationEnd } from "@angular/router";
+import { UserRegistrationService } from "src/app/service/user-registration.service";
+import { WishlistService } from "src/app/service/wishlist.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
+  selector: "app-header",
+  templateUrl: "./header.component.html",
 })
 export class HeaderComponent {
   private _cart: CartI = { items: [] };
   itemsQuantity = 0;
-  wishlistQuantity = 0; 
-  categories: Category[] | undefined
+  wishlistQuantity = 0;
+  categories: Category[] | undefined;
   searchResults: Product[] = [];
   searchResult: Product[] = [];
-  @ViewChild('cartTrigger') cartMenuTrigger!: MatMenuTrigger;
-  @ViewChild('searchMenuTrigger')
+  @ViewChild("cartTrigger") cartMenuTrigger!: MatMenuTrigger;
+  @ViewChild("searchMenuTrigger")
   searchMenuTrigger!: MatMenuTrigger;
   languageMenu = false;
   @Input()
   get cart(): CartI {
     return this._cart;
   }
-  categorie = [
-    {name: 'food'},
-    {name: 'cosmetica'}
-];
- log = 'logo.png';
- Nederland = 'Nederlands-flag.png'
- Eritrea = 'Eritrea-flag.png'
- private unsubscribe$ = new Subject<void>();
-  constructor(private cartService: CartService,  private storeService: StoreService, private router: Router, public userService: UserRegistrationService,  private wishlistService: WishlistService ) {}
+  categorie = [{ name: "food" }, { name: "cosmetica" }];
+  log = "logo.png";
+  Nederland = "Nederlands-flag.png";
+  Eritrea = "Eritrea-flag.png";
+  private unsubscribe$ = new Subject<void>();
+  constructor(
+    private cartService: CartService,
+    private storeService: StoreService,
+    private router: Router,
+    public userService: UserRegistrationService,
+    private wishlistService: WishlistService
+  ) {}
 
   ngOnInit(): void {
     this.mockData();
-   this.fetchWishlistProductIds();
+    this.fetchWishlistProductIds();
     this.cartService.showMenu$.subscribe(() => {
       this.openCartMenu();
     });
     this.getCatogories();
-    
-    this.router.events.subscribe(event => {
+
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.clearInput();
       }
     });
-   
   }
-  
+
+  isMenuOpen = false;
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
   fetchWishlistProductIds(): void {
-    this.wishlistService.getWishlistProducts().pipe(takeUntil(this.unsubscribe$))
-        .subscribe(products => {
-          this.wishlistService.setWishlistCount(products.length)
-        });
-       
+    this.wishlistService
+      .getWishlistProducts()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((products) => {
+        this.wishlistService.setWishlistCount(products.length);
+      });
   }
   clearInput() {
-    const inputElement = document.querySelector('.search-input') as HTMLInputElement;
+    const inputElement = document.querySelector(
+      ".search-input"
+    ) as HTMLInputElement;
     if (inputElement) {
-      inputElement.value = '';
+      inputElement.value = "";
     }
   }
   openCartMenu(): void {
@@ -75,113 +85,122 @@ export class HeaderComponent {
   searchProducts(event: Event) {
     const input = event.target as HTMLInputElement;
     const query = input.value;
-  
-    if (query.trim() === '') {
+
+    if (query.trim() === "") {
       this.searchResults = [];
       return;
-    }  
-    this.storeService.searchProducts(query)
+    }
+    this.storeService
+      .searchProducts(query)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((products: Product[]) => {
         this.searchResults = products;
         if (products.length > 0) {
-          this.searchMenuTrigger.openMenu(); 
+          this.searchMenuTrigger.openMenu();
         } else {
-          this.searchMenuTrigger.closeMenu(); 
+          this.searchMenuTrigger.closeMenu();
         }
       });
   }
-  
+
   getCatogories() {
-    this.storeService.getCatogories()
+    this.storeService
+      .getCatogories()
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((data:  Category[]) => {
+      .subscribe((data: Category[]) => {
         this.categories = data;
-        console.log('this.categories: ',  this.categories);
+        console.log("this.categories: ", this.categories);
       });
   }
-  language(){
-    this.languageMenu = true
+  language() {
+    this.languageMenu = true;
   }
 
-
   onCategorySelect(category: string): void {
-    console.log('You selected: ', category);
+    console.log("You selected: ", category);
   }
 
   set cart(cart: CartI) {
-    console.log("cart", cart)
+    console.log("cart", cart);
     this._cart = cart;
     this.itemsQuantity = cart.items
       .map((item) => item.quantity)
       .reduce((prev, curent) => prev + curent, 0);
   }
 
-  categoriesChange(category : string){
-    this.storeService.changeShowData(category)
+  categoriesChange(category: string) {
+    this.storeService.changeShowData(category);
   }
-  mockData(){
+  mockData() {
     this.searchResult = [
       {
-        imageUrls: [{
-          index: 0,
-          file: '../assets/image/Berbere1.jpg'
-        }],
-        title: 'test1',
+        imageUrls: [
+          {
+            index: 0,
+            file: "../assets/image/Berbere1.jpg",
+          },
+        ],
+        title: "test1",
         price: 71.05,
-          categoryName: 'food',
-          productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
+        categoryName: "food",
+        productId: "jhjjjk",
+        CategoryId: "vvvvvvv",
+        description: "hhjdfhjfjhd",
         quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
+        sessionId: "ddd445556",
+        isPopular: true,
       },
       {
-        imageUrls: [{
-          index: 0,
-          file: '../assets/image/Berbere1.jpg'
-        }],
-        title: 'test2',
+        imageUrls: [
+          {
+            index: 0,
+            file: "../assets/image/Berbere1.jpg",
+          },
+        ],
+        title: "test2",
         price: 71.05,
-          categoryName: 'food',
-          productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
+        categoryName: "food",
+        productId: "jhjjjk",
+        CategoryId: "vvvvvvv",
+        description: "hhjdfhjfjhd",
         quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
+        sessionId: "ddd445556",
+        isPopular: true,
       },
       {
-        imageUrls: [{
-          index: 0,
-          file: '../assets/image/Berbere1.jpg'
-        }],
-        title: 'test3',
+        imageUrls: [
+          {
+            index: 0,
+            file: "../assets/image/Berbere1.jpg",
+          },
+        ],
+        title: "test3",
         price: 71.05,
-          categoryName: 'food',
-          productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
+        categoryName: "food",
+        productId: "jhjjjk",
+        CategoryId: "vvvvvvv",
+        description: "hhjdfhjfjhd",
         quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
+        sessionId: "ddd445556",
+        isPopular: true,
       },
       {
-        imageUrls: [{
-          index: 0,
-          file: '../assets/image/Berbere1.jpg'
-        }],
-        title: 'test4',
+        imageUrls: [
+          {
+            index: 0,
+            file: "../assets/image/Berbere1.jpg",
+          },
+        ],
+        title: "test4",
         price: 71.05,
-          categoryName: 'food',
-          productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
+        categoryName: "food",
+        productId: "jhjjjk",
+        CategoryId: "vvvvvvv",
+        description: "hhjdfhjfjhd",
         quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
+        sessionId: "ddd445556",
+        isPopular: true,
       },
-    ]
+    ];
   }
 }

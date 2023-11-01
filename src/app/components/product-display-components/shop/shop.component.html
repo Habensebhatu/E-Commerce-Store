@@ -1,90 +1,156 @@
 <app-breadcrumb></app-breadcrumb>
-<div class="mx-auto px-4 max-w-screen-xl mt-24">
-    <div class="flex flex-wrap -mx-4">
-        <div class="w-full sm:w-full md:w-full lg:w-3/4 lg:order-2 px-4">
-            <div class="shop-wrapper">
-                <app-app-view-toggle [currentPage]="currentPage" [pageSize]="pageSize"
-                    [totalProductsOfCategory]="totalProductsOfCategory" (viewChanged)="onViewChanged($event)">
-                </app-app-view-toggle>
-                <div class="flex flex-wrap -mx-4 mt-4">
-                    <div class="w-full sm:w-full md:w-full px-4">
-                        <div class="shop-products-wrapper">
-                            <div class="tab-content">
-                                <app-app-product-grid *ngIf="activeView === 'grid'"
-                                    [products]="product"></app-app-product-grid>
-                                <app-app-product-list *ngIf="activeView === 'list'"
-                                    [products]="product"></app-app-product-list>
-                            </div>
-                        </div>
-                        <!-- paganition -->
-                        <div class="flex flex-wrap -mx-4">
-                            <div class="pt-5 mt-[20px] border-t border-gray-300 w-full">
-                                <div class="flex justify-between">
-                                    <div class="text-sm mt-4">
-                                        <p>Showing {{(currentPage - 1) * pageSize + 1}} - {{Math.min(currentPage *
-                                            pageSize, totalProductsOfCategory!)}} of {{totalProductsOfCategory}}</p>
-                                    </div>
-                                    <ul class="flex items-center space-x-2">
-                                        <li class="flex-1 text-left">
-                                            <div class="text-sm flex items-center" (click)="previousPage()">
-                                                <mat-icon>chevron_left</mat-icon>
-                                                <span>Previous</span>
-                                            </div>
-                                        </li>
-                                        <!-- Here you can use a loop to generate the pages if you have total pages -->
-                                        <li *ngFor="let page of [].constructor(totalPages); let i = index"
-                                            [class.bg-red-500]="i+1 === currentPage"
-                                            [class.text-white]="i+1 === currentPage">
-                                            <div class="text-sm cursor-pointer px-2 py-1 hover:bg-red-600"
-                                                (click)="goToPage(i + 1)">{{ i + 1 }}</div>
-                                        </li>
-                                        <li class="flex-1 text-right">
-                                            <div class="text-sm flex items-center justify-end" (click)="nextPage()">
-                                                <span>Next</span>
-                                                <mat-icon>chevron_right</mat-icon>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="container mx-auto px-4 py-12">
+  <div class="flex flex-wrap -mx-4">
+    <div class="w-full sm:w-full md:w-full lg:w-3/4 lg:order-2 px-4">
+      <div class="shop-wrapper">
+        <app-app-view-toggle
+          [currentPage]="currentPage"
+          [pageSize]="pageSize"
+          [totalProductsOfCategory]="totalProductsOfCategory"
+          (viewChanged)="onViewChanged($event)"
+        >
+        </app-app-view-toggle>
+        <div class="flex flex-wrap -mx-4 mt-4">
+          <div class="w-full sm:w-full md:w-full px-4">
+            <div class="shop-products-wrapper">
+              <div class="tab-content">
+                <app-app-product-grid
+                  *ngIf="activeView === 'grid'"
+                  [products]="product"
+                ></app-app-product-grid>
+                <app-app-product-list
+                  *ngIf="activeView === 'list'"
+                  [products]="product"
+                ></app-app-product-list>
+              </div>
             </div>
+            <!-- paganition -->
+            <div class="flex flex-wrap -mx-4 mb-6 md:mb-0">
+              <div class="pt-5 mt-[20px] border-t border-gray-300 w-full px-4">
+                <div
+                  class="flex flex-col md:flex-row justify-between text-center md:text-start"
+                >
+                  <div class="text-sm mt-4">
+                    <p>
+                      Showing {{ (currentPage - 1) * pageSize + 1 }} -
+                      {{
+                        Math.min(
+                          currentPage * pageSize,
+                          totalProductsOfCategory!
+                        )
+                      }}
+                      of {{ totalProductsOfCategory }}
+                    </p>
+                  </div>
+                  <ul class="flex items-center space-x-2">
+                    <li class="flex-1 text-left">
+                      <div
+                        class="text-sm flex items-center"
+                        (click)="previousPage()"
+                      >
+                        <mat-icon>chevron_left</mat-icon>
+                        <span>Previous</span>
+                      </div>
+                    </li>
+                    <!-- Here you can use a loop to generate the pages if you have total pages -->
+                    <li
+                      *ngFor="
+                        let page of [].constructor(totalPages);
+                        let i = index
+                      "
+                      [class.bg-red-500]="i + 1 === currentPage"
+                      [class.text-white]="i + 1 === currentPage"
+                    >
+                      <div
+                        class="text-sm cursor-pointer px-2 py-1 hover:bg-red-600"
+                        (click)="goToPage(i + 1)"
+                      >
+                        {{ i + 1 }}
+                      </div>
+                    </li>
+                    <li class="flex-1 text-right">
+                      <div
+                        class="text-sm flex items-center justify-end"
+                        (click)="nextPage()"
+                      >
+                        <span>Next</span>
+                        <mat-icon>chevron_right</mat-icon>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="w-full sm:w-full md:w-full lg:w-1/4 lg:order-1 px-4">
-            <div class="mb-8 pb-8 border-b border-gray-300 ">
-                <h2 class="text-lg leading-6 font-medium tracking-tight capitalize mb-5">Categories</h2>
-                <div class="space-y-2">
-                    <a *ngFor="let categoryy of categorie" (click)="OnshowCategoty(categoryy.name)"
-                        class="flex items-center transition-colors duration-700"
-                        [ngClass]="{'hover:text-red-600': categoryy.name !== selectedCategory, 'text-red-600': categoryy.name === selectedCategory }">
-                        <span
-                            class="mr-2.5 w-4 h-4 p-0.5 inline-block border border-gray-300 text-transparent flex items-center justify-center"
-                            [ngClass]="{'hover:border-red-600 hover:bg-red-600 hover:text-white': categoryy.name !== selectedCategory, 'border-red-600 bg-red-600 text-white': categoryy.name === selectedCategory || categoryy.name === category}">✓</span>
-                        {{ categoryy.name }}
-                    </a>
-                </div>
-            </div>
-            <div class="mb-8 pb-8 border-b border-gray-300">
-                <h2 class="text-lg leading-6 font-medium tracking-tight capitalize mb-5">Price</h2>
-                <div class="space-y-2">
-                    <a *ngFor="let price of prices" (click)="togglePriceSelection(price)"
-                        class="flex items-center transition-colors duration-700"
-                        [ngClass]="{'hover:text-red-600': price !== selectedPrice, 'text-red-600': price === selectedPrice }">
-                        <span
-                            class="mr-2.5 w-4 h-4 p-0.5 inline-block border border-gray-300 text-transparent flex items-center justify-center"
-                            [ngClass]="{'hover:border-red-600 hover:bg-red-600 hover:text-white': price !== selectedPrice, 'border-red-600 bg-red-600 text-white': price === selectedPrice }">✓</span>
-                        {{ price }}
-                    </a>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="w-full sm:w-full md:w-full lg:w-1/4 lg:order-1 px-4">
+      <div class="mb-8 pb-8 border-b border-gray-300">
+        <h2
+          class="text-lg leading-6 font-medium tracking-tight capitalize mb-5"
+        >
+          Categories
+        </h2>
+        <div class="space-y-2">
+          <a
+            *ngFor="let categoryy of categorie"
+            (click)="OnshowCategoty(categoryy.name)"
+            class="flex items-center transition-colors duration-700"
+            [ngClass]="{
+              'hover:text-red-600': categoryy.name !== selectedCategory,
+              'text-red-600': categoryy.name === selectedCategory
+            }"
+          >
+            <span
+              class="mr-2.5 w-4 h-4 p-0.5 inline-block border border-gray-300 text-transparent flex items-center justify-center"
+              [ngClass]="{
+                'hover:border-red-600 hover:bg-red-600 hover:text-white':
+                  categoryy.name !== selectedCategory,
+                'border-red-600 bg-red-600 text-white':
+                  categoryy.name === selectedCategory ||
+                  categoryy.name === category
+              }"
+              >✓</span
+            >
+            {{ categoryy.name }}
+          </a>
+        </div>
+      </div>
+      <div class="mb-8 pb-8 border-b border-gray-300">
+        <h2
+          class="text-lg leading-6 font-medium tracking-tight capitalize mb-5"
+        >
+          Price
+        </h2>
+        <div class="space-y-2">
+          <a
+            *ngFor="let price of prices"
+            (click)="togglePriceSelection(price)"
+            class="flex items-center transition-colors duration-700"
+            [ngClass]="{
+              'hover:text-red-600': price !== selectedPrice,
+              'text-red-600': price === selectedPrice
+            }"
+          >
+            <span
+              class="mr-2.5 w-4 h-4 p-0.5 inline-block border border-gray-300 text-transparent flex items-center justify-center"
+              [ngClass]="{
+                'hover:border-red-600 hover:bg-red-600 hover:text-white':
+                  price !== selectedPrice,
+                'border-red-600 bg-red-600 text-white': price === selectedPrice
+              }"
+              >✓</span
+            >
+            {{ price }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-    <!-- <li class="flex-1 text-right" *ngIf="currentPage < totalPages && products && 
+<!-- <li class="flex-1 text-right" *ngIf="currentPage < totalPages && products && 
     (totalProductsOfCategory! > pageSize || currentPage > 1)">
         <div class="text-sm flex items-center justify-end" (click)="nextPage()">
             <span>Next</span>
@@ -92,7 +158,7 @@
         </div>
     </li> -->
 
-    <!-- <ul class="flex items-center space-x-2">
+<!-- <ul class="flex items-center space-x-2">
         <li class="flex-1 text-left" *ngIf="products && 
         (totalProductsOfCategory! > pageSize || currentPage > 1)">
             <div class="text-sm flex items-center" (click)="previousPage()">
