@@ -28,7 +28,7 @@ export class HeaderComponent {
   get cart(): CartI {
     return this._cart;
   }
-  categorie = [{ name: "food" }, { name: "cosmetica" }];
+  
   log = "logo.png";
   Nederland = "Nederlands-flag.png";
   Eritrea = "Eritrea-flag.png";
@@ -109,7 +109,7 @@ export class HeaderComponent {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: Category[]) => {
         this.categories = data;
-        console.log("this.categories: ", this.categories);
+       
       });
   }
   language() {

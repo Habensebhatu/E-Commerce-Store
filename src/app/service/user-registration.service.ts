@@ -7,9 +7,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserRegistrationService {
-  private apiUrl = 'https://localhost:7087/api/Registration/register';
-  private loginApiUrl = 'https://localhost:7087/api/Registration/login';
-  private contactUsApiUrl = 'https://localhost:7087/api/ContactUs';
+ 
+  // private apiUrl = 'https://localhost:7087/api/Registration/register';
+  // private loginApiUrl = 'https://localhost:7087/api/Registration/login';
+  // private contactUsApiUrl = 'https://localhost:7087/api/ContactUs/SubmitContactRequest';
+  private apiUrl = 'https://pilishwebshop.azurewebsites.net/api/Registration/register';
+  private loginApiUrl = 'https://pilishwebshop.azurewebsites.net/api/Registration/login';
+  private contactUsApiUrl = 'https://pilishwebshop.azurewebsites.net/api/ContactUs/SubmitContactRequest';
   private currentUserSubject: BehaviorSubject<UserRegistration | null> = new BehaviorSubject<UserRegistration | null>(null);
   public currentUser: Observable<UserRegistration | null> = this.currentUserSubject.asObservable();
   constructor(private httpClient: HttpClient) { 

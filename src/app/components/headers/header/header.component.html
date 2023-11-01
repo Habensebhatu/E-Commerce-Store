@@ -99,7 +99,7 @@
               <mat-menu #categoriesMenu="matMenu">
                 <button
                   mat-menu-item
-                  *ngFor="let category of categorie"
+                  *ngFor="let category of categories"
                   (click)="categoriesChange(category.name)"
                 >
                   <a [routerLink]="['/shop', category.name]"

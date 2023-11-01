@@ -8,7 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     providedIn: 'root'
 })
 export class CartService {
-    private apiUrl = 'https://localhost:7087/api/Cart';
+    // private apiUrl = 'https://localhost:7087/api/Cart';
+    private apiUrl = 'https://pilishwebshop.azurewebsites.net/api/Cart';
     cart = new BehaviorSubject<CartI>({ items: [] });
     private _showMenu = new Subject<void>();
     showMenu$ = this._showMenu.asObservable();
@@ -50,7 +51,8 @@ export class CartService {
             console.log("headers", headers);
         }
         console.log("headers", headers);
-        this.httpClient.get<ProductAddCart[]>(`${this.apiUrl}?sessionId=${this.sessionId}`, { headers }).subscribe(items => {
+        this.httpClient.get<ProductAddCart[]>(`${this.apiUrl}/GetCartItems?sessionId=${this.sessionId}`, { headers })
+        .subscribe(items => {
             const updatedcart = { items: items };
             this.cart.next(updatedcart);
         });
@@ -64,7 +66,7 @@ export class CartService {
         if (token) {
             headers = headers.set('Authorization', `Bearer ${token}`)
         }
-        this.httpClient.post<ProductAddCart>(`${this.apiUrl}`,item,{ headers }).subscribe(
+        this.httpClient.post<ProductAddCart>(`${this.apiUrl}/AddCartItem`, item, { headers }).subscribe(
             response => {
                 const items = [...this.cart.value.items];
                 const itemInCart = items.find((_item) => _item.productId === item.productId);
@@ -92,7 +94,7 @@ export class CartService {
             headers = headers.set('Authorization', `Bearer ${token}`);
             console.log("headers", headers);
         }
-        this.httpClient.post<ProductAddCart>(`${this.apiUrl}`, item,{ headers }).subscribe(
+        this.httpClient.post<ProductAddCart>(`${this.apiUrl}/AddCartItem`, item, { headers }).subscribe(
             response => {
                 const items = [...this.cart.value.items];
                 const itemInCart = items.find((_item) => _item.productId === item.productId);
@@ -126,7 +128,7 @@ export class CartService {
             console.log("headers", headers);
         }
         console.log("this.sessionId", this.sessionId);
-        this.httpClient.delete<any>(`${this.apiUrl}?sessionId=${this.sessionId}`,{ headers }).subscribe(
+        this.httpClient.delete<any>(`${this.apiUrl}/ClearAllCartItems?sessionId=${this.sessionId}`, { headers }).subscribe(
             response => {
                 this.cart.next({ items: [] });
                 this._snackBar.open(response.message, 'Ok', {
@@ -146,7 +148,7 @@ export class CartService {
             headers = headers.set('Authorization', `Bearer ${token}`);
             console.log("headers", headers);
         }
-        this.httpClient.delete(`${this.apiUrl}/${item.productId}?sessionId=${this.sessionId}`,{ headers }).subscribe(
+        this.httpClient.delete(`${this.apiUrl}/RemoveFromCart/${item.productId}?sessionId=${this.sessionId}`, { headers }).subscribe(
             response => {
                 const filteredItems = this.cart.value.items.filter(
                     (_item) => _item.productId !== item.productId
@@ -172,8 +174,9 @@ export class CartService {
             console.log("headers", headers);
         }
         this.httpClient.put<ProductAddCart>(
-            `${this.apiUrl}/${item.productId}?sessionId=${this.sessionId}`,
-            { headers}
+            `${this.apiUrl}/UpdateProductQuantity/${item.productId}?sessionId=${this.sessionId}`,
+            item,
+            { headers }
         ).subscribe(
             updatedCart => {
                 const filteredItems = this.cart.value.items.map((_item) => {
@@ -193,11 +196,4 @@ export class CartService {
             }
         );
     }
-
-     // private saveCartToLocalStorage(cart: Cart) {
-    //     console.log("cart", cart);
-    //     localStorage.setItem('cart', JSON.stringify(cart));
-    // }
-
-
 }

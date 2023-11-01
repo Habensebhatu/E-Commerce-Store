@@ -14,8 +14,10 @@ const STORE_BASE_URL = "https://fakestoreapi.com";
   providedIn: "root",
 })
 export class StoreService {
-  private readonly apiUrl = 'https://localhost:7087/api/Product';
-  private readonly apiUrlCategory = 'https://localhost:7087/api/Category';
+  // private readonly apiUrl = 'https://localhost:7087/api/Product';
+  // private readonly apiUrlCategory = 'https://localhost:7087/api/Category';
+  private readonly apiUrlCategory = 'https://pilishwebshop.azurewebsites.net/api/Category';
+  private apiUrl = 'https://pilishwebshop.azurewebsites.net/api/Product';
   getAllProducts = false;
   constructor(private httpClient: HttpClient) { }
   private shouldGetAllProducts = false;
@@ -43,13 +45,12 @@ export class StoreService {
   }
 
   getCatogories(): Observable<Category[]> {
-    return this.httpClient.get<Category[]>(this.apiUrlCategory);
+    return this.httpClient.get<Category[]>(`${this.apiUrlCategory}/GetAllCategories`);
   }
 
   getProductBYCategory(category: string, pageNumber: number, pageSize: number): Observable<Product[]> {
-    console.log("00000",category, pageNumber, pageSize);
-    return this.httpClient.get<Product[]>(`${this.apiUrl}/category/${category}?pageNumber=${pageNumber}&pageSize=${pageSize}`);
-  }
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/ByCategory/${category}?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+}
 
 
   getProductsByNameAndPrice(params: {
@@ -68,7 +69,7 @@ export class StoreService {
         httpParams = httpParams.set('maxPrice', params.maxPrice.toString());
     }
 
-    return this.httpClient.get<Product[]>(`${this.apiUrl}/category/${params.category}/price`, {
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/ByCategory/${params.category}/ByPriceRange`, {
         params: httpParams
     }).pipe(
         catchError(error => {
@@ -84,24 +85,24 @@ export class StoreService {
   
   
   getProductBYPrice(minNumber: number, maxNumber: number): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`${this.apiUrl}/filterPrice/${minNumber}/${maxNumber}`);
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/ByPriceRange/${minNumber}/${maxNumber}`);
 }
 
 
   getProducts(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`${this.apiUrl}`);
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/AllProducts`);
   }
 
   GetPopularProducts(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`${this.apiUrl}/popular`);
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/PopularProducts`);
   }
 
   searchProducts(productName: string): Observable<Product[]> {
     console.log("serviceQuery", productName)
-    return this.httpClient.get<Product[]>(`${this.apiUrl}/search/${productName}`);
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/SearchByName/${productName}`);
   }
 
   getProductsById(productId: string): Observable<Product> {
-    return this.httpClient.get<Product>(`${this.apiUrl}/${productId}`);
+    return this.httpClient.get<Product>(`${this.apiUrl}/ById/${productId}`);
   }
 }
