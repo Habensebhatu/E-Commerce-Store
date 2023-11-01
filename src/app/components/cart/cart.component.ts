@@ -19,6 +19,7 @@ export class CartComponent {
   
   dataSource : Array<ProductAddCart> = [];
   dataSourc : Array<ProductAddCart> = [];
+  Products : Array<ProductAddCart> = [];
   displayedColumns: string[] = [
     'product',
     'name',
@@ -33,12 +34,17 @@ ngOnInit(){
   this.mockData();
   console.log("cardrd",this.dataSourc)
   this.cartService.cart.subscribe((_cart: CartI)=>{
-    // this.cart = _cart;
-    // this.dataSource = this.cart.items;
-    // console.log("cardrd", this.cart)
+    this.cart = _cart;
+    this.Products = this.cart.items;
+    this.dataSource = this.cart.items;
+    console.log("cardrd", this.cart)
    
   })
   
+}
+
+getTotalQuantity(items: ProductAddCart[]): number {
+  return items.reduce((prev, current) => prev + current.quantity, 0);
 }
 
 getTotal(items: ProductAddCart[]): number {
@@ -63,7 +69,7 @@ onClearCart(): void {
   this.cartService.clearCart();
 }
 
-onRemoveFromCart(item: Product): void {
+onRemoveFromCart(item: ProductAddCart): void {
   this.cartService.removeFromCart(item);
 }
 onCheckout(): void {

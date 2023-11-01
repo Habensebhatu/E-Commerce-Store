@@ -21,7 +21,7 @@ export class ShopComponent {
   ];
   activeView: "grid" | "list" = "grid";
   products: Product[] | undefined;
-  product: Product[] | undefined;
+  
   commingProducts: Product[] | undefined;
   count = "12";
   sort = "desc";
@@ -50,8 +50,6 @@ export class ShopComponent {
     {name: 'cosmetica'}
 ];
    ngOnInit() {
-
-    this.mockData();
     this.getProducts();
     this.route.queryParams.subscribe((params) => {
       if (params["category"]) {
@@ -266,185 +264,5 @@ export class ShopComponent {
     this.activeView = view;
   }
 
-  mockData(){
-    this.product =
-    [
-      {
-        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
-        title: "Sieraden Etui |",
-        price: 4,
-        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-        imageUrls: [
-          {
-            index: 0,
-             file: '../assets/image/Berbere1.jpg'
-          },
-         
-        ],
-        categoryName: "food",
-        isPopular: false,
-        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        quantity: 2,
-    
-      },
-      {
-        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
-        title: "Sieraden Etui |",
-        price: 4,
-        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-        imageUrls: [
-          {
-            index: 0,
-             file: '../assets/image/Berbere1.jpg'
-          },
-         
-        ],
-        categoryName: "food",
-        isPopular: false,
-        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        quantity: 2,
-    
-      },
-      {
-        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
-        title: "Sieraden Etui |",
-        price: 4,
-        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-        imageUrls: [
-          {
-            index: 0,
-             file: '../assets/image/Berbere1.jpg'
-          },
-         
-        ],
-        categoryName: "food",
-        isPopular: false,
-        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        quantity: 2,
-    
-      },
-      {
-        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
-        title: "Sieraden Etui |",
-        price: 4,
-        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-        imageUrls: [
-          {
-            index: 0,
-             file: '../assets/image/Berbere1.jpg'
-          },
-         
-        ],
-        categoryName: "food",
-        isPopular: false,
-        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        quantity: 2,
-    
-      },
-      {
-        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
-        title: "Sieraden Etui |",
-        price: 4,
-        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-        imageUrls: [
-          {
-            index: 0,
-             file: '../assets/image/Berbere1.jpg'
-          },
-         
-        ],
-        categoryName: "food",
-        isPopular: false,
-        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        quantity: 2,
-    
-      },
-      {
-        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
-        title: "Sieraden Etui |",
-        price: 4,
-        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-        imageUrls: [
-          {
-            index: 0,
-             file: '../assets/image/Berbere1.jpg'
-          },
-         
-        ],
-        categoryName: "food",
-        isPopular: false,
-        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        quantity: 2,
-    
-      },
-      {
-        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
-        title: "Sieraden Etui |",
-        price: 4,
-        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-        imageUrls: [
-          {
-            index: 0,
-             file: '../assets/image/Berbere1.jpg'
-          },
-         
-        ],
-        categoryName: "food",
-        isPopular: false,
-        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        quantity: 2,
-    
-      },
-      {
-        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
-        title: "Sieraden Etui |",
-        price: 4,
-        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-        imageUrls: [
-          {
-            index: 0,
-             file: '../assets/image/Berbere1.jpg'
-          },
-         
-        ],
-        categoryName: "food",
-        isPopular: false,
-        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        quantity: 2,
-    
-      },
-      {
-        productId : "c80da04f-7289-4605-a214-08503ee9eb81",
-        title: "Sieraden Etui |",
-        price: 4,
-        description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-        imageUrls: [
-          {
-            index: 0,
-             file: '../assets/image/Berbere1.jpg'
-          },
-         
-        ],
-        categoryName: "food",
-        isPopular: false,
-        CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        sessionId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-        quantity: 2,
-    
-      },
-      
-      
-    ]
-  }
-  	
- 
 }
 

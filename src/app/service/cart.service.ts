@@ -139,7 +139,7 @@ export class CartService {
         );
     }
 
-    removeFromCart(item: Product, updateCart = true): void {
+    removeFromCart(item: ProductAddCart, updateCart = true): void {
         const token = localStorage.getItem('token');
         let headers = new HttpHeaders();
         if (token) {

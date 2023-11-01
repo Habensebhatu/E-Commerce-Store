@@ -42,7 +42,7 @@ export class HeaderComponent {
   ) {}
 
   ngOnInit(): void {
-    this.mockData();
+  
     this.fetchWishlistProductIds();
     this.cartService.showMenu$.subscribe(() => {
       this.openCartMenu();
@@ -131,76 +131,5 @@ export class HeaderComponent {
   categoriesChange(category: string) {
     this.storeService.changeShowData(category);
   }
-  mockData() {
-    this.searchResult = [
-      {
-        imageUrls: [
-          {
-            index: 0,
-            file: "../assets/image/Berbere1.jpg",
-          },
-        ],
-        title: "test1",
-        price: 71.05,
-        categoryName: "food",
-        productId: "jhjjjk",
-        CategoryId: "vvvvvvv",
-        description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId: "ddd445556",
-        isPopular: true,
-      },
-      {
-        imageUrls: [
-          {
-            index: 0,
-            file: "../assets/image/Berbere1.jpg",
-          },
-        ],
-        title: "test2",
-        price: 71.05,
-        categoryName: "food",
-        productId: "jhjjjk",
-        CategoryId: "vvvvvvv",
-        description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId: "ddd445556",
-        isPopular: true,
-      },
-      {
-        imageUrls: [
-          {
-            index: 0,
-            file: "../assets/image/Berbere1.jpg",
-          },
-        ],
-        title: "test3",
-        price: 71.05,
-        categoryName: "food",
-        productId: "jhjjjk",
-        CategoryId: "vvvvvvv",
-        description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId: "ddd445556",
-        isPopular: true,
-      },
-      {
-        imageUrls: [
-          {
-            index: 0,
-            file: "../assets/image/Berbere1.jpg",
-          },
-        ],
-        title: "test4",
-        price: 71.05,
-        categoryName: "food",
-        productId: "jhjjjk",
-        CategoryId: "vvvvvvv",
-        description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId: "ddd445556",
-        isPopular: true,
-      },
-    ];
-  }
+ 
 }
