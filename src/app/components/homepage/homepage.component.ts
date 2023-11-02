@@ -167,12 +167,12 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/Berbere1.jpg",
+          file: "../assets/image/sandaal.jpg",
         },
       ],
-      title: "berbere",
+      title: "Sandaal/ኤርትራዊ ሳንዱቕ",
       price: 71.05,
-      categoryName: "food",
+      categoryName: "Schoen",
       productId: "jhjjjk",
       CategoryId: "vvvvvvv",
       description: "hhjdfhjfjhd",
@@ -184,12 +184,12 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/Tafelloper.jpg",
+          file: "../assets/image/HairStyle.jpg",
         },
       ],
       title: "hairStyle",
       price: 21.05,
-      categoryName: "cosmetica",
+      categoryName: "Cosmetica",
       productId: "jhjjjk",
       CategoryId: "vvvvvvv",
       description: "hhjdfhjfjhd",
@@ -201,12 +201,12 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/Koffieserveertafel.jpg",
+          file: "../assets/image/Berbere1.jpg",
         },
       ],
-      title: "Koffieserveertafel",
-      price: 200.76,
-      categoryName: "cosmetica",
+      title: "berbere Spice /በርበሬ",
+      price: 20,
+      categoryName: "Voedsel",
       productId: "jhjjjk",
       CategoryId: "vvvvvvv",
       description: "hhjdfhjfjhd",

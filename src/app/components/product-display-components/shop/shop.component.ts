@@ -46,8 +46,10 @@ export class ShopComponent {
     private router: Router
   ) {}
   categorie = [
-    {name: 'Food'},
-    {name: 'cosmetica'}
+    {name: 'Cosmetica'},
+    {name: 'Kleding'},
+    {name: 'Schoen'},
+    {name: 'Voedsel'}
 ];
    ngOnInit() {
     this.getProducts();
