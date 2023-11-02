@@ -37,7 +37,6 @@ export class DatailProductComponent {
         this.getProduct();
       }
     });
-    this.mockData();
   this.fetchWishlistProductIds();
   }
   
@@ -57,7 +56,7 @@ export class DatailProductComponent {
     if (this.product?.categoryName) {
       this.storeService.getProductBYCategory(this.product.categoryName, this.currentPage, this.pageSize).pipe(takeUntil(this.unsubscribe$))
         .subscribe((data: Product[]) => {
-          // this.relatedProducts = data;
+          this.relatedProducts = data;
           console.log('this.relatedProducts', this.relatedProducts);
         });
     }
@@ -125,152 +124,5 @@ currentIndex = 0;
       this.unsubscribe$.unsubscribe();
     }
   }
-  mockData(){
-
-    this.selectedImage = '../assets/image/Sieraden.jpeg'
-
-    this.product = {
-    productId: "c80da04f-7289-4605-a214-08503ee9eb81",
-      title: "Sieraden Etui |",
-      price: 4,
-      description: "Shkorina Big Habesha Sieraden Set Verguld Met Cadeau Sieraden Etui | Ethiopische sieradenset | Eritrese sieradenset",
-      imageUrls: [
-        {
-          index: 0,
-          file: '../assets/image/Tafelloper.avif'
-        },
-        {
-          index: 1,
-          file: '../assets/image/Sieraden.jpeg'
-        },
-        {
-          index: 2,
-          file:'../assets/image/Sieraden.jpeg'
-        },
-        {
-          index: 3,
-          file: '../assets/image/Sieraden.jpeg'
-        },
-        {
-          index: 4,
-          file: '../assets/image/Sieraden.jpeg'
-        },
-      ],
-      categoryName: "food",
-      isPopular: false,
-      CategoryId: "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-      sessionId : "3d412fce-2039-471a-a2a2-1a7c403c0b94",
-      quantity: 5
-      
-    }
-
-    this.relatedProducts = [
-      {
-        imageUrls: [{
-          index: 0,
-          file: '../assets/image/Berbere1.jpg'
-        }],
-        title: 'berbere',
-        price: 71.05,
-          categoryName: 'food',
-          productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
-      },
-      {
-       
-        imageUrls: [{
-          index: 0,
-          file: '../assets/image/Tafelloper.avif'
-        }],
-        title: 'hairStyle',
-        price: 21.05,
-        categoryName: 'cosmetica',
-        productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
-    },
-    {
-      imageUrls: [{
-        index: 0,
-        file: '../assets/image/Koffieserveertafel.avif'
-      }],
-      title: 'Koffieserveertafel',
-      price: 200.76,
-      categoryName: 'cosmetica',
-      productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
-    },
-    {
-      imageUrls: [{
-        index: 0,
-        file: '../assets/image/jurk.avif'
-      }],
-      title: 'jurk',
-      price: 61.20,
-      categoryName: 'Kleding',
-      productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
-    },
-    {
-      imageUrls: [{
-        index: 0,
-        file: '../assets/image/Tafelloper.avif'
-      }],
-      title : 'Tafle',
-      price: 55.86,
-      categoryName: 'Cosmetica',
-      productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
-    },
-    {
-      imageUrls: [{
-        index: 0,
-        file: '../assets/image/Tafelloper.avif'
-      }],
-      title : 'Tafle',
-      price: 55.86,
-      categoryName: 'Cosmetica',
-      productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
-    },
-    {
-      imageUrls: [{
-        index: 0,
-        file: '../assets/image/Tafelloper.avif'
-      }],
-      title : 'Tafle',
-      price: 55.86,
-      categoryName: 'Cosmetica',
-      productId: "jhjjjk",
-      CategoryId: "vvvvvvv",
-       description: "hhjdfhjfjhd",
-        quantity: 3,
-        sessionId : 'ddd445556',
-        isPopular: true
-    } 
-    ];
-  }
+  
 }

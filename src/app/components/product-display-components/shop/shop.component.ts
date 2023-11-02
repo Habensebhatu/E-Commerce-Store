@@ -46,7 +46,7 @@ export class ShopComponent {
     private router: Router
   ) {}
   categorie = [
-    {name: 'food'},
+    {name: 'Food'},
     {name: 'cosmetica'}
 ];
    ngOnInit() {
@@ -138,11 +138,11 @@ export class ShopComponent {
   }
 
   get totalPages(): number {
-    // if (this.totalProductsOfCategory === undefined || this.totalProductsOfCategory === 0) {
-    //     return 0;
-    // }
-    // return Math.ceil(this.totalProductsOfCategory / this.pageSize);
-    return Math.ceil(40 / 12);
+    if (this.totalProductsOfCategory === undefined || this.totalProductsOfCategory === 0) {
+        return 0;
+    }
+    return Math.ceil(this.totalProductsOfCategory / this.pageSize);
+    
 }
 
   OnfillterProductsBYPrice(filltedProduct: string): void {

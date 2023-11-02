@@ -19,7 +19,6 @@ export class HeaderComponent {
   wishlistQuantity = 0;
   categories: Category[] | undefined;
   searchResults: Product[] = [];
-  searchResult: Product[] = [];
   @ViewChild("cartTrigger") cartMenuTrigger!: MatMenuTrigger;
   @ViewChild("searchMenuTrigger")
   searchMenuTrigger!: MatMenuTrigger;
