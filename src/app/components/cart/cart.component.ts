@@ -31,8 +31,7 @@ export class CartComponent {
 
   constructor(private cartService: CartService, private http: HttpClient, private storeService: StoreService){}
 ngOnInit(){
-  this.mockData();
-  console.log("cardrd",this.dataSourc)
+  // this.mockData();
   this.cartService.cart.subscribe((_cart: CartI)=>{
     this.cart = _cart;
     this.Products = this.cart.items;
@@ -88,56 +87,56 @@ onCheckout(): void {
    
 }
 
-mockData(){
-  this.dataSourc = [
-    {
-      productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      title: "string",
-      price: 23,
-      description: "string",
-      imageUrl: "../assets/image/Berbere1.jpg",
-      quantity: 3,
-      categoryName: "string",
-      sessionId: "string",
-      CategoryId: "327837893928"
-    },
-    {
-      productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      title: "string",
-      price: 23,
-      description: "string",
-      imageUrl: "../assets/image/Berbere1.jpg",
-      quantity: 3,
-      categoryName: "string",
-      sessionId: "string",
-      CategoryId: "327837893928"
-    },
-    {
-      productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      title: "string",
-      price: 23,
-      description: "string",
-      imageUrl: "../assets/image/Berbere1.jpg",
-      quantity: 3,
-      categoryName: "string",
-      sessionId: "string",
-      CategoryId: "327837893928"
-    },
-    {
-      productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      title: "string",
-      price: 23,
-      description: "string",
-      imageUrl: "../assets/image/Berbere1.jpg",
-      quantity: 3,
-      categoryName: "string",
-      sessionId: "string",
-      CategoryId: "327837893928"
-    }
-  ]
+// mockData(){
+//   this.dataSourc = [
+//     {
+//       productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+//       title: "string",
+//       price: 23,
+//       description: "string",
+//       imageUrl: "../assets/image/Berbere1.jpg",
+//       quantity: 3,
+//       categoryName: "string",
+//       sessionId: "string",
+//       categoryId: "327837893928"
+//     },
+//     {
+//       productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+//       title: "string",
+//       price: 23,
+//       description: "string",
+//       imageUrl: "../assets/image/Berbere1.jpg",
+//       quantity: 3,
+//       categoryName: "string",
+//       sessionId: "string",
+//       categoryId: "327837893928"
+//     },
+//     {
+//       productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+//       title: "string",
+//       price: 23,
+//       description: "string",
+//       imageUrl: "../assets/image/Berbere1.jpg",
+//       quantity: 3,
+//       categoryName: "string",
+//       sessionId: "string",
+//       CategoryId: "327837893928"
+//     },
+//     {
+//       productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+//       title: "string",
+//       price: 23,
+//       description: "string",
+//       imageUrl: "../assets/image/Berbere1.jpg",
+//       quantity: 3,
+//       categoryName: "string",
+//       sessionId: "string",
+//       CategoryId: "327837893928"
+//     }
+//   ]
   
   
-}
+// }
 
 }
 

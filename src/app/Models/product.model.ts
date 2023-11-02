@@ -3,7 +3,7 @@ export interface Cart {
     }
  export interface Product {
    productId: string;
-   CategoryId: string;
+   categoryId: string;
     title: string;
      price: number;
     categoryName: string;
@@ -19,9 +19,22 @@ export interface Cart {
   export interface CartI {
     items: Array<ProductAddCart>;
   }
+  
   export interface ProductAddCart {
     productId: string;
-    CategoryId: string;
+    categoryId: string;
+     title: string;
+      price: number;
+     categoryName: string;
+     description: string;
+     imageUrl: string;
+      quantity: number;
+      sessionId : string;
+ 
+   }
+
+   export interface ProductAddCartt {
+    productId: string;
      title: string;
       price: number;
      categoryName: string;

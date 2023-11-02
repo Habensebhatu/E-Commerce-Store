@@ -30,7 +30,7 @@ export class AppProductListComponent {
       quantity: 1,
       imageUrl: product.imageUrls[0].file,
       productId: product.productId,
-      CategoryId: product.CategoryId,
+      categoryId: product.categoryId,
       description: product.description,
       sessionId : product.sessionId
     });

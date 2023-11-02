@@ -24,6 +24,8 @@ export class AppProductGridComponent {
   }
 
   onAddToCart(product: Product): void {
+    console.log("product444", product)
+    console.log(" product.CategoryId",  product.categoryId)
     this.cartService.addToCart({
       categoryName: product.categoryName,
       title: product.title,
@@ -31,7 +33,7 @@ export class AppProductGridComponent {
       quantity: 1,
       imageUrl: product.imageUrls[0].file,
       productId: product.productId,
-      CategoryId: product.CategoryId,
+      categoryId: product.categoryId,
       description: product.description,
       sessionId : product.sessionId
     });

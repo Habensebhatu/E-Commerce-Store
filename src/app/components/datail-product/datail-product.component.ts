@@ -87,7 +87,7 @@ currentIndex = 0;
         quantity: this.Quetity,
         imageUrl: this.product.imageUrls[0].file,
         productId: this.product.productId,
-        CategoryId: this.product.CategoryId,
+        categoryId: this.product.categoryId,
         description: this.product.description,
         sessionId: this.product.sessionId
 

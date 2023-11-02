@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Cart, CartI, Product, ProductAddCart } from '../Models/product.model';
+import { Cart, CartI, Product, ProductAddCart, ProductAddCartt } from '../Models/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -8,8 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     providedIn: 'root'
 })
 export class CartService {
-    // private apiUrl = 'https://localhost:7087/api/Cart';
-    private apiUrl = 'https://pilishwebshop.azurewebsites.net/api/Cart';
+    private apiUrl = 'https://localhost:7087/api/Cart';
+    // private apiUrl = 'https://pilishwebshop.azurewebsites.net/api/Cart';
     cart = new BehaviorSubject<CartI>({ items: [] });
     private _showMenu = new Subject<void>();
     showMenu$ = this._showMenu.asObservable();
@@ -60,6 +60,7 @@ export class CartService {
     
 
     addToCart(item: ProductAddCart): void {
+        console.log("productItem", item)
         item.sessionId = this.sessionId;
         const token = localStorage.getItem('token');
         let headers = new HttpHeaders();
