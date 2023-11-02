@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Cart, CartI, Product, ProductAddCart, ProductAddCartt } from '../Models/product.model';
+import { CartI, ProductAddCart} from '../Models/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
