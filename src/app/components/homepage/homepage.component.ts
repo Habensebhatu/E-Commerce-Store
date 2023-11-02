@@ -184,7 +184,7 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/Tafelloper.avif",
+          file: "../assets/image/Tafelloper.jpg",
         },
       ],
       title: "hairStyle",
@@ -201,7 +201,7 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/Koffieserveertafel.avif",
+          file: "../assets/image/Koffieserveertafel.jpg",
         },
       ],
       title: "Koffieserveertafel",
@@ -218,7 +218,7 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/jurk.avif",
+          file: "../assets/image/jurk.jpg",
         },
       ],
       title: "jurk",
@@ -235,7 +235,7 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/Tafelloper.avif",
+          file: "../assets/image/Tafelloper.jpg",
         },
       ],
       title: "Tafle",
@@ -252,7 +252,7 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/Tafelloper.avif",
+          file: "../assets/image/HairStyle.jpg",
         },
       ],
       title: "Tafle",
@@ -269,7 +269,7 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/Tafelloper.avif",
+          file: "../assets/image/Lichaamsdelen.jpg",
         },
       ],
       title: "Tafle",
