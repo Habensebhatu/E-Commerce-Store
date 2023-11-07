@@ -72,11 +72,9 @@ onRemoveFromCart(item: ProductAddCart): void {
   this.cartService.removeFromCart(item);
 }
 onCheckout(): void {
-  console.log('testes', this.cart.items)
   this.http
-    .post('https://localhost:7087/api/Stripe/checkout', {
+    .post('https://pilishwebshop.azurewebsites.net/api/Stripe/checkout', {
       items: this.cart.items,
-    
     })
     .subscribe(async (res: any) => {
       let stripe = await loadStripe('pk_test_51NTNZBD7MblCQnUpYTVDGZm17TPDhkiEi1IlYWD7sTFcmSalAEKYRj3R1YKAudhsPHDlV998DMuqvTVmOPBpDckM00rBnZ0I4U');
@@ -86,7 +84,7 @@ onCheckout(): void {
     });
    
 }
-
+// https://localhost:7087/api/Stripe/checkout
 // mockData(){
 //   this.dataSourc = [
 //     {
