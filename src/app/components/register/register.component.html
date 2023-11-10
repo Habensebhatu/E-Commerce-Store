@@ -57,7 +57,7 @@
             </mat-select>
           </mat-form-field>
           <div formGroupName="address">
-          <button type="button" class="text-blue-600 mt-3 mb-4" (click)="showAddress = !showAddress">
+          <button type="button" class="text-red-500 mt-3 mb-4" (click)="showAddress = !showAddress">
             {{ showAddress ? 'Hide' : 'Show' }} Address Details
           </button>
         <div *ngIf="showAddress">
@@ -91,13 +91,13 @@
           </div>
         </div>
       </div>
-          <button mat-raised-button color="primary" class="w-full mt-4" type="submit">
+          <button mat-raised-button color="warn" class="w-full mt-4" type="submit">
             Registreren
           </button>
           <div class="border-t my-4"></div>
           <p class="text-sm pb-lg-2">
             Heb je al een account?
-            <a routerLink="/login" class="text-blue-600">Log hier in!</a>
+            <a routerLink="/login" class="text-red-600">Log hier in!</a>
           </p>
         </form>
       </div>

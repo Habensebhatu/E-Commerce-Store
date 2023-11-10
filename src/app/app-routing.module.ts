@@ -36,6 +36,7 @@ const routes: Routes = [
   { path: 'contactUs', component:   ContactUsComponent},
   { path: 'aboutUs', component:    AboutUsComponent},
   { path:  "shop/:name",component:   ShopComponent},
+ 
 
 ];
 

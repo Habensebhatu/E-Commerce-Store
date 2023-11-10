@@ -97,7 +97,7 @@ export class HeaderComponent {
         if (products.length > 0) {
           this.searchMenuTrigger.openMenu();
         } else {
-          this.searchMenuTrigger.closeMenu();
+          this.searchMenuTrigger.openMenu(); 
         }
       });
   }

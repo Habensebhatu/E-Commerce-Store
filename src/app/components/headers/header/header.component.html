@@ -44,7 +44,7 @@
         <input
           type="text"
           class="p-2 flex-grow text-sm h-6 bg-[#242424] search-input"
-          placeholder="Search entire store here ..."
+          placeholder="Search "
           style="font-size: 15px"
           (input)="searchProducts($event)"
         />
@@ -56,9 +56,8 @@
           <mat-icon>search</mat-icon>
         </button>
       </div>
+      <mat-menu #searchMenu="matMenu" class="w-80" >
 
-      <mat-menu #searchMenu="matMenu" class="w-80">
-        <!-- Search results displayed here -->
         <div *ngFor="let product of searchResults" class="result-item mb-4">
           <a [routerLink]="['/product', product.productId]">
             <div
@@ -74,7 +73,17 @@
             </div>
           </a>
         </div>
+        
+        <ng-template #noResults>
+          <div class="text-center text-gray-600 py-4">
+            No products found.
+          </div>
+        </ng-template>
+      
+        <!-- Conditional rendering -->
+        <div *ngIf="searchResults.length; else noResults"></div>
       </mat-menu>
+    
 
       <div
         class="hidden w-full md:block md:w-auto"

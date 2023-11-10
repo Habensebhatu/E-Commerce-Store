@@ -63,7 +63,6 @@ export class RegisterComponent implements OnInit {
       .subscribe((success: any) => {
         if (success) {
           alert('Registratie gelukt');
-          console.log("success.token", success.token)
           const decodedToken = this.userRegistrationService.decodeJWT(success.token);
           console.log("decodedToken",decodedToken)
           this.userRegistrationService.setCurrentUser(decodedToken);

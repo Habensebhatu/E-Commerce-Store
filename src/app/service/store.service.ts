@@ -81,9 +81,6 @@ export class StoreService {
     );
 }
 
-
-  
-  
   getProductBYPrice(minNumber: number, maxNumber: number): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`${this.apiUrl}/ByPriceRange/${minNumber}/${maxNumber}`);
 }

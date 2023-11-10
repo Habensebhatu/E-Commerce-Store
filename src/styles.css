@@ -30,9 +30,9 @@ input:focus {
   }
 }
 
-.mat-primary {
+/* .mat-primary {
   background: #cc2121 !important;
-}
+} */
 
 .swiper-pagination-bullet {
   width: 10px;

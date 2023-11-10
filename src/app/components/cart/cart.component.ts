@@ -27,18 +27,21 @@ export class CartComponent {
     'total',
     'action',
   ];
-
-  constructor(private cartService: CartService, private http: HttpClient, private storeService: StoreService){}
+constructor(private cartService: CartService, private http: HttpClient, private storeService: StoreService){}
 ngOnInit(){
-  // this.mockData();
   this.cartService.cart.subscribe((_cart: CartI)=>{
     this.cart = _cart;
     this.Products = this.cart.items;
     this.dataSource = this.cart.items;
-    console.log("cardrd", this.cart)
-   
   })
   
+}
+
+getLastProductCategory() {
+  if (this.Products && this.Products.length > 0) {
+    return this.Products[this.Products.length - 1].categoryName;
+  }
+  return ''; 
 }
 
 getTotalQuantity(items: ProductAddCart[]): number {
@@ -52,7 +55,11 @@ getTotal(items: ProductAddCart[]): number {
 
 getProducts(){
   this.storeService.setAllProducts(true);
-}
+  // this.storeService.getProducts().subscribe((data: Product[]) => {
+  //   this.product = data
+  // });
+  }
+
 onAddQuantity(item: ProductAddCart): void {
   console.log("Quantity", item)
   this.cartService.addToCart(item);
