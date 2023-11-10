@@ -7,7 +7,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserRegistrationService {
- 
   // private apiUrl = 'https://localhost:7087/api/Registration/register';
   // private loginApiUrl = 'https://localhost:7087/api/Registration/login';
   // private contactUsApiUrl = 'https://localhost:7087/api/ContactUs/SubmitContactRequest';

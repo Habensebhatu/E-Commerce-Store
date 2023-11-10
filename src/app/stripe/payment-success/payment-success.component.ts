@@ -14,4 +14,5 @@ constructor(private cartService: CartService,){
 ngOnInit(){
   this.cartService.clearCart();
 }
+
 }

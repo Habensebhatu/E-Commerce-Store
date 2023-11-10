@@ -57,11 +57,10 @@ export class ProductsSliderComponent {
 
   handleProductClick(product: Product) {
     if (this.context === "home") {
-      // Navigate to categories page
       this.router.navigate(["/shop", product.categoryName]);
     } else if (this.context === "productDetails") {
-      // Emit an event to change the product details or do whatever you want
       this.productClicked.emit(product);
+      this.router.navigate(['/product', product.productId]);
     }
   }
 }

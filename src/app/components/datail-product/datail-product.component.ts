@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation  } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Product } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
 import { WishlistService } from 'src/app/service/wishlist.service';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-datail-product',
-  templateUrl:'./datail-product.component.html' 
+  templateUrl:'./datail-product.component.html',
+  encapsulation: ViewEncapsulation.None 
 })
 export class DatailProductComponent {
   productId: string | undefined;
@@ -27,7 +30,7 @@ export class DatailProductComponent {
     private route: ActivatedRoute,
     private storeService: StoreService,
     private cartService: CartService,
-    private wishlistService: WishlistService,  private _snackBar: MatSnackBar
+    private wishlistService: WishlistService,  private _snackBar: MatSnackBar,private router: Router
   ) {}
   
   ngOnInit() {
@@ -44,7 +47,6 @@ export class DatailProductComponent {
     this.storeService.getProductsById(this.productId!).pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: Product) => {
         this.product = data
-        console.log('data.imageUrls', data)
         this.selectedImage = data.imageUrls[0].file;
         this.getProductBYCategory();
         window.scrollTo(0, 0); 
@@ -115,8 +117,17 @@ currentIndex = 0;
     } else {
       this._snackBar.open('Product is already in the wishlist.', 'Ok', {duration: 3000,});
       console.log('Product is already in the wishlist.');
-      // You can also provide user feedback like a toast message here if required
     }
+  }
+
+  changeProductDetails(product: Product) {
+    this.product = product;
+    this.selectedImage = product.imageUrls[0].file;
+    this.getProductBYCategory();
+    this.router.navigate(['/product-detail', product.productId]).then(() => {
+      window.scrollTo(0, 0);
+    });
+    
   }
 
   ngOnDestroy(): void {
