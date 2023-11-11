@@ -1,10 +1,14 @@
-<div class="categories-slider-wrapper relative" id="categories_slider">
+<div
+  class="categories-slider-wrapper relative"
+  id="categories_slider"
+  [ngClass]="{ alfa: isClassAdded }"
+>
   <div *ngIf="loading" class="loader-container">
     <div class="loader"></div>
   </div>
   <div class="swiper-wrapper">
-    <article
-      class="swiper-slide product-layout"
+    <div
+      class="swiper-slide product-layout w-[320px]"
       *ngFor="let product of products"
     >
       <div class="product-image">
@@ -27,7 +31,7 @@
           <span>€{{ product.price }}</span>
         </p>
       </div>
-    </article>
+    </div>
   </div>
 </div>
 <div class="swiper-arrow next"><i class="fa fa-angle-right"></i></div>

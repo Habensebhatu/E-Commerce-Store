@@ -6,7 +6,7 @@
 </app-header-area>
 
 <!-- Main Navigation Area -->
-<div class="bg-[#242424] navbar text-white py-1 md:py-0">
+<div class="bg-[#242424] navbar text-white py-0">
   <div
     class="container px-4 md:px-1 mx-auto flex flex-wrap justify-center md:justify-between items-center py-0"
   >
@@ -18,7 +18,7 @@
         data-collapse-toggle="navbar-default"
         (click)="toggleMenu()"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        class="inline-flex items-center w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         aria-controls="navbar-default"
         aria-expanded="false"
       >
@@ -56,8 +56,7 @@
           <mat-icon>search</mat-icon>
         </button>
       </div>
-      <mat-menu #searchMenu="matMenu" class="w-80" >
-
+      <mat-menu #searchMenu="matMenu" class="w-80">
         <div *ngFor="let product of searchResults" class="result-item mb-4">
           <a [routerLink]="['/product', product.productId]">
             <div
@@ -73,17 +72,14 @@
             </div>
           </a>
         </div>
-        
+
         <ng-template #noResults>
-          <div class="text-center text-gray-600 py-4">
-            No products found.
-          </div>
+          <div class="text-center text-gray-600 py-4">No products found.</div>
         </ng-template>
-      
+
         <!-- Conditional rendering -->
         <div *ngIf="searchResults.length; else noResults"></div>
       </mat-menu>
-    
 
       <div
         class="hidden w-full md:block md:w-auto"
