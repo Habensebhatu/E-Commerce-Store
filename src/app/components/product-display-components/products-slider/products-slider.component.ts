@@ -55,12 +55,15 @@ export class ProductsSliderComponent {
     }, 500);
   }
 
+  isClassAdded = false;
+
   handleProductClick(product: Product) {
+    this.isClassAdded = !this.isClassAdded;
     if (this.context === "home") {
       this.router.navigate(["/shop", product.categoryName]);
     } else if (this.context === "productDetails") {
       this.productClicked.emit(product);
-      this.router.navigate(['/product', product.productId]);
+      this.router.navigate(["/product", product.productId]);
     }
   }
 }
