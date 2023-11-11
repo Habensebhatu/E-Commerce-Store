@@ -93,13 +93,13 @@
           class="font-medium flex flex-col px-0 md:px-4 py-4 md:p-0 md:flex-row md:space-x-2 md:mt-0 md:border-0"
         >
           <li>
-            <a class="pl-0" mat-button routerLink="/">Home</a>
+            <a class="pl-0" mat-button routerLink="/">{{"Home" | translate}}</a>
           </li>
           <li>
             <!-- Categories dropdown menu -->
             <div class="inline-block">
               <button mat-button [matMenuTriggerFor]="categoriesMenu">
-                Categories <mat-icon>arrow_drop_down</mat-icon>
+                {{ "shop" | translate }} <mat-icon>arrow_drop_down</mat-icon>
               </button>
               <mat-menu #categoriesMenu="matMenu">
                 <button
@@ -116,12 +116,12 @@
           </li>
           <li>
             <a class="text-sm ml-0 md:ml-2" mat-button routerLink="/aboutUs"
-              >About Us</a
+              >{{ "About Us" | translate }}</a
             >
           </li>
           <li>
             <a class="ml-0 md:ml-2" mat-button routerLink="/contactUs"
-              >Contact Us</a
+              > {{ "Contact Us" | translate }}</a
             >
           </li>
         </ul>

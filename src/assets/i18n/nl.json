@@ -2,6 +2,10 @@
     "welcome": "Welkom",
     "customer_service": "Klantenservice",
     "register": "Registreren",
-    "login": "Inloggen"
- 
+    "login": "Inloggen",
+     "shop": "Webwinkel",
+     "Home": "Home",
+     "Contact Us": "Contact Us",
+     "Empty cart": "Uw winkelwagen is leeg",
+     "Continue Shopping": "Verder Winkel"
 }

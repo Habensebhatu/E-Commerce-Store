@@ -37,7 +37,8 @@
           class="mr-1 md:mr-4"
           [matMenuTriggerFor]="accountMenu"
         >
-          Inloggen
+        {{ "login" | translate }}
+          <!-- Inloggen -->
         </button>
         <mat-menu #accountMenu="matMenu">
           <button mat-menu-item routerLink="/Register">Register</button>

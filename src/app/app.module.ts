@@ -6,8 +6,6 @@ import { PaymentCancelledComponent } from './stripe/payment-cancelled/payment-ca
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -86,18 +84,9 @@ register();
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSidenavModule,
-    MatGridListModule,
     MatMenuModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule,
-    MatExpansionModule,
-    MatTreeModule,
-    MatListModule,
-    MatToolbarModule,
-    MatTableModule,
-    MatBadgeModule,
     MatSnackBarModule,
     MatFormFieldModule,
     BrowserAnimationsModule,

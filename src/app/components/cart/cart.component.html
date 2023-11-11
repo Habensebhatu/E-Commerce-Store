@@ -78,14 +78,14 @@
   Continue Shopping
 </button>
 </div>
-  <div class="flex flex-col items-center justify-center" *ngIf="!Products.length">
-    <img src="../assets/image/emptycard.png" alt="Empty Cart" class="w-full h-64 object-cover" />
-    <p class="text-lg font-bold mt-4">Your shopping cart is empty</p>
-    <button routerLink="/home" (click)="getProducts()"
-      class="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
-      Continue Shopping
-    </button>
-  </div>
+<div class="flex flex-col items-center justify-center" *ngIf="!Products.length">
+  <img src="../assets/image/emptycard.png" alt="Empty Cart" class="w-full h-64 object-cover"/>
+  <p class="text-lg font-bold " style="margin-top: 2rem;">{{"Empty cart" | translate}}</p>
+  <button routerLink="/home" 
+    class="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
+    {{"Continue Shopping" | translate}}
+  </button>
+</div>
 </div>
 
 

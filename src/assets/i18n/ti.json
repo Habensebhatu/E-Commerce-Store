@@ -1,7 +1,13 @@
 {
     "WELCOME": "እንኳዕ ደሓን መፁ",
     "customer_service": "ኣገልግሎት ዓማዊል",
-    "register": "Registreren",
-    "login": "Inloggen"
+    "register": "ምዝገባ",
+    "login": "ኢንሎገን",
+    "shop": "ኦንላይን ትእዛዝ",
+    "Home": "መእተዊ",
+    "About Us": "ብዛዕባና",
+    "Contact Us": "ርኸቡና",
+    "Empty cart": "ናይ ዕዳጋ ሳጹንካ ባዶ እዩ።",
+    "Continue Shopping": "ዕዳጋ ምቕጻል"
   }
   

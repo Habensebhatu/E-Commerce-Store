@@ -2,6 +2,12 @@
     "welcome": "Welcome",
     "customer_service": "Customer Service",
     "register": "Register",
-    "login": "Inloggen"
+    "login": "login",
+    "Home": "Home",
+    "shop": "Shop",
+    "About Us": "About Us",
+    "Contact Us": "Contact Us",
+    "Empty cart": "Your shopping cart is empty",
+    "Continue Shopping": "Continue Shopping"
    
 }
