@@ -92,6 +92,8 @@ register();
     BrowserAnimationsModule,
     MatSelectModule,
     MatInputModule,
+    MatIconModule,
+    MatBadgeModule,
 
     TranslateModule.forRoot({
       loader: {
