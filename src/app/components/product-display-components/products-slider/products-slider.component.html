@@ -1,14 +1,11 @@
-<div
-  class="categories-slider-wrapper relative"
-  id="categories_slider"
-  [ngClass]="{ alfa: isClassAdded }"
->
+<div class="categories-slider-wrapper relative" id="categories_slider">
   <div *ngIf="loading" class="loader-container">
     <div class="loader"></div>
   </div>
   <div class="swiper-wrapper">
     <div
-      class="swiper-slide product-layout w-[320px]"
+      class="swiper-slide product-layout w-[160px] md:w-[320px]"
+      [ngClass]="{ 'mr-3 md:mr-4': isClassAdded }"
       *ngFor="let product of products"
     >
       <div class="product-image">
