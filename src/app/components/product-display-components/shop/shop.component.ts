@@ -45,12 +45,7 @@ export class ShopComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {}
-  categorie = [
-    {name: 'Cosmetica'},
-    {name: 'Kleding'},
-    {name: 'Schoen'},
-    {name: 'Voedsel'}
-];
+ 
    ngOnInit() {
     this.getProducts();
     this.route.queryParams.subscribe((params) => {

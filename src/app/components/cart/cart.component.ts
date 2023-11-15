@@ -55,9 +55,6 @@ getTotal(items: ProductAddCart[]): number {
 
 getProducts(){
   this.storeService.setAllProducts(true);
-  // this.storeService.getProducts().subscribe((data: Product[]) => {
-  //   this.product = data
-  // });
   }
 
 onAddQuantity(item: ProductAddCart): void {

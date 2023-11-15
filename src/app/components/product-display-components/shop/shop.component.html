@@ -14,7 +14,6 @@
                 <app-app-product-list *ngIf="activeView === 'list'" [products]="products"></app-app-product-list>
               </div>
             </div>
-            <!-- paganition -->
             <div class="flex flex-wrap -mx-4 mb-6 md:mb-0">
               <div class="pt-5 mt-[20px] border-t border-gray-300 w-full px-4">
                 <div class="flex flex-col md:flex-row justify-between text-center md:text-start">
@@ -68,7 +67,7 @@
           Categories
         </h2>
         <div class="space-y-2">
-          <a *ngFor="let categoryy of categorie" (click)="OnshowCategoty(categoryy.name)"
+          <a *ngFor="let categoryy of categories" (click)="OnshowCategoty(categoryy.name)"
             class="flex items-center transition-colors duration-700" [ngClass]="{
               'hover:text-red-600': categoryy.name !== selectedCategory,
               'text-red-600': categoryy.name === selectedCategory
@@ -111,19 +110,3 @@
   </div>
 </div>
 
-<!-- <li class="flex-1 text-right" *ngIf="currentPage < totalPages && products && 
-    (totalProductsOfCategory! > pageSize || currentPage > 1)">
-        <div class="text-sm flex items-center justify-end" (click)="nextPage()">
-            <span>Next</span>
-            <mat-icon>chevron_right</mat-icon>
-        </div>
-    </li> -->
-
-<!-- <ul class="flex items-center space-x-2">
-        <li class="flex-1 text-left" *ngIf="products && 
-        (totalProductsOfCategory! > pageSize || currentPage > 1)">
-            <div class="text-sm flex items-center" (click)="previousPage()">
-                <mat-icon>chevron_left</mat-icon>
-                <span>Previous</span>
-            </div>
-        </li> -->

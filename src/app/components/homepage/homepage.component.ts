@@ -129,16 +129,13 @@ export class HomepageComponent {
       const trendingProducts = new Swiper("#trendingProducts_slider", {
         slidesPerView: 4, // Display 4 images at once
         spaceBetween: 20,
-        speed: 400,
+        speed: 600,
         autoplay: {
           delay: 2000,
           disableOnInteraction: false,
         },
 
-        navigation: {
-          nextEl: ".swiper-arrow.next",
-          prevEl: ".swiper-arrow.prev",
-        },
+        
 
         breakpoints: {
           992: {
