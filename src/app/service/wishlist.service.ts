@@ -8,7 +8,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   providedIn: "root",
 })
 export class WishlistService {
-  private apiUrlAdd = 'https://pilishwebshop.azurewebsites.net/Wishlist/AddToWishList';
+  private apiUrlAdd = 'https://pilishwebshop.azurewebsites.net/api/Wishlist/AddToWishList';
   private apiUrlGet = 'https://pilishwebshop.azurewebsites.net/api/Wishlist/GetWishlistProducts';
   private apiUrlDelete = 'https://pilishwebshop.azurewebsites.net/api/Wishlist/DeleteFromWishlist';
   // private apiUrlAdd = "https://localhost:7087/api/Wishlist/AddToWishList";
