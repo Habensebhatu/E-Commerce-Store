@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CartService {
     // private apiUrl = 'https://localhost:7087/api/Cart';
-    private apiUrl = 'https://pilishwebshop.azurewebsites.net/api/Cart';
+    private apiUrl = 'https://webshopfilimon.azurewebsites.net/api/Cart';
     cart = new BehaviorSubject<CartI>({ items: [] });
     private _showMenu = new Subject<void>();
     showMenu$ = this._showMenu.asObservable();

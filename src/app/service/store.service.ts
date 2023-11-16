@@ -16,8 +16,8 @@ const STORE_BASE_URL = "https://fakestoreapi.com";
 export class StoreService {
   // private readonly apiUrl = 'https://localhost:7087/api/Product';
   // private readonly apiUrlCategory = 'https://localhost:7087/api/Category';
-  private readonly apiUrlCategory = 'https://pilishwebshop.azurewebsites.net/api/Category';
-  private apiUrl = 'https://pilishwebshop.azurewebsites.net/api/Product';
+  private readonly apiUrlCategory = 'https://webshopfilimon.azurewebsites.net/api/Category';
+  private apiUrl = 'https://webshopfilimon.azurewebsites.net/api/Product';
   getAllProducts = false;
   constructor(private httpClient: HttpClient) { }
   private shouldGetAllProducts = false;
