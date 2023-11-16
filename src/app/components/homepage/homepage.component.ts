@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { Observable, Subject, of, takeUntil } from "rxjs";
 import { Product } from "src/app/Models/product.model";
 import { StoreService } from "src/app/service/store.service";
@@ -15,7 +16,9 @@ export class HomepageComponent {
   constructor(
     private storeService: StoreService,
     private wishlistService: WishlistService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private route: ActivatedRoute, 
+    private router: Router
   ) {}
   cols: Observable<number> = of(4);
   private unsubscribe$ = new Subject<void>();
@@ -41,6 +44,15 @@ export class HomepageComponent {
   loading = true;
 
   ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const fragment = this.route.snapshot.fragment;
+        if (fragment) {
+          const element = document.querySelector('#' + fragment);
+          if (element) element.scrollIntoView();
+        }
+      }
+    });
     this.getProducts();
     this.fetchWishlistProductIds();
 

@@ -76,7 +76,7 @@ onRemoveFromCart(item: ProductAddCart): void {
 }
 onCheckout(): void {
   this.http
-    .post('https://pilishwebshop.azurewebsites.net/api/Stripe/checkout', {
+    .post('https://webshopfilimon.azurewebsites.net/api/Stripe/checkout', {
       items: this.cart.items,
     })
     .subscribe(async (res: any) => {
