@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
-import {  Cart, CartI, Product, ProductAddCart } from 'src/app/Models/product.model';
+import {CartI,  ProductAddCart } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
 
@@ -16,23 +16,13 @@ export class CartComponent {
   ]
   }
   
-  dataSource : Array<ProductAddCart> = [];
-  dataSourc : Array<ProductAddCart> = [];
   Products : Array<ProductAddCart> = [];
-  displayedColumns: string[] = [
-    'product',
-    'name',
-    'price',
-    'quantity',
-    'total',
-    'action',
-  ];
+  
 constructor(private cartService: CartService, private http: HttpClient, private storeService: StoreService){}
 ngOnInit(){
   this.cartService.cart.subscribe((_cart: CartI)=>{
     this.cart = _cart;
     this.Products = this.cart.items;
-    this.dataSource = this.cart.items;
   })
   
 }
@@ -87,57 +77,6 @@ onCheckout(): void {
     });
    
 }
-// https://localhost:7087/api/Stripe/checkout
-// mockData(){
-//   this.dataSourc = [
-//     {
-//       productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-//       title: "string",
-//       price: 23,
-//       description: "string",
-//       imageUrl: "../assets/image/Berbere1.jpg",
-//       quantity: 3,
-//       categoryName: "string",
-//       sessionId: "string",
-//       categoryId: "327837893928"
-//     },
-//     {
-//       productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-//       title: "string",
-//       price: 23,
-//       description: "string",
-//       imageUrl: "../assets/image/Berbere1.jpg",
-//       quantity: 3,
-//       categoryName: "string",
-//       sessionId: "string",
-//       categoryId: "327837893928"
-//     },
-//     {
-//       productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-//       title: "string",
-//       price: 23,
-//       description: "string",
-//       imageUrl: "../assets/image/Berbere1.jpg",
-//       quantity: 3,
-//       categoryName: "string",
-//       sessionId: "string",
-//       CategoryId: "327837893928"
-//     },
-//     {
-//       productId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-//       title: "string",
-//       price: 23,
-//       description: "string",
-//       imageUrl: "../assets/image/Berbere1.jpg",
-//       quantity: 3,
-//       categoryName: "string",
-//       sessionId: "string",
-//       CategoryId: "327837893928"
-//     }
-//   ]
-  
-  
-// }
 
 }
 
