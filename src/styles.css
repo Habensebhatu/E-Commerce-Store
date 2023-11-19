@@ -204,6 +204,38 @@ input:focus {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .category-sidebar {
+    display: none;
+  }
+
+  .category-sidebar.sidebar-active {
+    display: block;
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .category-sidebar.sidebar-active a,
+  .category-sidebar.sidebar-active h2 {
+    color: #fff;
+  }
+
+  .closebtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+  }
+}
+
 @media only screen and (max-width: 575px) {
   .navbar .mat-mdc-button {
     font-size: 13px;

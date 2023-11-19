@@ -21,7 +21,7 @@ export class ShopComponent {
   ];
   activeView: "grid" | "list" = "grid";
   products: Product[] | undefined;
-  
+
   commingProducts: Product[] | undefined;
   count = "12";
   sort = "desc";
@@ -37,7 +37,7 @@ export class ShopComponent {
   currentPage: number = 1;
   pageSize: number = 12;
   totalProductsOfCategory: number | undefined;
-  
+
   Math = Math;
 
   constructor(
@@ -45,8 +45,8 @@ export class ShopComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {}
- 
-   ngOnInit() {
+
+  ngOnInit() {
     this.getProducts();
     this.route.queryParams.subscribe((params) => {
       if (params["category"]) {
@@ -62,7 +62,6 @@ export class ShopComponent {
 
     this.getCategoryByURL();
     this.getCatogories();
-  
   }
 
   getCategoryByURL() {
@@ -96,9 +95,8 @@ export class ShopComponent {
           this.selectedPrice == null
         ) {
           this.products = data;
-          console.log("this.products",this.products[0].categoryId)
-         
-        } 
+          console.log("this.products", this.products[0].categoryId);
+        }
       });
   }
 
@@ -128,22 +126,23 @@ export class ShopComponent {
     const filterProductbycategory = this.commingProducts?.filter(
       (p) => p.categoryName == this.category
     );
-    if(this.selectedPrice == undefined){
+    if (this.selectedPrice == undefined) {
       this.totalProductsOfCategory = filterProductbycategory!.length;
     }
-   
   }
 
   get totalPages(): number {
-    if (this.totalProductsOfCategory === undefined || this.totalProductsOfCategory === 0) {
-        return 0;
+    if (
+      this.totalProductsOfCategory === undefined ||
+      this.totalProductsOfCategory === 0
+    ) {
+      return 0;
     }
     return Math.ceil(this.totalProductsOfCategory / this.pageSize);
-    
-}
+  }
 
   OnfillterProductsBYPrice(filltedProduct: string): void {
-    if(this.minNumber == undefined ||  this.maxNumber == undefined){
+    if (this.minNumber == undefined || this.maxNumber == undefined) {
       this.currentPage = 1;
     }
     let numbers = filltedProduct.match(/(\d+[\.,\d]*)/g);
@@ -160,59 +159,56 @@ export class ShopComponent {
 
   togglePriceSelection(price: string): void {
     if (this.selectedPrice == price) {
-      console.log("this.selectedPrice")
-        this.selectedPrice = undefined; 
-        this.minNumber = undefined 
-          this.maxNumber = undefined 
-        console.log("this3333333",  this.selectedPrice)
-        this.filterByCategory(this.category!);
-        this.getProducts();
-        
+      console.log("this.selectedPrice");
+      this.selectedPrice = undefined;
+      this.minNumber = undefined;
+      this.maxNumber = undefined;
+      console.log("this3333333", this.selectedPrice);
+      this.filterByCategory(this.category!);
+      this.getProducts();
     } else {
-        this.OnfillterProductsBYPrice(price);
+      this.OnfillterProductsBYPrice(price);
     }
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { category: this.category, price: this.selectedPrice },
       queryParamsHandling: "merge",
-  });
-}
-  
-  getProductsByNameAndPrice(){
-    if (this.minNumber !== undefined || this.maxNumber !== undefined) {
-      this.storeService.getProductsByNameAndPrice({
-        category: this.category!,
-        minPrice: this.minNumber!,
-        pageNumber: this.currentPage,
-        pageSize: this.pageSize,
-        maxPrice: this.maxNumber 
-    }).subscribe((data) => {
-        this.products = data;
-        this.totalProductsOfCategory = data.length;
-        
     });
+  }
+
+  getProductsByNameAndPrice() {
+    if (this.minNumber !== undefined || this.maxNumber !== undefined) {
+      this.storeService
+        .getProductsByNameAndPrice({
+          category: this.category!,
+          minPrice: this.minNumber!,
+          pageNumber: this.currentPage,
+          pageSize: this.pageSize,
+          maxPrice: this.maxNumber,
+        })
+        .subscribe((data) => {
+          this.products = data;
+          this.totalProductsOfCategory = data.length;
+        });
     }
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { category:this.category, price: this.selectedPrice },
+      queryParams: { category: this.category, price: this.selectedPrice },
       queryParamsHandling: "merge",
     });
   }
 
-  
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-  }
+    }
     if (this.selectedCategory == undefined && this.selectedPrice == undefined) {
       this.filterByCategory(this.category!);
     }
     if (this.selectedCategory && this.selectedPrice == undefined) {
       this.filterByCategory(this.selectedCategory!);
-    } 
-    
-    else {
-      this.getProductsByNameAndPrice()
+    } else {
+      this.getProductsByNameAndPrice();
     }
   }
 
@@ -237,7 +233,6 @@ export class ShopComponent {
     }
   }
 
-  
   navigateToProductDetails(productId: string): void {
     this.router.navigate(["product", productId]);
   }
@@ -261,5 +256,9 @@ export class ShopComponent {
     this.activeView = view;
   }
 
-}
+  isDivHidden: boolean = true;
 
+  toggleDiv() {
+    this.isDivHidden = !this.isDivHidden;
+  }
+}
