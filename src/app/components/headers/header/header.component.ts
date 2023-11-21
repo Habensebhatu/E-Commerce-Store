@@ -23,6 +23,7 @@ export class HeaderComponent {
   @ViewChild("searchMenuTrigger")
   searchMenuTrigger!: MatMenuTrigger;
   languageMenu = false;
+  isMenuOpen = false;
   @Input()
   get cart(): CartI {
     return this._cart;
@@ -55,10 +56,17 @@ export class HeaderComponent {
     });
   }
 
-  isMenuOpen = false;
-
+  
+  closeMenu(): void {
+    this.isMenuOpen = false;
+  }
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+  
+  handleCategorySelect(categoryName: string): void {
+    this.categoriesChange(categoryName);
+    this.closeMenu();
   }
 
   fetchWishlistProductIds(): void {
