@@ -20,7 +20,7 @@
       </button>
       <!-- Search bar -->
       <div class="flex items-center">
-        <input type="text" class="p-2 flex-grow text-sm h-6 bg-[#242424] search-input" placeholder="Search "
+        <input type="text" class="p-2 flex-grow text-sm h-6 bg-[#242424] search-input" placeholder="{{ 'search' | translate }}"
           style="font-size: 15px" (input)="searchProducts($event)" />
         <button mat-icon-button #searchMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="searchMenu">
           <mat-icon>search</mat-icon>

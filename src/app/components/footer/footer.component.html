@@ -25,13 +25,13 @@
 
       <div class="w-full md:w-1/2 lg:w-1/6 mt-12 lg:mt-0">
         <aside class="widget-content">
-          <h4 class="widgettitle">Products</h4>
+          <h4 class="widgettitle">{{"Products" | translate}}</h4>
           <div>
             <div class="widgetized-menu mt-6 lg:mt-10">
               <ul class="list-unstyled">
-                <li><a [routerLink]="'/home'" fragment="our-categories">Our Categories</a></li>
-                <li><a [routerLink]="'/home'" fragment="best-sellers">Best Sales</a></li>
-                <li><a [routerLink]="'/home'" fragment="header">Header</a></li>
+                <li><a [routerLink]="'/home'" fragment="our-categories">{{"Our Categories" | translate}}</a></li>
+                <li><a [routerLink]="'/home'" fragment="best-sellers">{{"BEST SELLING PRODUCTS" | translate}}</a></li>
+                <li><a [routerLink]="'/home'" fragment="header">{{"Top of Page" | translate}}</a></li>
               </ul>
             </div>
           </div>
@@ -40,13 +40,13 @@
 
       <div class="w-full md:w-1/2 lg:w-1/6 mt-12 lg:mt-0">
         <aside class="widget-container">
-          <h4 class="widgettitle">Our Company</h4>
+          <h4 class="widgettitle"> {{"Our Company" | translate}}</h4>
           <div class="widget-content">
             <div class="widgetized-menu mt-6 lg:mt-10">
               <ul class="list-unstyled">
-                <li><a [routerLink]="'/aboutUs'" fragment="about-us">About Us</a></li>
-                <li><a routerLink="/contactUs">Contact Us</a></li>
-                <li><a routerLink="/login">Login</a></li>
+                <li><a [routerLink]="'/aboutUs'" fragment="about-us">{{"About Us" | translate}}</a></li>
+                <li><a routerLink="/contactUs">{{"Contact Us" | translate}}</a></li>
+                <li><a routerLink="/login">{{"login" | translate}}</a></li>
               </ul>
             </div>
           </div>
@@ -56,17 +56,16 @@
       </div>
 
       <div class="w-full md:w-1/2 lg:w-2/6 mt-12 lg:mt-0">
-        <h4 class="widgettitle">Register for Exclusive Perks</h4>
+        <h4 class="widgettitle"> {{"Register for Exclusive Perks" | translate}}</h4>
         <div>
           <div class="mt-6 lg:mt-10">
             <p class="mb-3 text-sm text-[#c0c0c0]">
-              Register to save your favorite items and shop faster next time and Stay up-to-date with the latest products and offers
-            </p>
+              {{" Register to save your favorite " | translate}}
           </div>
           <form>
             <div class="flex items-center space-x-3 mt-4">
               <button mat-raised-button color="warn" type="submit" (click)="navigateToRegister()">
-                Register now
+                {{"Register now" | translate}}
               </button>
             </div>            
           </form>
