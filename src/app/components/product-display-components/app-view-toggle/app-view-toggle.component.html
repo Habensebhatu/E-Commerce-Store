@@ -5,7 +5,7 @@
         class="text-lg leading-6 font-medium tracking-tight capitalize"
         style="margin-bottom: 0"
       >
-        Shop
+       {{"Shop" | translate}}
       </h1>
       <div class="flex justify-between items-center flex-wrap">
         <div class="flex items-center pr-5">
@@ -30,7 +30,7 @@
         </div>
         <div class="text-base">
           <span
-            >Showing {{ (currentPage - 1) * pageSize + 1 }} to
+            >{{"Showing" | translate}} {{ (currentPage - 1) * pageSize + 1 }} to
             {{ Math.min(currentPage * pageSize, totalProductsOfCategory!) }} of
             {{ totalProductsOfCategory }}</span
           >

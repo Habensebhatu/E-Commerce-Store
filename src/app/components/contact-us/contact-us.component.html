@@ -38,7 +38,7 @@
           class="contact-form-wrapper w-full flex flex-col h-full bg-gray-200 p-8 rounded-lg p-4"
         >
           <div class="section-title left-aligned with-border mb-8">
-            <h2 class="text-black text-xl mb-2">Get In Touch</h2>
+            <h2 class="text-black text-xl mb-2">{{"Get In Touch" | translate}}</h2>
           </div>
           <!-- ... -->
           <form
@@ -53,7 +53,7 @@
                   type="text"
                   id="name"
                   class="form-input w-full h-10 pl-4 mb-2 bg-white"
-                  placeholder="Your Name *"
+                  placeholder="{{ 'Your Name' | translate }}"
                   required
                 />
                 <div
@@ -64,7 +64,7 @@
                   "
                   class="text-red-500"
                 >
-                  Naam is verplicht.
+                  {{ 'Valid name' | translate }}
                 </div>
               </div>
               <div class="w-full md:w-1/2 px-2 mb-4">
@@ -72,7 +72,7 @@
                   formControlName="email"
                   type="email"
                   class="form-input w-full h-10 pl-4 mb-2 bg-white"
-                  placeholder="Your Email *"
+                  placeholder="{{ 'Your Email' | translate }}"
                   required
                 />
                 <div
@@ -83,7 +83,7 @@
                   "
                   class="text-red-500"
                 >
-                  Verplicht geldig e-mailadres.
+                 {{ 'Valid email' | translate }}
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@
                 type="tel"
                 class="form-input w-full h-10 pl-4 mb-2 bg-white"
                 id="telephoneNumber"
-                placeholder="Your Telephone Number"
+                placeholder="{{ 'Telephone Number' | translate }}"
                 required
               />
               <div
@@ -104,7 +104,7 @@
                 "
                 class="text-red-500"
               >
-                Verplicht geldig telefoonnummer.
+                {{ 'Required phonenr' | translate }}
               </div>
             </div>
 
@@ -113,7 +113,7 @@
                 formControlName="body"
                 class="form-input w-full pl-4 bg-white"
                 rows="5"
-                placeholder="Type Your Message....."
+                placeholder="{{ 'Your Message' | translate }}"
                 required
               ></textarea>
             </div>
@@ -124,7 +124,7 @@
                 type="submit"
                 class="btn btn-secondary bg-red-600 text-white py-2 px-4 rounded"
               >
-                Send Your Message
+                {{ 'Send Your Message' | translate }}
               </button>
             </div>
           </form>

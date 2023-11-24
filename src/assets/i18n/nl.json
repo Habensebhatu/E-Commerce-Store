@@ -1,5 +1,5 @@
 {
-    "welcome": "Welkom",
+    "WELCOME": "Welkom",
     "customer_service": "Klantenservice",
     "register": "Registreren",
     "login": "Inloggen",
@@ -17,5 +17,20 @@
      "Our Company":"Ons bedrijf",
      "Register for Exclusive Perks": "Schrijf  u in voor exclusieve voordelen",
      "Register to save your favorite": "Registreer je om je favoriete items op te slaan en winkel de volgende keer sneller en blijf op de hoogte van de nieuwste producten en aanbiedingen",
-     "Register now": "Registreer nu"
+     "Register now": "Registreer nu",
+     "Categories": "Categorieën",
+     "Showing": "Tonen",
+     "Shop": "Winkel",
+     "Price":"Prijs",
+     "Supermarket": "Welkom bij de Sofani Supermarkt!",
+     "Shop Now": "Winkel nu!",
+     "Get In Touch": "Neem contact op",
+     "Your Name": "Uw Naam *",
+     "Your Email": "Uw Email *",
+     "Valid email": "Verplicht geldig e-mailadres.",
+     "Valid name": "Naam is verplicht.",
+     "Required phonenr": "Verplicht geldig telefoonnummer.",
+     "Telephone Number": "Uw telefoonnummer",
+     "Your Message": "Schrijf je bericht.......",
+     "Send Your Message": "Verzend uw bericht"
 }

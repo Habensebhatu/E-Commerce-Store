@@ -1,5 +1,5 @@
 {
-    "welcome": "Welcome",
+    "WELCOME": "Welcome",
     "customer_service": "Customer Service",
     "register": "Register",
     "login": "login",
@@ -17,7 +17,20 @@
     "Our Company":"Our Company",
     "Register for Exclusive Perks": "Register for Exclusive Perks",
     "Register to save your favorite": "Register to save your favorite items and shop faster next time and Stay up-to-date with the latest products and offers",
-    "Register now": "Register now"
-
-   
+    "Register now": "Register now",
+    "Categories": " Categories",
+    "Showing": "Showing",
+    "Shop": "Shop",
+    "Price":"Price",
+    "Supermarket": "Welcome To Sofani Supermarket!",
+    "Shop Now": "Shop Now!",
+    "Get In Touch": "Get In Touch",
+    "Your Name": "Your Name *",
+    "Your Email": "Your Email *",
+    "Valid email": "Required valid email address.",
+    "Valid name": "Name is required.",
+    "Required phonenr": "Required Valid phone number.",
+    "Telephone Number": "Your Telephone Number",
+    "Your Message": "Type Your Message.......",
+    "Send Your Message": "Send Your Message"
 }
