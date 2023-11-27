@@ -30,14 +30,15 @@ export class HomepageComponent {
     },
     {
       image: "../assets/image/bgslide.jpg",
-      animationClass: "layer-animation-3",
-      promoTitle: "limited edition",
-      promoText: "Sale Offer 20% Off This Week",
-      mainTitle: "Top Popular",
-      mainSubtitle: "Accessories 2022",
+      // image: "../assets/image/sofanishop.jpeg",
+      animationClass: "",
+      promoTitle: "",
+      promoText: "",
+      mainTitle: "Welkom Bij",
+      mainSubtitle: " De Sofani Supermarkt!",
       subtitle:
-        "Light knit upper adapts to the shape of your foot for flexible and natural movement.",
-      buttonUrl: "shop-grid.html",
+        "",
+      buttonUrl: "",
     },
   ];
 
@@ -141,9 +142,9 @@ export class HomepageComponent {
       const trendingProducts = new Swiper("#trendingProducts_slider", {
         slidesPerView: 4, // Display 4 images at once
         spaceBetween: 20,
-        speed: 600,
+        speed: 2000,
         autoplay: {
-          delay: 2000,
+          delay: 4000,
           disableOnInteraction: false,
         },
 
@@ -172,15 +173,33 @@ export class HomepageComponent {
   }
 
   products = [
+
     {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/sandaal.jpg",
+          file: "../assets/image/Eritreseklederdracht.jpg",
         },
       ],
-      title: "Sandaal/ኤርትራዊ ሳንዱቕ",
-      price: 71.05,
+      title: "Tilf Habesha/ትልፍ ሓበሻ",
+      price: 103,
+      categoryName: "Kleding",
+      productId: "jhjjjk",
+      categoryId: "vvvvvvv",
+      description: "hhjdfhjfjhd",
+      quantity: 3,
+      sessionId: "ddd445556",
+      isPopular: true,
+    },
+    {
+      imageUrls: [
+        {
+          index: 0,
+          file: "../assets/image/vlag Flip-Flops.jpg",
+        },
+      ],
+      title: "Flip-Flops/ፍሊፕ ፍሎፕ",
+      price: 13.78,
       categoryName: "Schoen",
       productId: "jhjjjk",
       categoryId: "vvvvvvv",
@@ -196,7 +215,7 @@ export class HomepageComponent {
           file: "../assets/image/HairStyle.jpg",
         },
       ],
-      title: "hairStyle",
+      title: "hairStyle/ኣርቲፊሻል ጸጉሪ",
       price: 21.05,
       categoryName: "Cosmetica",
       productId: "jhjjjk",
@@ -223,16 +242,17 @@ export class HomepageComponent {
       sessionId: "ddd445556",
       isPopular: true,
     },
+   
     {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/jurk.jpg",
+          file: "../assets/image/Mesob.webp",
         },
       ],
-      title: "jurk",
-      price: 61.2,
-      categoryName: "Kleding",
+      title: "Mesob/መሶብ",
+      price: 543,
+      categoryName: "keuken",
       productId: "jhjjjk",
       categoryId: "vvvvvvv",
       description: "hhjdfhjfjhd",
@@ -240,57 +260,8 @@ export class HomepageComponent {
       sessionId: "ddd445556",
       isPopular: true,
     },
-    {
-      imageUrls: [
-        {
-          index: 0,
-          file: "../assets/image/Tafelloper.jpg",
-        },
-      ],
-      title: "Tafle",
-      price: 55.86,
-      categoryName: "Cosmetica",
-      productId: "jhjjjk",
-      categoryId: "vvvvvvv",
-      description: "hhjdfhjfjhd",
-      quantity: 3,
-      sessionId: "ddd445556",
-      isPopular: true,
-    },
-    {
-      imageUrls: [
-        {
-          index: 0,
-          file: "../assets/image/HairStyle.jpg",
-        },
-      ],
-      title: "Tafle",
-      price: 55.86,
-      categoryName: "Cosmetica",
-      productId: "jhjjjk",
-      categoryId: "vvvvvvv",
-      description: "hhjdfhjfjhd",
-      quantity: 3,
-      sessionId: "ddd445556",
-      isPopular: true,
-    },
-    {
-      imageUrls: [
-        {
-          index: 0,
-          file: "../assets/image/Lichaamsdelen.jpg",
-        },
-      ],
-      title: "Tafle",
-      price: 55.86,
-      categoryName: "Cosmetica",
-      productId: "jhjjjk",
-      categoryId: "vvvvvvv",
-      description: "hhjdfhjfjhd",
-      quantity: 3,
-      sessionId: "ddd445556",
-      isPopular: true,
-    },
+   
+    
   ];
 
  
