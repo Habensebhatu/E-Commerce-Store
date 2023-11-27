@@ -247,10 +247,10 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/Mesob.webp",
+          file: "../assets/image/Bellamegogo1.jpeg",
         },
       ],
-      title: "Mesob/መሶብ",
+      title: "Bella Megogo (ዓብይ መጎጎ)",
       price: 543,
       categoryName: "keuken",
       productId: "jhjjjk",

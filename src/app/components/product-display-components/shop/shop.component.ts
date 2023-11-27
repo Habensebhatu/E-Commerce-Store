@@ -35,7 +35,7 @@ export class ShopComponent {
   selectedCategory: string | undefined;
   selectedPrice: string | undefined;
   currentPage: number = 1;
-  pageSize: number = 12;
+  pageSize: number = 9;
   totalProductsOfCategory: number | undefined;
 
   Math = Math;
