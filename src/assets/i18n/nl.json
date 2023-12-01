@@ -1,5 +1,5 @@
 {
-    "WELCOME": "አንቋዕ ብደሓን መጻአኩም!",
+    "WELCOME": "Welkom",
     "customer_service": "Klantenservice",
     "register": "Registreren",
     "login": "Inloggen",
@@ -47,5 +47,9 @@
      "Items" : "Artikelen",
      "Total cost": "Nog te betalen",
      "Go to checkout": "Bestellen en betalen",
-     "Cart": "Winkelwagentje"
+     "Cart": "Winkelwagentje",
+     "Payment Successful!": "Betaling Geslaagd!",
+     "Thank you for shopping with us!": "Uw bestelling is geplaatst en wordt verwerkt. Bedankt voor uw aankoop bij ons!",
+     "Discover our unique selection": "Verken ons aanbod! Vind in elke categorie mooie producten met duidelijke foto's en info voor een fijne winkelervaring.",
+     "Top picks" : "Topkeuzes van onze klanten! Ontdek de best verkochte producten, geliefd om hun kwaliteit en populariteit. Jouw volgende favoriet wacht hier op je."
 }
