@@ -34,8 +34,8 @@ export class HomepageComponent {
       animationClass: "",
       promoTitle: "",
       promoText: "",
-      mainTitle: "Welkom Bij",
-      mainSubtitle: " De Sofani Supermarkt!",
+      mainTitle: "",
+      mainSubtitle: "",
       subtitle:
         "",
       buttonUrl: "",

@@ -3,9 +3,9 @@
     <div class="mx-auto px-4">
       <div class="flex justify-center items-center">
         <nav class="breadcrumb flex space-x-2">
-          <a class="breadcrumb-item text-gray-600 hover:text-red-500 text-sm" href="index.html">Home</a>
+          <a class="breadcrumb-item text-gray-600 hover:text-red-500 text-sm" href="index.html">{{"Home" | translate}}</a>
           <span class="material-icons text-md text-gray-400 my-0 mx-1 -mt-1">chevron_right</span>
-          <span class="breadcrumb-item text-red-500 font-medium text-sm">Cart</span>
+          <span class="breadcrumb-item text-red-500 font-medium text-sm">{{"Cart" | translate}}</span>
         </nav>
       </div>
     </div>
@@ -23,7 +23,7 @@
           <div class="w-full ml-4 md:ml-6">
             <div class="flex justify-between items-center font-bold w-full mb-1">
               <h4>{{ product.title }}</h4>
-              <h3 class="mb-0 font-bold text-lg"> {{ product.quantity * product.price | currency }}</h3>
+              <h3 class="mb-0 font-bold text-lg"> {{ product.quantity * product.price | currency:'EUR':'symbol':'1.2-2' }}</h3>
             </div>
             <div class="flex items-center">
               <button class="p-2" (click)="onRemoveQuantity(product)">
@@ -40,23 +40,25 @@
                 <i class="addCart-icon"></i>
               </button>
             </div>
-            <h4>${{ product.price }}</h4>
+            <h4>€{{ product.price }}</h4>
           </div>
         </div>
       </div>
     </div>
     <div class="w-72 lg:w-96 mb-3 p-4 border border-gray-200 rounded-md shadow-sm bg-white self-start">
       <div>
-        <h4 class="font-bold">Summary</h4>
+        <h3 class="font-bold ">{{"Overview" | translate}}</h3>
         <div class="mb-2">
-          <span class="font-bold">Items:</span> {{ getTotalQuantity(Products) }}
+          <span class="font-bold">{{"Items" | translate}}: &nbsp; {{ getTotalQuantity(Products) }}</span> 
         </div>
         <div class="mb-4">
-          <span class="font-bold py-5 block">Total cost: {{ getTotal(Products) | currency }}</span>
-        </div>
+          <span class="font-bold py-5 block">
+            {{"Total cost" | translate}}: &nbsp;{{ getTotal(Products) | currency:'EUR':'symbol':'1.2-2' }}
+          </span>
+        </div>        
         <hr class="my-4 border-gray-300">
         <button (click)="onCheckout()" class="bg-red-500 text-white py-4 px-4 rounded-md hover:bg-red-600 w-full">
-          Go to checkout
+          {{"Go to checkout" | translate}}
         </button>
         <div class="flex justify-center mt-4">
           <img src="../assets/image/ideal.png" alt="iDEAL" class="h-8 mx-2">
@@ -70,7 +72,8 @@
   <div *ngIf="Products.length">
   <button [routerLink]="['/shop', getLastProductCategory()]"
   class="mt-4 bg-red-500 text-white py-2 px-2 text-sm rounded hover:bg-red-500">
-  Continue Shopping
+  {{"Continue Shopping" | translate}}
+ 
 </button>
 </div>
 <div class="flex flex-col items-center justify-center" *ngIf="!Products.length">

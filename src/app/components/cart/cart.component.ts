@@ -70,7 +70,7 @@ onCheckout(): void {
       items: this.cart.items,
     })
     .subscribe(async (res: any) => {
-      let stripe = await loadStripe('pk_test_51NTNZBD7MblCQnUpYTVDGZm17TPDhkiEi1IlYWD7sTFcmSalAEKYRj3R1YKAudhsPHDlV998DMuqvTVmOPBpDckM00rBnZ0I4U');
+      let stripe = await loadStripe('pk_live_51NTNZBD7MblCQnUpIt68VrorlFv5MOncjPGTUCt4wyFZKWSXQZpDTIvoWSUQ3JTYzXluSlEZrFMGy79pY1voYivB00oYQHH66M');
       stripe?.redirectToCheckout({
         sessionId: res.id,
       });
