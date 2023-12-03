@@ -195,12 +195,12 @@ export class HomepageComponent {
       imageUrls: [
         {
           index: 0,
-          file: "../assets/image/vlag Flip-Flops.jpg",
+          file: "../assets/image/fidelat.jpeg",
         },
       ],
-      title: "Flip-Flops/ፍሊፕ ፍሎፕ",
-      price: 13.78,
-      categoryName: "Schoen",
+      title: "Tigrigna Alphabets/ ፊደላት ትግርኛ",
+      price: 15.90,
+      categoryName: "Boeken",
       productId: "jhjjjk",
       categoryId: "vvvvvvv",
       description: "hhjdfhjfjhd",

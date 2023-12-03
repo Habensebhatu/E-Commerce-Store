@@ -101,6 +101,7 @@ export class ShopComponent {
   }
 
   OnshowCategoty(newCatagory: string): void {
+    this.currentPage = 1;
     this.getProducts();
     this.category = newCatagory;
     this.filterByCategory(this.selectedCategory!);
@@ -201,6 +202,7 @@ export class ShopComponent {
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
+      window.scrollTo(0, 0);
     }
     if (this.selectedCategory == undefined && this.selectedPrice == undefined) {
       this.filterByCategory(this.category!);
@@ -214,6 +216,7 @@ export class ShopComponent {
 
   goToPage(page: number) {
     this.currentPage = page;
+    window.scrollTo(0, 0);
     if (this.selectedCategory == undefined) {
       this.filterByCategory(this.category!);
     } else {
@@ -224,6 +227,7 @@ export class ShopComponent {
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
+      window.scrollTo(0, 0);
     }
 
     if (this.selectedCategory == undefined) {

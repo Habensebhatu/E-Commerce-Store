@@ -27,7 +27,11 @@
           <div>
             <div class="widgetized-menu mt-6 lg:mt-10">
               <ul class="list-unstyled">
-                <li><a [routerLink]="'/home'" fragment="our-categories">{{"Our Categories" | translate}}</a></li>
+                <li>
+                  <a (click)="onFooterLinkClick('our-categories')">{{"Our Categories" | translate}}</a>
+                </li>
+                <!-- Repeat for other links -->
+                
                 <li><a [routerLink]="'/home'" fragment="best-sellers">{{"BEST SELLING PRODUCTS" | translate}}</a></li>
                 <li><a [routerLink]="'/home'" fragment="header">{{"Top of Page" | translate}}</a></li>
               </ul>
@@ -42,7 +46,7 @@
           <div class="widget-content">
             <div class="widgetized-menu mt-6 lg:mt-10">
               <ul class="list-unstyled">
-                <li><a [routerLink]="'/aboutUs'" fragment="about-us">{{"About Us" | translate}}</a></li>
+                <li><a [routerLink]="'/aboutUs'">{{"About Us" | translate}}</a></li>
                 <li><a routerLink="/contactUs">{{"Contact Us" | translate}}</a></li>
                 <li><a routerLink="/login">{{"login" | translate}}</a></li>
               </ul>

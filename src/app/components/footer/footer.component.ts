@@ -11,7 +11,19 @@ export class FooterComponent {
 
   constructor(private router: Router) {}
 
+  onFooterLinkClick(fragment: string): void {
+    this.router.navigate(['/home'], { fragment: fragment }).then(() => {
+      const element = document.querySelector("#" + fragment);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    });
+  }
+
   navigateToRegister(): void {
     this.router.navigate(['/Register']);
   }
+  
 }
