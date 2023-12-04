@@ -13,12 +13,13 @@ export class FooterComponent {
 
   onFooterLinkClick(fragment: string): void {
     this.router.navigate(['/home'], { fragment: fragment }).then(() => {
-      const element = document.querySelector("#" + fragment);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        window.scrollTo(0, 0);
-      }
+      // Delay the scroll action to ensure the page has rendered
+      setTimeout(() => {
+        const element = document.querySelector("#" + fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); // A delay of 100ms. Adjust if necessary.
     });
   }
 
@@ -26,4 +27,24 @@ export class FooterComponent {
     this.router.navigate(['/Register']);
   }
   
+  navigateToAboutUs(): void {
+    this.router.navigate(['/aboutUs']).then(() => {
+      window.scrollTo(0, 0);
+    });
+  }
+  
+  navigateToCantacUS(): void{
+    this.router.navigate(['/contactUs']).then(() => {
+      window.scrollTo(0, 0);
+    });
+  }
+
+  navigateToHeadOfHome(): void{
+    this.router.navigate(['/home']).then(() => {
+      window.scrollTo(0, 0);
+    });
+  }
+
+
+ 
 }

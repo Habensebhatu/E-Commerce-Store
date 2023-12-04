@@ -45,15 +45,15 @@ export class HomepageComponent {
   loading = true;
 
   ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        const fragment = this.route.snapshot.fragment;
-        if (fragment) {
-          const element = document.querySelector('#' + fragment);
-          if (element) element.scrollIntoView();
-        }
-      }
-    });
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     const fragment = this.route.snapshot.fragment;
+    //     if (fragment) {
+    //       const element = document.querySelector('#' + fragment);
+    //       if (element) element.scrollIntoView();
+    //     }
+    //   }
+    // });
     this.getProducts();
     this.fetchWishlistProductIds();
 
