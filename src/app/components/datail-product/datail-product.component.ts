@@ -95,6 +95,7 @@ currentIndex = 0;
 
       });
     }
+    this.router.navigate(['/cart']);
     this.cartService.show();
   }
 

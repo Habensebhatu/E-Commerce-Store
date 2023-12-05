@@ -29,7 +29,6 @@ const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   
   { path: 'payment-success', component: PaymentSuccessComponent },
-  { path: 'payment-cancelled', component: PaymentCancelledComponent },
   { path: 'Register', component:  RegisterComponent},
   { path: 'login', component:   LoginComponent},
   { path: 'wishlist', component:    WishlistComponent},
