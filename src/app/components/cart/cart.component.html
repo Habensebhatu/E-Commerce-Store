@@ -40,12 +40,12 @@
                 <i class="addCart-icon"></i>
               </button>
             </div>
-            <h4>€{{ product.price }}</h4>
+            <h4>{{ product.price | currency:'EUR':'symbol':'1.2-2'}}</h4>
           </div>
         </div>
       </div>
     </div>
-    <div class="w-full lg:w-96 mb-3 p-4 border border-gray-200 rounded-md shadow-md bg-white">
+    <div class="w-72 lg:w-96 mb-3 p-4 border border-gray-200 rounded-md shadow-sm bg-white self-start">
       <div>
         <h3 class="font-bold text-xl text-black-900">{{ "Overview" | translate }}</h3>
         
@@ -56,25 +56,29 @@
         <div class="flex justify-between items-center mb-4">
           <span class="font-semibold text-gray-600">{{ "Shipping Costs" | translate }}:</span>
           <span class="font-semibold text-gray-600" *ngIf="getTotal(Products) > 80; else postageCost">Free</span>
-          <ng-template #postageCost>€6,95</ng-template>
+          <ng-template #postageCost>{{"Free" | translate}}</ng-template>
         </div>
         <hr class="my-4 border-gray-300">
         <div class="flex justify-between items-center mb-4 bg-yellow-50 p-2 rounded-md">
           <span class="font-semibold text-gray-800">{{ "Total cost" | translate }}:</span>
-          <span class="font-bold text-xl text-gray-800">{{ (getTotal(Products) > 80 ? getTotal(Products) : getTotal(Products) + 6.95) | currency:'EUR':'symbol':'1.2-2' }}</span>
+          <span class="font-bold text-xl text-gray-800">{{ (getTotal(Products) > 80 ? getTotal(Products) : getTotal(Products) + 0) | currency:'EUR':'symbol':'1.2-2' }}</span>
         </div>        
         <button (click)="onCheckout()" class="bg-red-500 text-white py-3 px-4 rounded-md hover:bg-red-700 w-full transition duration-300 ease-in-out">
           {{ "Go to checkout" | translate }}
         </button>
-        <div class="flex justify-center mt-4 space-x-2">
-          <img src="../assets/image/ideal.png" alt="iDEAL" class="h-8">
-          <img src="../assets/image/mastercard.png" alt="Credit Card" class="h-8">
-          <img src="../assets/image/visa.jpeg" alt="Credit Card" class="h-8">
+        <div class="flex items-center justify-center mt-4">
+          <div class="flex-1 flex justify-center"> <!-- flex-1 allows the div to grow and take up equal space -->
+            <img src="../assets/image/ideal.png" alt="iDEAL" class="h-8">
+          </div>
+          <div class="flex-1 flex justify-center"> <!-- the middle div will also grow equally -->
+            <img src="../assets/image/mastercard.png" alt="Credit Card" class="h-8">
+          </div>
+          <div class="flex-1 flex justify-center"> <!-- equal growth for the right div -->
+            <img src="../assets/image/visa.jpeg" alt="Credit Card" class="h-8">
+          </div>
         </div>
       </div>
     </div>
-    
-
   </div>
   <div *ngIf="Products.length">
   <button [routerLink]="['/shop', getLastProductCategory()]"

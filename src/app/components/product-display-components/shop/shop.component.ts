@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { TranslateService } from "@ngx-translate/core";
 import { Subject, Subscription, takeUntil } from "rxjs";
 import { Category } from "src/app/Models/category.Model";
 import { Product } from "src/app/Models/product.model";
@@ -11,14 +12,15 @@ import { StoreService } from "src/app/service/store.service";
   styleUrls: ["./shop.component.css"],
 })
 export class ShopComponent {
-  prices = [
-    "0 - €5,00, ",
-    "€5,00 - €10,00",
-    "€10,00 - €15,00",
-    "€15,00 - €20,00",
-    "€20,00 -  €25,00",
-    "25,00 Eur & meer",
-  ];
+  // prices = [
+  //   "0 - €5,00, ",
+  //   "€5,00 - €10,00",
+  //   "€10,00 - €15,00",
+  //   "€15,00 - €20,00",
+  //   "€20,00 -  €25,00",
+  //   "€25,00  &  meer",
+  // ];
+ 
   activeView: "grid" | "list" = "grid";
   products: Product[] | undefined;
 
@@ -39,14 +41,26 @@ export class ShopComponent {
   totalProductsOfCategory: number | undefined;
 
   Math = Math;
-
+  prices: string[] | undefined;
+  translatedPhrase: string | undefined;
   constructor(
     private storeService: StoreService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private translate: TranslateService
+  ) {
+    this.translatedPhrase = '€25,00 & meer';
+  }
+
 
   ngOnInit() {
+    this.updateTranslation();
+
+    // Update translation whenever language changes
+    this.translate.onLangChange.subscribe(() => {
+      this.updateTranslation();
+    });
+    // this.setPricesWithTranslation(this.translatedPhrase!);
     this.getProducts();
     this.route.queryParams.subscribe((params) => {
       if (params["category"]) {
@@ -64,6 +78,22 @@ export class ShopComponent {
     this.getCatogories();
   }
 
+  private updateTranslation() {
+    const more = this.translate.instant('more');
+    this.translatedPhrase = more ? `€25,00 & ${more}` : '€25,00 & meer';
+    this.setPricesWithTranslation(this.translatedPhrase);
+  }
+
+  private setPricesWithTranslation(translatedPhrase: string): void {
+    this.prices = [
+      "0 - €5,00, ",
+      "€5,00 - €10,00",
+      "€10,00 - €15,00",
+      "€15,00 - €20,00",
+      "€20,00 - €25,00",
+      translatedPhrase,
+    ];
+  }
   getCategoryByURL() {
     if (this.selectedCategory == null) {
       this.route.params.subscribe((params) => {
@@ -264,5 +294,12 @@ export class ShopComponent {
 
   toggleDiv() {
     this.isDivHidden = !this.isDivHidden;
+  }
+
+  setTranslatedPhrase() {
+    this.translate.onLangChange.subscribe(() => {
+      const more = this.translate.instant('more');
+      this.translatedPhrase = `€25,00 ${more}`;
+    });
   }
 }
