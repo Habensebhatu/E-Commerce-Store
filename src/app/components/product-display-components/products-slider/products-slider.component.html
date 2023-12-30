@@ -8,8 +8,9 @@
       [ngClass]="{ 'mr-3 md:mr-4': isClassAdded }"
       *ngFor="let product of products"
     >
+      <div (click)="handleProductClick(product)">
       <div class="product-image">
-        <a (click)="handleProductClick(product)">
+        <a>
           <img [src]="product.imageUrls[0].file" />
         </a>
       </div>
@@ -28,6 +29,7 @@
           <span>€{{ product.price }}</span>
         </p>
       </div>
+    </div>
     </div>
   </div>
 </div>

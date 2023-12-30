@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  log = 'footer-logo.png';
+  // log = 'footer-logo.png';
+  log = "sofani.png";
 
   constructor(private router: Router) {}
 

@@ -63,6 +63,7 @@ export class ShopComponent {
     // this.setPricesWithTranslation(this.translatedPhrase!);
     this.getProducts();
     this.route.queryParams.subscribe((params) => {
+      window.scrollTo(0, 0);
       if (params["category"]) {
         this.selectedCategory = params["category"];
         this.category = this.selectedCategory;

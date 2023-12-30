@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Meta } from "@angular/platform-browser";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { Observable, Subject, of, takeUntil } from "rxjs";
 import { Product } from "src/app/Models/product.model";
@@ -18,7 +19,8 @@ export class HomepageComponent {
     private wishlistService: WishlistService,
     private _snackBar: MatSnackBar,
     private route: ActivatedRoute, 
-    private router: Router
+    private router: Router,
+    private metaTagService: Meta
   ) {}
   cols: Observable<number> = of(4);
   private unsubscribe$ = new Subject<void>();
@@ -45,15 +47,18 @@ export class HomepageComponent {
   loading = true;
 
   ngOnInit() {
-    // this.router.events.subscribe(event => {
-    //   if (event instanceof NavigationEnd) {
-    //     const fragment = this.route.snapshot.fragment;
-    //     if (fragment) {
-    //       const element = document.querySelector('#' + fragment);
-    //       if (element) element.scrollIntoView();
-    //     }
-    //   }
-    // });
+    this.metaTagService.addTags([
+      { name: 'keywords', content: 'Sofani Market - De toonaangevende Eritrese en Ethiopische levensmiddelenwinkel in Arnhem. Ontdek een breed assortiment van Habesha producten.' },
+      { name: 'description', content: 'Sofani Market, Habesha Winkel, Eritrese winkel, Ethiopische winkel, levensmiddelen, Arnhem' },
+      { name: 'robots', content: 'index, follow' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:title', content: 'Sofani Market - Uw Eritrese Winkel in Arnhem' },
+      { property: 'og:description', content: 'Ontdek Sofani Market in Arnhem voor authentieke Eritrese en Ethiopische levensmiddelen en producten.' },
+      { property: 'og:image', content: 'link_naar_een_afbeelding_van_uw_winkel' },
+      { property: 'og:url', content: 'https://sofanimarket.com/' },
+      { name: 'twitter:card', content: 'summary_large_image' }
+    ]);
+    
     this.getProducts();
     this.fetchWishlistProductIds();
 
@@ -266,3 +271,12 @@ export class HomepageComponent {
 
  
 }
+// this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     const fragment = this.route.snapshot.fragment;
+    //     if (fragment) {
+    //       const element = document.querySelector('#' + fragment);
+    //       if (element) element.scrollIntoView();
+    //     }
+    //   }
+    // });
