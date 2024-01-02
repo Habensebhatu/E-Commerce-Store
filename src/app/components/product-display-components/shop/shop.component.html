@@ -121,7 +121,7 @@
           <a
             *ngFor="let categoryy of categories"
             (click)="OnshowCategoty(categoryy.name)"
-            class="flex items-center transition-colors duration-700"
+            class="flex items-center transition-colors duration-700 cursor-pointer"
             [ngClass]="{
               'hover:text-red-600': categoryy.name !== selectedCategory,
               'text-red-600': categoryy.name === selectedCategory
@@ -153,7 +153,7 @@
           <a
             *ngFor="let price of prices"
             (click)="togglePriceSelection(price)"
-            class="flex items-center transition-colors duration-700"
+            class="flex items-center transition-colors duration-700 cursor-pointer"
             [ngClass]="{
               'hover:text-red-600': price !== selectedPrice,
               'text-red-600': price === selectedPrice
