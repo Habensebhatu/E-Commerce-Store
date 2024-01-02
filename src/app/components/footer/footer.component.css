@@ -58,3 +58,10 @@
   text-transform: capitalize;
   color: #f6f6f6;
 }
+.current-day {
+  color: #fff9f9; 
+  font-weight: bold;
+ 
+ 
+}
+

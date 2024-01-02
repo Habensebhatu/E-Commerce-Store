@@ -47,7 +47,7 @@
       <div
         class="w-3/4 flex flex-col justify-between text-center md:text-start"
       >
-        <div>
+        <div class="cursor-pointer" [routerLink]="['/product', product.productId]">
           <p class="text-lg">{{ product.categoryName }}</p>
           <h4 class="product-name mt-2">{{ product.title }}</h4>
           <p class="product-price mt-2 mb-4">€{{ product.price }}</p>

@@ -54,5 +54,13 @@
      "Top picks" : "Topkeuzes van onze klanten! Ontdek de best verkochte producten, geliefd om hun kwaliteit en populariteit. Jouw volgende favoriet wacht hier op je.",
      "Shipping Costs": "Verzendkosten",
      "more": "meer",
-     "Free": "Vrij"
+     "Free": "Vrij",
+     "opening hours": "Openingstijden",
+     "Monday":"Maandag",
+    "Tuesday": "Dinsdag",
+    "Wednesday": "Woensdag",
+    "Thursday": "Donderdag",
+    "Friday":"Vrijdag",
+    "Saturday":"Zaterdag",
+    "Sunday": "Zondag"
 }

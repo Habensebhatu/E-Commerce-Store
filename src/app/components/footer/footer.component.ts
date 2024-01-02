@@ -9,9 +9,22 @@ import { Router } from '@angular/router';
 export class FooterComponent {
   // log = 'footer-logo.png';
   log = "sofani.png";
+  dayClasses: { [key: string]: boolean } = {};
 
-  constructor(private router: Router) {}
-
+  constructor(private router: Router) {
+    const currentDay = new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam', weekday: 'long' }).toLowerCase();
+    this.dayClasses = {
+      maandag: currentDay === 'maandag',
+      dinsdag: currentDay === 'dinsdag',
+      woensdag: currentDay === 'woensdag',
+      donderdag: currentDay === 'donderdag',
+      vrijdag: currentDay === 'vrijdag',
+      zaterdag: currentDay === 'zaterdag',
+      zondag: currentDay === 'zondag'
+    };
+   
+  }
+  
   onFooterLinkClick(fragment: string): void {
     this.router.navigate(['/home'], { fragment: fragment }).then(() => {
       // Delay the scroll action to ensure the page has rendered
@@ -45,7 +58,7 @@ export class FooterComponent {
       window.scrollTo(0, 0);
     });
   }
-
+  
 
  
 }
