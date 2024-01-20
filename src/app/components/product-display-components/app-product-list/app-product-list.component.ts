@@ -32,7 +32,8 @@ export class AppProductListComponent {
       productId: product.productId,
       categoryId: product.categoryId,
       description: product.description,
-      sessionId : product.sessionId
+      sessionId : product.sessionId,
+      kilo : product.kilo
     });
   }
 

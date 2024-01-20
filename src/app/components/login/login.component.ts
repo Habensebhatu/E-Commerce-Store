@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { UserRegistrationService } from 'src/app/service/user-registration.service';
@@ -18,11 +19,13 @@ export class LoginComponent {
   constructor(
       private formBuilder: FormBuilder,
       private router: Router,
-      private autService: UserRegistrationService 
+      private autService: UserRegistrationService,
+      private metaService: Meta
      
   ) { }
 
   ngOnInit() {
+    this.metaService.addTag({ rel: 'canonical', href: 'https://sofanimarket.com/' });
     console.log("testettdghvdhv");
       this.loginForm = this.formBuilder.group({
           username: ['', Validators.required],

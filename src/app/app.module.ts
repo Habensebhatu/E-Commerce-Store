@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PaymentSuccessComponent } from './stripe/payment-success/payment-success.component';
@@ -47,6 +47,13 @@ import { ProductsSliderComponent } from './components/product-display-components
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+// Import the Dutch locale
+
+import localeNl from '@angular/common/locales/nl';
+import { registerLocaleData } from '@angular/common';
+
+// Register the Dutch locale
+registerLocaleData(localeNl);
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -104,7 +111,7 @@ register();
     }),
   ],
    
-  providers: [CartService, StoreService],
+  providers: [CartService, StoreService, { provide: LOCALE_ID, useValue: 'nl-NL' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -60,19 +60,20 @@ export class CartService {
     
 
     addToCart(item: ProductAddCart): void {
-        console.log("productItem", item)
         item.sessionId = this.sessionId;
         const token = localStorage.getItem('token');
         let headers = new HttpHeaders();
         if (token) {
             headers = headers.set('Authorization', `Bearer ${token}`)
         }
+       
         this.httpClient.post<ProductAddCart>(`${this.apiUrl}/AddCartItem`, item, { headers }).subscribe(
             response => {
                 const items = [...this.cart.value.items];
                 const itemInCart = items.find((_item) => _item.productId === item.productId);
                 if (itemInCart) {
                     itemInCart.quantity += 1;
+
                 } else {
                     items.push(item);
                 }
@@ -101,6 +102,8 @@ export class CartService {
                 const itemInCart = items.find((_item) => _item.productId === item.productId);
                 if (itemInCart) {
                     itemInCart.quantity += item.quantity;
+                    item.kilo += item.kilo
+                   
                 } else {
                     items.push(item);
                 }
@@ -118,6 +121,10 @@ export class CartService {
         return items.map((item) =>
             item.price * item.quantity).reduce((prev, current) => prev + current, 0)
 
+    }
+
+    getTotalWithShipining(){
+        
     }
 
     clearCart(): void {
@@ -185,7 +192,7 @@ export class CartService {
                         return updatedCart;
                     }
                     return _item;
-                }).filter(_item => _item.quantity > 0);  // filter out items with zero quantity
+                }).filter(_item => _item.quantity > 0); 
 
                 this.cart.next({ items: filteredItems });
                 this._snackBar.open('1 item quantity reduced.', 'Ok', {

@@ -47,15 +47,19 @@ export class HomepageComponent {
   loading = true;
 
   ngOnInit() {
+    this.metaTagService.addTag({ rel: 'canonical', href: 'https://sofanimarket.com/' });
     this.metaTagService.addTags([
       { name: 'keywords', content: 'Sofani Market - De toonaangevende Eritrese en Ethiopische levensmiddelenwinkel in Arnhem. Ontdek een breed assortiment van Habesha producten.' },
       { name: 'description', content: 'Sofani Market, Habesha Winkel, Eritrese winkel, Ethiopische winkel, levensmiddelen, Arnhem' },
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: 'Sofani Market - Uw Eritrese Winkel in Arnhem' },
+      { property: 'og:title', content: 'Habesha Winkel' },
+      { property: 'og:title', content: 'Eritrese winkel' },
+      { property: 'og:title', content: 'https://sofanimarket.com' },
       { property: 'og:description', content: 'Ontdek Sofani Market in Arnhem voor authentieke Eritrese en Ethiopische levensmiddelen en producten.' },
       { property: 'og:image', content: 'link_naar_een_afbeelding_van_uw_winkel' },
-      { property: 'og:url', content: 'https://sofanimarket.com/' },
+      { property: 'og:url', content: 'https://sofanimarket.com' },
       { name: 'twitter:card', content: 'summary_large_image' }
     ]);
     
@@ -195,6 +199,7 @@ export class HomepageComponent {
       quantity: 3,
       sessionId: "ddd445556",
       isPopular: true,
+      kilo: 2
     },
     {
       imageUrls: [
@@ -212,6 +217,7 @@ export class HomepageComponent {
       quantity: 3,
       sessionId: "ddd445556",
       isPopular: true,
+      kilo: 2
     },
     {
       imageUrls: [
@@ -229,6 +235,7 @@ export class HomepageComponent {
       quantity: 3,
       sessionId: "ddd445556",
       isPopular: true,
+      kilo: 2
     },
     {
       imageUrls: [
@@ -246,6 +253,7 @@ export class HomepageComponent {
       quantity: 3,
       sessionId: "ddd445556",
       isPopular: true,
+      kilo: 2
     },
    
     {
@@ -264,6 +272,7 @@ export class HomepageComponent {
       quantity: 3,
       sessionId: "ddd445556",
       isPopular: true,
+      kilo: 2
     },
    
     

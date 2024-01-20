@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Meta } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { Product, ProductAddCart } from "src/app/Models/product.model";
@@ -16,12 +17,14 @@ export class WishlistComponent {
     private cartService: CartService,
     private wishlistService: WishlistService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private metaService: Meta
   ) {}
   private unsubscribe$ = new Subject<void>();
   wishlistProducts: Product[] | undefined;
 
   ngOnInit() {
+    this.metaService.addTag({ rel: 'canonical', href: 'https://sofanimarket.com/' });
     this.getWishlistProducts();
   }
 
@@ -46,6 +49,7 @@ export class WishlistComponent {
       categoryId: product.categoryId,
       description: product.description,
       sessionId: product.sessionId,
+      kilo : product.kilo
     });
   }
 

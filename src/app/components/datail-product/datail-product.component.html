@@ -49,7 +49,8 @@
     </div>
 
     <div class="mt-4">
-      <p class="text-xl">Categories: {{ product?.categoryName }}</p>
+      <p class="text-xl" *ngIf="product?.kilo">{{ product?.kilo }} : Kilos</p>
+      <p class="text-xl ">Categories: {{ product?.categoryName }}</p>
     </div>
     <!-- Share feature start -->
     <div class="flex items-center mt-4">

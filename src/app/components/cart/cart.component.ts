@@ -12,6 +12,7 @@ import { StoreService } from 'src/app/service/store.service';
 })
 export class CartComponent {
   phoneNumber = '061790373929';
+  shippingCost: number = 7.65;
   cart: CartI = {items:[
   ]
   }
@@ -23,6 +24,7 @@ ngOnInit(){
   this.cartService.cart.subscribe((_cart: CartI)=>{
     this.cart = _cart;
     this.Products = this.cart.items;
+    this.calculatorShippingCost();
   })
   
 }
@@ -42,6 +44,23 @@ getTotal(items: ProductAddCart[]): number {
   return this.cartService.getTotal(items);
   
 }
+
+calculatorShippingCost() {
+  const totalWeight = this.Products.reduce((prev, current) => prev + (current.kilo * current.quantity), 0);
+  if (totalWeight <= 10) {
+    this.shippingCost = 7.65;
+  } else if (totalWeight <= 23) {
+    this.shippingCost = 13.90;
+  } else if (totalWeight <= 33) {
+    this.shippingCost = 21,55;
+  } 
+ 
+  else {
+    this.shippingCost = 27,80;
+  }
+  
+}
+
 
 getProducts(){
   this.storeService.setAllProducts(true);

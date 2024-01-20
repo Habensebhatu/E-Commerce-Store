@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Meta } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { Subject, Subscription, takeUntil } from "rxjs";
@@ -47,13 +48,15 @@ export class ShopComponent {
     private storeService: StoreService,
     private route: ActivatedRoute,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private metaService: Meta
   ) {
     this.translatedPhrase = '€25,00 & meer';
   }
 
 
   ngOnInit() {
+    this.metaService.addTag({ rel: 'canonical', href: 'https://sofanimarket.com/' });
     this.updateTranslation();
 
     // Update translation whenever language changes

@@ -7,6 +7,7 @@ import { CartService } from 'src/app/service/cart.service';
 import { StoreService } from 'src/app/service/store.service';
 import { WishlistService } from 'src/app/service/wishlist.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 
 
 @Component({
@@ -30,10 +31,14 @@ export class DatailProductComponent {
     private route: ActivatedRoute,
     private storeService: StoreService,
     private cartService: CartService,
-    private wishlistService: WishlistService,  private _snackBar: MatSnackBar,private router: Router
+    private wishlistService: WishlistService,  private _snackBar: MatSnackBar,private router: Router,
+    private metaService: Meta
   ) {}
   
   ngOnInit() {
+
+    this.metaService.addTag({ rel: 'canonical', href: 'https://sofanimarket.com/' });
+    //
     this.route.params.subscribe(params => {
       if(params['productId']) {
         this.productId =  params['productId']
@@ -87,6 +92,7 @@ currentIndex = 0;
         title: this.product.title,
         price: this.product.price,
         quantity: this.Quetity,
+        kilo : this.product.kilo,
         imageUrl: this.product.imageUrls[0].file,
         productId: this.product.productId,
         categoryId: this.product.categoryId,

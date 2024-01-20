@@ -6,6 +6,7 @@ export interface Cart {
    categoryId: string;
     title: string;
      price: number;
+     kilo: number;
     categoryName: string;
     description: string;
     imageUrls: ImageUpdateModel[];
@@ -25,6 +26,7 @@ export interface Cart {
     categoryId: string;
      title: string;
       price: number;
+      kilo: number;
      categoryName: string;
      description: string;
      imageUrl: string;
@@ -37,6 +39,7 @@ export interface Cart {
     productId: string;
      title: string;
       price: number;
+      kilo: number;
      categoryName: string;
      description: string;
      imageUrl: string;
