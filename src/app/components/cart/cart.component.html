@@ -42,7 +42,7 @@
             </div>
             <div class="flex justify-between items-center font-bold w-full mb-1">
               <h4>{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</h4>
-              <h3 class="flex items-center justify-center mx-1 p-1 font-bold text-lg" >
+              <h3 class="flex items-center justify-center mx-1 p-1 font-bold text-lg" *ngIf="product.kilo" >
                 {{ product.kilo *  product.quantity }} kilos
               </h3> 
           </div>
