@@ -29,19 +29,25 @@ export class HomepageComponent {
   slides = [
     {
       image: "../assets/image/bgwebshop.png",
+      //  image: "../assets/image/store2image.jpeg"
     },
     {
-      image: "../assets/image/bgslide.jpg",
-      // image: "../assets/image/sofanishop.jpeg",
-      animationClass: "",
-      promoTitle: "",
-      promoText: "",
-      mainTitle: "",
-      mainSubtitle: "",
-      subtitle:
-        "",
-      buttonUrl: "",
+      // image: "../assets/image/bgwebshop.png",
+       image: "../assets/image/storeimage.jpeg",
+       animationClass: "",
+       promoTitle: "",
+       promoText: "",
+       mainTitle: "",
+       mainSubtitle: "",
+       subtitle:
+         "",
+       buttonUrl: "",
     },
+    // {
+    //   // image: "../assets/image/bgslide.jpg",
+    //   // image: "../assets/image/sofanishop.jpeg",
+     
+    // },
   ];
 
   loading = true;
