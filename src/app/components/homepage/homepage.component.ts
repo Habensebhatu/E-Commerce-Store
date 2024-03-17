@@ -73,7 +73,7 @@ export class HomepageComponent {
     this.fetchWishlistProductIds();
 
     setTimeout(() => {
-      this.loading = false; // Set to false when loading is complete
+      this.loading = false; 
     }, 1000);
   }
   getProducts(): void {
