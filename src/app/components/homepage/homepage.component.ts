@@ -155,7 +155,7 @@ export class HomepageComponent {
         },
       });
       const trendingProducts = new Swiper("#trendingProducts_slider", {
-        slidesPerView: 4, // Display 4 images at once
+        slidesPerView: 4, 
         spaceBetween: 20,
         speed: 2000,
         autoplay: {
