@@ -17,27 +17,28 @@ export class RegisterComponent implements OnInit {
   showAddress = false;
   private unsubscribe$ = new Subject<void>();
   registerForm: FormGroup;
-  genders = [
-    { label: 'Male', value: 0 },
-    { label: 'Female', value: 1 },
-    { label: 'Other', value: 1 },
-    { label: 'Prefer not to say', value: 3 }
-  ];
+  // genders = [
+  //   { label: 'Male', value: 0 },
+  //   { label: 'Female', value: 1 },
+  //   { label: 'Other', value: 1 },
+  //   { label: 'Prefer not to say', value: 3 }
+  // ];
 
   constructor(private fb: FormBuilder, private userRegistrationService: UserRegistrationService, private router: Router,) {
     this.registerForm = this.fb.group({
+      bedrijfsNaam: ['', Validators.required],
+      kvkNummer: ['', Validators.required],
+      btw: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-      phoneNumber: ['', Validators.required],
-      gender: ['', Validators.required],
       address: this.fb.group({
-        street: ['',],
-        residence: ['',],
-        zipCode: ['',],
-        number: ['']
+        street: ['', Validators.required],
+        residence: ['', Validators.required],
+        zipCode: ['', Validators.required],
+        phoneNumber: ['', Validators.required],
       })
     });
   }

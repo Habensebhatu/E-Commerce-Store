@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { UserRegistration } from '../Models/ UserRegistration';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserRegistrationService {
-  // private apiUrl = 'https://localhost:7087/api/Registration/register';
+  // private apiUrl = 'https://localhost:7087/api/Registration';
   // private loginApiUrl = 'https://localhost:7087/api/Registration/login';
   // private contactUsApiUrl = 'https://localhost:7087/api/ContactUs/SubmitContactRequest';
   private apiUrl = 'https://webshopfilimon.azurewebsites.net/api/Registration/register';
@@ -15,17 +15,25 @@ export class UserRegistrationService {
   private contactUsApiUrl = 'https://webshopfilimon.azurewebsites.net/api/ContactUs/SubmitContactRequest';
   private currentUserSubject: BehaviorSubject<UserRegistration | null> = new BehaviorSubject<UserRegistration | null>(null);
   public currentUser: Observable<UserRegistration | null> = this.currentUserSubject.asObservable();
+  connectionStringName = 'SofaniMarket';
   constructor(private httpClient: HttpClient) { 
     const user = localStorage.getItem('currentUser');
     if (user) {
       this.currentUserSubject.next(JSON.parse(user));
     }
   }
- 
   AddUser(user : UserRegistration): Observable<UserRegistration>{
-    console.log("user", user)
-    return this.httpClient.post<UserRegistration>(this.apiUrl, user);
+    console.log("user", user.userId)
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+   const params = new HttpParams().set('connectionString', this.connectionStringName);
+    return this.httpClient.post<UserRegistration>(`${this.apiUrl}/register`, user,{
+          params: params,
+          headers: headers
+        });
   }
+  // AddUser(user : UserRegistration): Observable<UserRegistration>{
+  //   return this.httpClient.post<UserRegistration>(this.apiUrl, user);
+  // }
 
   login(userCredentials: any): Observable<any> {
     return this.httpClient.post<any>(this.loginApiUrl, userCredentials);

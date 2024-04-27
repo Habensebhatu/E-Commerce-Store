@@ -42,7 +42,7 @@ export class WishlistComponent {
     this.cartService.addToCart({
       categoryName: product.categoryName,
       title: product.title,
-      price: product.price,
+      price: product.piecePrice,
       quantity: 1,
       imageUrl: product.imageUrls[0].file,
       productId: product.productId,

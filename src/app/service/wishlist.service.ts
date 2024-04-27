@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { Product } from "../Models/product.model";
@@ -16,12 +16,14 @@ export class WishlistService {
   // private apiUrlDelete = "https://localhost:7087/api/Wishlist/DeleteFromWishlist";
   private wishlistCount = new BehaviorSubject<number>(0);
   wishlistCount$ = this.wishlistCount.asObservable();
+  connectionStringName = 'SofaniMarket';
 
   constructor(private httpClient: HttpClient, private _snackBar: MatSnackBar) {}
 
   addToWishlist(productId: string): void {
     let headers = this.getHeadersWithToken();
-    this.httpClient.post(this.apiUrlAdd, { productId }, { headers }).subscribe(
+    const params = new HttpParams().set('connectionString', this.connectionStringName);
+    this.httpClient.post(this.apiUrlAdd, { productId }, { headers, params }).subscribe(
       response => {
         this.incrementWishlistCount();
         this._snackBar.open('1 item added to wishlist.', 'Ok', {duration: 3000});
@@ -31,12 +33,15 @@ export class WishlistService {
 
   getWishlistProducts(): Observable<Product[]> {
     let headers = this.getHeadersWithToken();
-    return this.httpClient.get<Product[]>(this.apiUrlGet, { headers });
+    const params = new HttpParams().set('connectionString', this.connectionStringName);
+    return this.httpClient.get<Product[]>(this.apiUrlGet, { headers, params
+     });
   }
 
   deleteFromWishlist(productId: string): Observable<any>  {
     let headers = this.getHeadersWithToken();
-    return this.httpClient.delete(`${this.apiUrlDelete}/${productId}`, { headers }).pipe(
+    const params = new HttpParams().set('connectionString', this.connectionStringName);
+    return this.httpClient.delete(`${this.apiUrlDelete}/${productId}`, { headers, params }).pipe(
       tap(() => {
         this.decrementWishlistCount();
       })

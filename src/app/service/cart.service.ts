@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { CartI, ProductAddCart} from '../Models/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +14,7 @@ export class CartService {
     private _showMenu = new Subject<void>();
     showMenu$ = this._showMenu.asObservable();
      sessionId: string ;
+     connectionStringName = 'SofaniMarket';
 
     constructor(private _snackBar: MatSnackBar, private httpClient: HttpClient) {
         this.sessionId = this.getSessionId();
@@ -48,10 +49,9 @@ export class CartService {
         let headers = new HttpHeaders();
         if (token) {
             headers = headers.set('Authorization', `Bearer ${token}`);
-            console.log("headers", headers);
         }
-        console.log("headers", headers);
-        this.httpClient.get<ProductAddCart[]>(`${this.apiUrl}/GetCartItems?sessionId=${this.sessionId}`, { headers })
+        const params = new HttpParams().set('connectionString', this.connectionStringName);
+        this.httpClient.get<ProductAddCart[]>(`${this.apiUrl}/GetCartItems?sessionId=${this.sessionId}`, { headers, params: params })
         .subscribe(items => {
             const updatedcart = { items: items };
             this.cart.next(updatedcart);
@@ -66,8 +66,8 @@ export class CartService {
         if (token) {
             headers = headers.set('Authorization', `Bearer ${token}`)
         }
-       
-        this.httpClient.post<ProductAddCart>(`${this.apiUrl}/AddCartItem`, item, { headers }).subscribe(
+        const params = new HttpParams().set('connectionString', this.connectionStringName);
+        this.httpClient.post<ProductAddCart>(`${this.apiUrl}/AddCartItem`, item, { headers, params: params }).subscribe(
             response => {
                 const items = [...this.cart.value.items];
                 const itemInCart = items.find((_item) => _item.productId === item.productId);
@@ -94,9 +94,9 @@ export class CartService {
         let headers = new HttpHeaders();
         if (token) {
             headers = headers.set('Authorization', `Bearer ${token}`);
-            console.log("headers", headers);
         }
-        this.httpClient.post<ProductAddCart>(`${this.apiUrl}/AddCartItem`, item, { headers }).subscribe(
+        const params = new HttpParams().set('connectionString', this.connectionStringName);
+        this.httpClient.post<ProductAddCart>(`${this.apiUrl}/AddCartItem`, item, { headers, params: params }).subscribe(
             response => {
                 const items = [...this.cart.value.items];
                 const itemInCart = items.find((_item) => _item.productId === item.productId);
@@ -133,10 +133,9 @@ export class CartService {
         let headers = new HttpHeaders();
         if (token) {
             headers = headers.set('Authorization', `Bearer ${token}`);
-            console.log("headers", headers);
         }
-        console.log("this.sessionId", this.sessionId);
-        this.httpClient.delete<any>(`${this.apiUrl}/ClearAllCartItems?sessionId=${this.sessionId}`, { headers }).subscribe(
+        const params = new HttpParams().set('connectionString', this.connectionStringName);
+        this.httpClient.delete<any>(`${this.apiUrl}/ClearAllCartItems?sessionId=${this.sessionId}`, { headers, params: params }).subscribe(
             response => {
                 this.cart.next({ items: [] });
                 this._snackBar.open(response.message, 'Ok', {
@@ -154,9 +153,9 @@ export class CartService {
         let headers = new HttpHeaders();
         if (token) {
             headers = headers.set('Authorization', `Bearer ${token}`);
-            console.log("headers", headers);
         }
-        this.httpClient.delete(`${this.apiUrl}/RemoveFromCart/${item.productId}?sessionId=${this.sessionId}`, { headers }).subscribe(
+        const params = new HttpParams().set('connectionString', this.connectionStringName);
+        this.httpClient.delete(`${this.apiUrl}/RemoveFromCart/${item.productId}?sessionId=${this.sessionId}`, { headers, params: params }).subscribe(
             response => {
                 const filteredItems = this.cart.value.items.filter(
                     (_item) => _item.productId !== item.productId
@@ -179,12 +178,12 @@ export class CartService {
         let headers = new HttpHeaders();
         if (token) {
             headers = headers.set('Authorization', `Bearer ${token}`);
-            console.log("headers", headers);
         }
+        const params = new HttpParams().set('connectionString', this.connectionStringName);
         this.httpClient.put<ProductAddCart>(
             `${this.apiUrl}/UpdateProductQuantity/${item.productId}?sessionId=${this.sessionId}`,
             item,
-            { headers }
+            { headers, params: params }
         ).subscribe(
             updatedCart => {
                 const filteredItems = this.cart.value.items.map((_item) => {

@@ -52,6 +52,7 @@ export class DatailProductComponent {
     this.storeService.getProductsById(this.productId!).pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: Product) => {
         this.product = data
+        console.log("this.product", this.product)
         this.selectedImage = data.imageUrls[0].file;
         this.getProductBYCategory();
         window.scrollTo(0, 0); 
@@ -90,7 +91,7 @@ currentIndex = 0;
       this.cartService.addToCartFromProductDetail({
         categoryName: this.product.categoryName,
         title: this.product.title,
-        price: this.product.price,
+        price: this.product.piecePrice,
         quantity: this.Quetity,
         kilo : this.product.kilo,
         imageUrl: this.product.imageUrls[0].file,
