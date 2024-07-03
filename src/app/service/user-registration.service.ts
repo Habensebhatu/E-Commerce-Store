@@ -31,9 +31,7 @@ export class UserRegistrationService {
           headers: headers
         });
   }
-  // AddUser(user : UserRegistration): Observable<UserRegistration>{
-  //   return this.httpClient.post<UserRegistration>(this.apiUrl, user);
-  // }
+  
 
   login(userCredentials: any): Observable<any> {
     return this.httpClient.post<any>(this.loginApiUrl, userCredentials);

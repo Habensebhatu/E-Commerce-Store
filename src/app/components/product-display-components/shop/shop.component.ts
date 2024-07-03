@@ -21,7 +21,7 @@ export class ShopComponent {
   //   "€20,00 -  €25,00",
   //   "€25,00  &  meer",
   // ];
- 
+
   activeView: "grid" | "list" = "grid";
   products: Product[] | undefined;
 
@@ -51,12 +51,14 @@ export class ShopComponent {
     private translate: TranslateService,
     private metaService: Meta
   ) {
-    this.translatedPhrase = '€25,00 & meer';
+    this.translatedPhrase = "€25,00 & meer";
   }
 
-
   ngOnInit() {
-    this.metaService.addTag({ rel: 'canonical', href: 'https://sofanimarket.com/' });
+    this.metaService.addTag({
+      rel: "canonical",
+      href: "https://sofanimarket.com/",
+    });
     this.updateTranslation();
 
     // Update translation whenever language changes
@@ -65,26 +67,30 @@ export class ShopComponent {
     });
     // this.setPricesWithTranslation(this.translatedPhrase!);
     this.getProducts();
+    this.getCategoryByURL();
+    this.getCatogories();
+    let initialLoad = true;
     this.route.queryParams.subscribe((params) => {
       window.scrollTo(0, 0);
       if (params["category"]) {
         this.selectedCategory = params["category"];
         this.category = this.selectedCategory;
-        this.filterByCategory(this.selectedCategory!);
+
+        if (initialLoad) {
+          this.filterByCategory(this.selectedCategory!);
+          initialLoad = false; // Zet na de eerste laad niet meer laden
+        }
       }
       if (params["price"]) {
         this.selectedPrice = params["price"];
         this.OnfillterProductsBYPrice(this.selectedPrice!);
       }
     });
-
-    this.getCategoryByURL();
-    this.getCatogories();
   }
 
   private updateTranslation() {
-    const more = this.translate.instant('more');
-    this.translatedPhrase = more ? `€25,00 & ${more}` : '€25,00 & meer';
+    const more = this.translate.instant("more");
+    this.translatedPhrase = more ? `€25,00 & ${more}` : "€25,00 & meer";
     this.setPricesWithTranslation(this.translatedPhrase);
   }
 
@@ -129,22 +135,23 @@ export class ShopComponent {
           this.selectedPrice == null
         ) {
           this.products = data;
-          console.log("this.products", this.products[0]);
         }
       });
   }
 
   OnshowCategoty(newCatagory: string): void {
-    this.currentPage = 1;
-    this.getProducts();
-    this.category = newCatagory;
-    this.filterByCategory(this.selectedCategory!);
-    this.selectedCategory = newCatagory;
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { category: newCatagory, price: this.selectedPrice },
-      queryParamsHandling: "merge",
-    });
+    if (newCatagory !== this.selectedCategory) {
+      this.currentPage = 1;
+      this.getProducts();
+      this.category = newCatagory;
+      this.filterByCategory(newCatagory);
+      this.selectedCategory = newCatagory;
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { category: newCatagory, price: this.selectedPrice },
+        queryParamsHandling: "merge",
+      });
+    }
   }
 
   getProducts() {
@@ -194,11 +201,9 @@ export class ShopComponent {
 
   togglePriceSelection(price: string): void {
     if (this.selectedPrice == price) {
-      console.log("this.selectedPrice");
       this.selectedPrice = undefined;
       this.minNumber = undefined;
       this.maxNumber = undefined;
-      console.log("this3333333", this.selectedPrice);
       this.filterByCategory(this.category!);
       this.getProducts();
     } else {
@@ -302,7 +307,7 @@ export class ShopComponent {
 
   setTranslatedPhrase() {
     this.translate.onLangChange.subscribe(() => {
-      const more = this.translate.instant('more');
+      const more = this.translate.instant("more");
       this.translatedPhrase = `€25,00 ${more}`;
     });
   }

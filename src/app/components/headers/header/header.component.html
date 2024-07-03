@@ -56,21 +56,18 @@
             <a class="pl-0" mat-button routerLink="/" (click)="closeMenu()">{{"Home" | translate}}</a>
           </li>
           <li>
-            <!-- Categories dropdown menu -->
             <div class="inline-block">
               <button mat-button [matMenuTriggerFor]="categoriesMenu">
                 {{ "shop" | translate }} <mat-icon>arrow_drop_down</mat-icon>
               </button>
               <mat-menu #categoriesMenu="matMenu">
                 <button mat-menu-item *ngFor="let category of categories" (click)="handleCategorySelect(category.name)">
-                  <a [routerLink]="['/shop', category.name]">
-                    {{ category.name }}
-                  </a>
+                  {{ category.name }}
                 </button>
               </mat-menu>
             </div>
-
           </li>
+          
           <li>
             <a class="text-sm ml-0 md:ml-2" mat-button routerLink="/aboutUs" (click)="closeMenu()">{{ "About Us" |
               translate }}</a>
