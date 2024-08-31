@@ -5,6 +5,8 @@ import { Subject, takeUntil } from 'rxjs';
 import { Product } from 'src/app/Models/product.model';
 import { CartService } from 'src/app/service/cart.service';
 import { WishlistService } from 'src/app/service/wishlist.service';
+import { v4 as generateUUIDv4 } from 'uuid';
+
 
 @Component({
   selector: 'app-app-product-list',
@@ -33,7 +35,8 @@ export class AppProductListComponent {
       categoryId: product.categoryId,
       description: product.description,
       sessionId : product.sessionId,
-      kilo : product.kilo
+      kilo : product.kilo,
+      cartId: generateUUIDv4(), 
     });
   }
 
@@ -57,3 +60,7 @@ export class AppProductListComponent {
   }
 
 }
+function uuidv4(): string | undefined {
+  throw new Error('Function not implemented.');
+}
+

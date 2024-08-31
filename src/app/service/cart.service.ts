@@ -62,6 +62,7 @@ export class CartService {
     addToCart(item: ProductAddCart): void {
         item.sessionId = this.sessionId;
         const token = localStorage.getItem('token');
+        console.log("itemitem",item)
         let headers = new HttpHeaders();
         if (token) {
             headers = headers.set('Authorization', `Bearer ${token}`)
@@ -155,7 +156,7 @@ export class CartService {
             headers = headers.set('Authorization', `Bearer ${token}`);
         }
         const params = new HttpParams().set('connectionString', this.connectionStringName);
-        this.httpClient.delete(`${this.apiUrl}/RemoveFromCart/${item.productId}?sessionId=${this.sessionId}`, { headers, params: params }).subscribe(
+        this.httpClient.delete(`${this.apiUrl}/RemoveFromCart/${item.cartId}?sessionId=${this.sessionId}`, { headers, params: params }).subscribe(
             response => {
                 const filteredItems = this.cart.value.items.filter(
                     (_item) => _item.productId !== item.productId

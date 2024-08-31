@@ -32,9 +32,11 @@ export interface Cart {
      imageUrl: string;
       quantity: number;
       sessionId : string;
+      cartId: string; 
  
    }
 
+   
    export interface ProductAddCartt {
     productId: string;
      title: string;

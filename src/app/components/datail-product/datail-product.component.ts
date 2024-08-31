@@ -8,6 +8,7 @@ import { StoreService } from 'src/app/service/store.service';
 import { WishlistService } from 'src/app/service/wishlist.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
+import { v4 as generateUUIDv4 } from 'uuid';
 
 
 @Component({
@@ -98,7 +99,8 @@ currentIndex = 0;
         productId: this.product.productId,
         categoryId: this.product.categoryId,
         description: this.product.description,
-        sessionId: this.product.sessionId
+        sessionId: this.product.sessionId,
+        cartId: generateUUIDv4(),
 
       });
     }
@@ -145,3 +147,7 @@ currentIndex = 0;
   }
   
 }
+function uuidv4(): string | undefined {
+  throw new Error('Function not implemented.');
+}
+

@@ -49,7 +49,8 @@ export class WishlistComponent {
       categoryId: product.categoryId,
       description: product.description,
       sessionId: product.sessionId,
-      kilo : product.kilo
+      kilo : product.kilo,
+      cartId: ""
     });
   }
 
@@ -74,3 +75,7 @@ export class WishlistComponent {
 
  
 }
+function uuidv4(): string | undefined {
+  throw new Error("Function not implemented.");
+}
+
